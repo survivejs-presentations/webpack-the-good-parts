@@ -12,7 +12,7 @@ import {
   //Fill,
   Heading,
   Image,
-  //Layout,
+  Layout,
   Link,
   List,
   ListItem,
@@ -40,7 +40,10 @@ require("./custom.css");
 const slideTransition = ["slide"];
 const images = mapValues({
   survivejs: require("../images/survivejs.png"),
-  webpackProcess: require("../images/webpack-process.png")
+  webpackProcess: require("../images/webpack-process.png"),
+  webpackPopularity: require("../images/webpack-popularity.png"),
+  webpackMergePopularity: require("../images/webpack-merge-popularity.png"),
+  wdsOverlay: require("../images/wds-overlay.png")
 }, (v) => v.replace("/", ""));
 
 preloader(images);
@@ -111,6 +114,16 @@ export default class Presentation extends React.Component {
           </List>
         </Slide>
 
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            Webpack
+          </Heading>
+          <Image src={images.webpackPopularity} margin="40px auto" height="364px" />
+          <Layout>
+            <Link href="https://npm-stat.com/charts.html?package=webpack&from=2014-03-19&to=2017-03-19">npm-stat.com</Link>
+          </Layout>
+        </Slide>
+
         <Slide transition={slideTransition} bgColor="secondary">
           <Heading size={2} textColor="tertiary">
             Developing
@@ -132,11 +145,14 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading size={1}>
+          <Heading size={2}>
             Automatic Browser Refresh
           </Heading>
           <List>
-            <Appear><ListItem>XXX</ListItem></Appear>
+            <Appear><ListItem><b>webpack --watch</b></ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/webpack-dev-server">webpack-dev-server</Link></ListItem></Appear>
+            <Appear><ListItem><b>--env</b>, <b>proxy</b></ListItem></Appear>
+            <Appear><ListItem>Hot Module Replacement (HMR)</ListItem></Appear>
           </List>
         </Slide>
 
@@ -145,8 +161,38 @@ export default class Presentation extends React.Component {
             Linting JavaScript
           </Heading>
           <List>
-            <Appear><ListItem>XXX</ListItem></Appear>
+            <Appear><ListItem>Lint to push quality and code on a higher standard</ListItem></Appear>
+            <Appear><ListItem>JSLint &rarr; <Link href="https://www.npmjs.com/package/jshint">JSHint</Link> &rarr; <Link href="http://eslint.org/">ESLint</Link></ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/eslint-config-airbnb">eslint-config-airbnb</Link></ListItem></Appear>
+            <Appear><ListItem>Optional: connect with webpack using <Link href="https://www.npmjs.com/package/eslint-loader">eslint-loader</Link></ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/prettier">Prettier</Link> - Format code automatically</ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/danger">Danger</Link> - High level checks (think PR)</ListItem></Appear>
+            <Appear><ListItem><Link href="http://editorconfig.org/">EditorConfig</Link> - Editor level consistency</ListItem></Appear>
           </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={1}>
+            WDS - Overlay Mode
+          </Heading>
+          <Image src={images.wdsOverlay} margin="40px auto" height="364px" />
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading fit>
+            WDS - Overlay Mode Configuration
+          </Heading>
+          <CodePane lang="javascript">
+        {`devServer: {
+  ...
+
+  // overlay: true captures only errors
+  overlay: {
+    errors: true,
+    warnings: true,
+  },
+},`}
+          </CodePane>
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -154,8 +200,64 @@ export default class Presentation extends React.Component {
             Composing Configuration
           </Heading>
           <List>
-            <Appear><ListItem>XXX</ListItem></Appear>
+            <Appear><ListItem>The need for different targets - development, production, ...</ListItem></Appear>
+            <Appear><ListItem>How to manage the targets?</ListItem></Appear>
+            <Appear><ListItem>Solutions: higher level abstractions, composition</ListItem></Appear>
+            <Appear><ListItem>Option: abstract and consume configuration as a dependency</ListItem></Appear>
           </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            <Link href="https://www.npmjs.com/package/webpack-merge">webpack-merge</Link>
+          </Heading>
+          <Image src={images.webpackMergePopularity} margin="40px auto" height="364px" />
+          <Layout>
+            <Link href="https://npm-stat.com/charts.html?package=webpack-merge&from=2015-06-19&to=2017-03-19">npm-stat.com</Link>
+          </Layout>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading fit>
+            webpack-merge - Demonstration
+          </Heading>
+          <CodePane lang="bash">
+        {`> merge = require('webpack-merge')
+...
+> merge(
+... { a: [1], b: 5, c: 20 },
+... { a: [2], b: 10, d: 421 }
+... )
+{ a: [ 1, 2 ], b: 10, c: 20, d: 421 }`}
+          </CodePane>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading fit>
+            webpack-merge with webpack
+          </Heading>
+          <CodePane lang="javascript">
+        {`...
+
+const commonConfig = merge([
+  ...
+]);
+
+const productionConfig = merge([
+  ...
+]);
+
+...
+
+module.exports = (env) => {
+  if (env === 'production') {
+    return merge(commonConfig, productionConfig);
+  }
+
+  return merge(commonConfig, developmentConfig);
+};
+`}
+          </CodePane>
         </Slide>
 
         <Slide transition={slideTransition} bgColor="secondary">
