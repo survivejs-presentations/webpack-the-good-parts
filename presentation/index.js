@@ -39,6 +39,7 @@ require("./custom.css");
 
 const slideTransition = ["slide"];
 const images = mapValues({
+  sourcemaps: require("../images/sourcemaps.png"),
   survivejs: require("../images/survivejs.png"),
   webpackProcess: require("../images/webpack-process.png"),
   webpackPopularity: require("../images/webpack-popularity.png"),
@@ -67,7 +68,7 @@ export default class Presentation extends React.Component {
 
         <Slide transition={slideTransition} bgColor="secondary">
           <Heading size={2} textColor="tertiary">
-            What is Webpack
+            <Link href="https://survivejs.com/webpack/what-is-webpack">What is Webpack</Link>
           </Heading>
         </Slide>
 
@@ -126,13 +127,13 @@ export default class Presentation extends React.Component {
 
         <Slide transition={slideTransition} bgColor="secondary">
           <Heading size={2} textColor="tertiary">
-            Developing
+            <Link href="https://survivejs.com/webpack/developing">Developing</Link>
           </Heading>
         </Slide>
 
         <Slide transition={slideTransition}>
           <Heading size={1}>
-            Getting Started
+            <Link href="https://survivejs.com/webpack/developing/getting-started">Getting Started</Link>
           </Heading>
           <List>
             <Appear><ListItem><b>webpack app/index.js build/index.js</b></ListItem></Appear>
@@ -146,7 +147,7 @@ export default class Presentation extends React.Component {
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
-            Automatic Browser Refresh
+            <Link href="https://survivejs.com/webpack/developing/automatic-browser-refresh">Automatic Browser Refresh</Link>
           </Heading>
           <List>
             <Appear><ListItem><b>webpack --watch</b></ListItem></Appear>
@@ -158,7 +159,7 @@ export default class Presentation extends React.Component {
 
         <Slide transition={slideTransition}>
           <Heading size={1}>
-            Linting JavaScript
+            <Link href="https://survivejs.com/webpack/developing/linting">Linting JavaScript</Link>
           </Heading>
           <List>
             <Appear><ListItem>Lint to push quality and code on a higher standard</ListItem></Appear>
@@ -197,7 +198,7 @@ export default class Presentation extends React.Component {
 
         <Slide transition={slideTransition}>
           <Heading size={1}>
-            Composing Configuration
+            <Link href="https://survivejs.com/webpack/developing/composing-configuration">Composing Configuration</Link>
           </Heading>
           <List>
             <Appear><ListItem>The need for different targets - development, production, ...</ListItem></Appear>
@@ -261,13 +262,13 @@ module.exports = (env) => {
 
         <Slide transition={slideTransition} bgColor="secondary">
           <Heading size={2} textColor="tertiary">
-            Styling
+            <Link href="https://survivejs.com/webpack/styling">Styling</Link>
           </Heading>
         </Slide>
 
         <Slide transition={slideTransition}>
           <Heading size={1}>
-            Loading Styles
+            <Link href="https://survivejs.com/webpack/styling/loading">Loading Styles</Link>
           </Heading>
           <List>
             <Appear><ListItem><code>use: ['style-loader', 'css-loader']</code></ListItem></Appear>
@@ -280,7 +281,7 @@ module.exports = (env) => {
 
         <Slide transition={slideTransition}>
           <Heading size={1}>
-            Separating CSS
+            <Link href="https://survivejs.com/webpack/styling/separating-css">Separating CSS</Link>
           </Heading>
           <List>
             <Appear><ListItem>Webpack inlines CSS by default &rarr; FOUC</ListItem></Appear>
@@ -292,7 +293,7 @@ module.exports = (env) => {
 
         <Slide transition={slideTransition}>
           <Heading size={1}>
-            Autoprefixing
+            <Link href="https://survivejs.com/webpack/styling/autoprefixing">Autoprefixing</Link>
           </Heading>
           <List>
             <Appear><ListItem>Think of the old browsers!</ListItem></Appear>
@@ -314,7 +315,7 @@ IE 8 # And IE 8`}
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
-            Eliminating Unused CSS
+            <Link href="https://survivejs.com/webpack/styling/eliminating-unused-css">Eliminating Unused CSS</Link>
           </Heading>
           <List>
             <Appear><ListItem>Often CSS frameworks come with unused rules</ListItem></Appear>
@@ -326,7 +327,7 @@ IE 8 # And IE 8`}
 
         <Slide transition={slideTransition}>
           <Heading size={1}>
-            Linting CSS
+            <Link href="https://survivejs.com/webpack/styling/linting">Linting CSS</Link>
           </Heading>
           <List>
             <Appear><ListItem>Lint CSS too</ListItem></Appear>
@@ -337,13 +338,13 @@ IE 8 # And IE 8`}
 
         <Slide transition={slideTransition} bgColor="secondary">
           <Heading size={2} textColor="tertiary">
-            Loading Assets
+            <Link href="https://survivejs.com/webpack/loading">Loading Assets</Link>
           </Heading>
         </Slide>
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
-            Loader Definition
+            <Link href="https://survivejs.com/webpack/loading/loader-definitions">Loader Definition</Link>
           </Heading>
           <CodePane lang="javascript">
         {`module: {
@@ -465,7 +466,7 @@ import '!!url-loader!./bar.png';`}
 
         <Slide transition={slideTransition}>
           <Heading size={1}>
-            Loading Images
+            <Link href="https://survivejs.com/webpack/loading/images">Loading Images</Link>
           </Heading>
           <List>
             <Appear><ListItem>To inline or not?</ListItem></Appear>
@@ -477,7 +478,7 @@ import '!!url-loader!./bar.png';`}
 
         <Slide transition={slideTransition}>
           <Heading size={1}>
-            Loading Fonts
+            <Link href="https://survivejs.com/webpack/loading/fonts">Loading Fonts</Link>
           </Heading>
           <List>
             <Appear><ListItem><b>url-loader</b> and <b>file-loader</b> again</ListItem></Appear>
@@ -488,7 +489,7 @@ import '!!url-loader!./bar.png';`}
 
         <Slide transition={slideTransition}>
           <Heading size={1}>
-            Loading JavaScript
+            <Link href="https://survivejs.com/webpack/loading/javascript">Loading JavaScript</Link>
           </Heading>
           <List>
             <Appear><ListItem>Webpack processes ES6 modules but not specific features</ListItem></Appear>
@@ -500,13 +501,33 @@ import '!!url-loader!./bar.png';`}
 
         <Slide transition={slideTransition} bgColor="secondary">
           <Heading size={2} textColor="tertiary">
-            Building
+            <Link href="https://survivejs.com/webpack/building">Building</Link>
           </Heading>
         </Slide>
 
         <Slide transition={slideTransition}>
+          <Heading size={2}>
+            <Link href="https://survivejs.com/webpack/building/source-maps">Source Maps</Link>
+          </Heading>
+          <Image src={images.sourcemaps} margin="40px auto" height="364px" />
+        </Slide>
+
+        <Slide transition={slideTransition}>
           <Heading size={1}>
-            Source Maps
+            Source Maps in Webpack
+          </Heading>
+          <List>
+            <Appear><ListItem>Inline and separate</ListItem></Appear>
+            <Appear><ListItem>Inline === faster to rebundle, use for development</ListItem></Appear>
+            <Appear><ListItem>Separate === slower to generate, use for production</ListItem></Appear>
+            <Appear><ListItem>Hidden source maps give only stack traces</ListItem></Appear>
+            <Appear><ListItem><code>devtool: 'source-map'</code></ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={1}>
+            <Link href="https://survivejs.com/webpack/building/splitting-bundles">Splitting Bundles</Link>
           </Heading>
           <List>
             <Appear><ListItem>XXX</ListItem></Appear>
@@ -515,7 +536,7 @@ import '!!url-loader!./bar.png';`}
 
         <Slide transition={slideTransition}>
           <Heading size={1}>
-            Splitting Bundles
+            <Link href="https://survivejs.com/webpack/building/code-splitting">Code Splitting</Link>
           </Heading>
           <List>
             <Appear><ListItem>XXX</ListItem></Appear>
@@ -524,7 +545,7 @@ import '!!url-loader!./bar.png';`}
 
         <Slide transition={slideTransition}>
           <Heading size={1}>
-            Code Splitting
+            <Link href="https://survivejs.com/webpack/building/tidying-up">Tidying Up</Link>
           </Heading>
           <List>
             <Appear><ListItem>XXX</ListItem></Appear>
@@ -532,16 +553,7 @@ import '!!url-loader!./bar.png';`}
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading size={1}>
-            Tidying Up
-          </Heading>
-          <List>
-            <Appear><ListItem>XXX</ListItem></Appear>
-          </List>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Link href="http://www.survivejs.com/">
+          <Link href="https://www.survivejs.com/">
             <Heading size={1}>
               SurviveJS
             </Heading>
