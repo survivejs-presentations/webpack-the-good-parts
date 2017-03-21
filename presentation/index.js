@@ -468,7 +468,10 @@ import '!!url-loader!./bar.png';`}
             Loading Images
           </Heading>
           <List>
-            <Appear><ListItem>XXX</ListItem></Appear>
+            <Appear><ListItem>To inline or not?</ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/url-loader">url-loader</Link> inlines (with a limit)</ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/file-loader">file-loader</Link> returns paths and emits files</ListItem></Appear>
+            <Appear><ListItem>Lots of other loaders for specific image related purposes (spriting, srcsets, etc.)</ListItem></Appear>
           </List>
         </Slide>
 
@@ -477,7 +480,9 @@ import '!!url-loader!./bar.png';`}
             Loading Fonts
           </Heading>
           <List>
-            <Appear><ListItem>XXX</ListItem></Appear>
+            <Appear><ListItem><b>url-loader</b> and <b>file-loader</b> again</ListItem></Appear>
+            <Appear><ListItem>Choose formats to support carefully. <Link href="https://www.npmjs.com/package/canifont">canifont</Link> to rescue.</ListItem></Appear>
+            <Appear><ListItem>Specific loaders like <Link href="https://www.npmjs.com/package/webfonts-loader">webfonts-loader</Link></ListItem></Appear>
           </List>
         </Slide>
 
@@ -486,7 +491,10 @@ import '!!url-loader!./bar.png';`}
             Loading JavaScript
           </Heading>
           <List>
-            <Appear><ListItem>XXX</ListItem></Appear>
+            <Appear><ListItem>Webpack processes ES6 modules but not specific features</ListItem></Appear>
+            <Appear><ListItem>Problematic with older browsers!</ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/babel-loader">babel-loader</Link> and <Link href="https://www.npmjs.com/package/babel-preset-env">babel-preset-env</Link> to rescue</ListItem></Appear>
+            <Appear><ListItem><b>babel-preset-env</b> generates code/polyfills based on your browser definition</ListItem></Appear>
           </List>
         </Slide>
 
