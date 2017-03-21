@@ -2,7 +2,7 @@
   "name": "template",
   "private": true,
   "version": "0.0.0",
-  "description": "Template",
+  "description": "Webpack - From Apprentice to Journeyman",
   "main": "lib/index.js",
   "scripts": {
     "clean": "rimraf dist",

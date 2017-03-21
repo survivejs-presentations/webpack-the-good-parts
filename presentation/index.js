@@ -57,7 +57,7 @@ export default class Presentation extends React.Component {
       <Deck transition={slideTransition} transitionDuration={500} theme={theme}>
         <Slide transition={slideTransition} bgColor="secondary">
           <Heading size={1} fit caps lineHeight={1} textColor="tertiary">
-            Template
+            Webpack - From Apprentice to Journeyman
           </Heading>
         </Slide>
 
