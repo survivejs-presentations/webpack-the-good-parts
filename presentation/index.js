@@ -39,6 +39,9 @@ require("./custom.css");
 
 const slideTransition = ["slide"];
 const images = mapValues({
+  commonschunk1: require("../images/commonschunk1.png"),
+  commonschunk2: require("../images/commonschunk2.png"),
+  codeSplitting: require("../images/codesplitting.png"),
   sourcemaps: require("../images/sourcemaps.png"),
   survivejs: require("../images/survivejs.png"),
   webpackProcess: require("../images/webpack-process.png"),
@@ -66,7 +69,7 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
 
-        <Slide transition={slideTransition} bgColor="secondary">
+        <Slide transition={slideTransition}>
           <Heading size={2} textColor="tertiary">
             <Link href="https://survivejs.com/webpack/what-is-webpack">What is Webpack</Link>
           </Heading>
@@ -125,7 +128,7 @@ export default class Presentation extends React.Component {
           </Layout>
         </Slide>
 
-        <Slide transition={slideTransition} bgColor="secondary">
+        <Slide transition={slideTransition}>
           <Heading size={2} textColor="tertiary">
             <Link href="https://survivejs.com/webpack/developing">Developing</Link>
           </Heading>
@@ -260,7 +263,7 @@ module.exports = (env) => {
           </CodePane>
         </Slide>
 
-        <Slide transition={slideTransition} bgColor="secondary">
+        <Slide transition={slideTransition}>
           <Heading size={2} textColor="tertiary">
             <Link href="https://survivejs.com/webpack/styling">Styling</Link>
           </Heading>
@@ -336,7 +339,7 @@ IE 8 # And IE 8`}
           </List>
         </Slide>
 
-        <Slide transition={slideTransition} bgColor="secondary">
+        <Slide transition={slideTransition}>
           <Heading size={2} textColor="tertiary">
             <Link href="https://survivejs.com/webpack/loading">Loading Assets</Link>
           </Heading>
@@ -499,7 +502,7 @@ import '!!url-loader!./bar.png';`}
           </List>
         </Slide>
 
-        <Slide transition={slideTransition} bgColor="secondary">
+        <Slide transition={slideTransition}>
           <Heading size={2} textColor="tertiary">
             <Link href="https://survivejs.com/webpack/building">Building</Link>
           </Heading>
@@ -530,17 +533,82 @@ import '!!url-loader!./bar.png';`}
             <Link href="https://survivejs.com/webpack/building/splitting-bundles">Splitting Bundles</Link>
           </Heading>
           <List>
-            <Appear><ListItem>XXX</ListItem></Appear>
+            <Appear><ListItem>Anti-pattern - Single bundle with <b>application</b> and <b>vendor</b></ListItem></Appear>
+            <Appear><ListItem>First step - Separate into two</ListItem></Appear>
+            <Appear><ListItem><code>CommonsChunkPlugin</code> can do the job</ListItem></Appear>
+            <Appear><ListItem><code>AggressiveSplittingPlugin</code> and <code>AggressiveMergingPlugin</code> for advanced control</ListItem></Appear>
           </List>
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading size={1}>
+          <Heading size={2}>
+            Separating Application and Vendor
+          </Heading>
+          <Image src={images.commonschunk1} margin="40px auto" height="364px" />
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            Default, children, async modes
+          </Heading>
+          <Image src={images.commonschunk2} margin="40px auto" height="364px" />
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
             <Link href="https://survivejs.com/webpack/building/code-splitting">Code Splitting</Link>
           </Heading>
-          <List>
-            <Appear><ListItem>XXX</ListItem></Appear>
-          </List>
+          <Image src={images.codeSplitting} margin="40px auto" height="364px" />
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            <code>import()</code>
+          </Heading>
+          <CodePane lang="javascript">
+            {`
+import('./module').then((module) => {...}).catch((error) => {...});
+`}
+          </CodePane>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            <code>Promise</code> Patterns
+          </Heading>
+          <CodePane lang="javascript">
+        {`Promise.all([
+  import('lunr'),
+  import('../search_index.json'),
+]).then(([lunr, search]) => {
+  return {
+    index: lunr.Index.load(search.index),
+    lines: search.lines,
+  };
+});`}
+          </CodePane>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            <code>require.ensure</code>
+          </Heading>
+          <CodePane lang="javascript">
+        {`require.ensure(
+  // Modules to load, but not execute yet
+  ['./load-earlier'],
+  () => {
+    const loadEarlier = require('./load-earlier');
+
+    // Load later on demand and include to the same chunk
+    const module1 = require('./module1');
+    const module2 = require('./module2');
+
+    ...
+  },
+  'optional name'
+);`}
+          </CodePane>
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -548,7 +616,9 @@ import '!!url-loader!./bar.png';`}
             <Link href="https://survivejs.com/webpack/building/tidying-up">Tidying Up</Link>
           </Heading>
           <List>
-            <Appear><ListItem>XXX</ListItem></Appear>
+            <Appear><ListItem>Even though webpack is a bundler, you can find task-oriented plugins for it</ListItem></Appear>
+            <Appear><ListItem>Examples: <Link href="https://www.npmjs.com/package/clean-webpack-plugin">clean-webpack-plugin</Link>, <Link href="https://www.npmjs.com/package/git-revision-webpack-plugin">git-revision-webpack-plugin</Link>, <code>BannerPlugin</code></ListItem></Appear>
+            <Appear><ListItem>Copy through <Link href="https://www.npmjs.com/package/copy-webpack-plugin">copy-webpack-plugin</Link> or outside of webpack</ListItem></Appear>
           </List>
         </Slide>
 
