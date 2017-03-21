@@ -16,7 +16,7 @@ import {
   Link,
   List,
   ListItem,
-  Markdown,
+  //Markdown,
   Quote,
   Slide,
   Table,
@@ -39,7 +39,8 @@ require("./custom.css");
 
 const slideTransition = ["slide"];
 const images = mapValues({
-  survivejs: require("../images/survivejs.png")
+  survivejs: require("../images/survivejs.png"),
+  webpackProcess: require("../images/webpack-process.png")
 }, (v) => v.replace("/", ""));
 
 preloader(images);
@@ -61,124 +62,112 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
 
-        <Slide transition={slideTransition}>
-          <Heading caps fit size={1}>
-            JavaScript Usage on Sites
+        <Slide transition={slideTransition} bgColor="secondary">
+          <Heading size={2} textColor="tertiary">
+            What is Webpack
           </Heading>
-          <Markdown>
-        {`
-* 2011 - 38.2%
-* 2013 - 60.4%
-* 2015 - 70.5%
-* 2016 - 73.5%
-* Source: [W3Techs](http://w3techs.com/technologies/history_overview/javascript_library/all/y)
-        `}
-          </Markdown>
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Appear fid="1">
-            <Heading size={2} caps fit>
-              Inline JavaScript
-            </Heading>
-          </Appear>
-          <Appear fid="2">
-            <Heading size={2} caps fit textColor="tertiary">
-              AJAX (async)
-            </Heading>
-          </Appear>
-          <Appear fid="3">
-            <Heading size={2} caps fit>
-              Single Page Applications
-            </Heading>
-          </Appear>
-          <Appear fid="3">
-            <Heading size={2} caps fit textColor="tertiary">
-              Universal JavaScript
-            </Heading>
-          </Appear>
-        </Slide>
-
-        <Slide transition={slideTransition} bgColor="black">
-          <BlockQuote>
-            <Quote>Java is to JavaScript as car is to carpet</Quote>
-          </BlockQuote>
+          <Image src={images.webpackProcess} height="364px" />
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading caps fit size={1}>
-            Build Tools
+          <Heading fit>
+            Configuration
           </Heading>
-          <Layout>
-            <Table>
-              <thead>
-                <TableRow>
-                  <TableHeaderItem>1st Gen.</TableHeaderItem>
-                  <TableHeaderItem>2nd Gen.</TableHeaderItem>
-                  <TableHeaderItem>3rd Gen.</TableHeaderItem>
-                </TableRow>
-              </thead>
-              <tbody>
-                <TableRow>
-                  <TableItem>Make</TableItem>
-                  <TableItem>Grunt</TableItem>
-                  <TableItem>Browserify</TableItem>
-                </TableRow>
-                <TableRow>
-                  <TableItem />
-                  <TableItem>Gulp</TableItem>
-                  <TableItem>Webpack</TableItem>
-                </TableRow>
-                <TableRow>
-                  <TableItem />
-                  <TableItem>Broccoli</TableItem>
-                  <TableItem>JSPM</TableItem>
-                </TableRow>
-              </tbody>
-            </Table>
-          </Layout>
+          <CodePane lang="javascript">
+        {`module.exports = {
+  entry: {
+    ...
+  },
+  output: {
+    ...
+  },
+  module: {
+    rules: [
+      ...
+    ]
+  },
+  plugins: [
+    ...
+  ]
+};`}
+          </CodePane>
         </Slide>
 
         <Slide transition={slideTransition}>
           <Heading size={1}>
-            The Problem of Template
+            Main Ideas
           </Heading>
           <List>
-            <Appear><ListItem>Problem 1</ListItem></Appear>
-            <Appear><ListItem>Problem 2</ListItem></Appear>
-            <Appear><ListItem><Link href="https://facebook.github.io/flux/">Flux</Link> - Actions, stores, dispatcher</ListItem></Appear>
+            <Appear><ListItem>Focus on <b>bundling</b></ListItem></Appear>
+            <Appear><ListItem>Traverses dependency graph while matching using <b>loaders</b></ListItem></Appear>
+            <Appear><ListItem><b>Configuration</b> is used to describe these transformations</ListItem></Appear>
+            <Appear><ListItem><b>Plugins</b> have access to webpack <b>runtime hooks</b></ListItem></Appear>
+            <Appear><ListItem><b>Code splitting</b> allows you to load functionality as you need</ListItem></Appear>
+            <Appear><ListItem><b>Hot Module Replacement</b> helped to popularize webpack</ListItem></Appear>
+            <Appear><ListItem>Webpack can generate <b>hashes</b> to filenames for caching</ListItem></Appear>
           </List>
         </Slide>
 
-        <Slide transition={slideTransition}>
-          <Image src={images.survivejs} margin="40px auto" height="324px" />
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            Solution
+        <Slide transition={slideTransition} bgColor="secondary">
+          <Heading size={2} textColor="tertiary">
+            Developing
           </Heading>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={4}>
-            Minimal Demo
-          </Heading>
-          <CodePane
-            lang="jsx"
-            source={require("raw-loader!../examples/demo.jsx")}
-            margin="20px auto"
-          />
         </Slide>
 
         <Slide transition={slideTransition}>
           <Heading size={1}>
-            Exercises
+            Main Ideas
           </Heading>
           <List>
-            <Appear><ListItem>Exercise 1</ListItem></Appear>
-            <Appear><ListItem>*Exercise 2</ListItem></Appear>
-            <Appear><ListItem>**Exercise 3</ListItem></Appear>
+            <Appear><ListItem>XXX</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition} bgColor="secondary">
+          <Heading size={2} textColor="tertiary">
+            Styling
+          </Heading>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={1}>
+            Main Ideas
+          </Heading>
+          <List>
+            <Appear><ListItem>XXX</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition} bgColor="secondary">
+          <Heading size={2} textColor="tertiary">
+            Loading Assets
+          </Heading>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={1}>
+            Main Ideas
+          </Heading>
+          <List>
+            <Appear><ListItem>XXX</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition} bgColor="secondary">
+          <Heading size={2} textColor="tertiary">
+            Building
+          </Heading>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={1}>
+            Main Ideas
+          </Heading>
+          <List>
+            <Appear><ListItem>XXX</ListItem></Appear>
           </List>
         </Slide>
 
