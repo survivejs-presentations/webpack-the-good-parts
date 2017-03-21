@@ -106,7 +106,7 @@ export default class Presentation extends React.Component {
             <Appear><ListItem><b>Configuration</b> is used to describe these transformations</ListItem></Appear>
             <Appear><ListItem><b>Plugins</b> have access to webpack <b>runtime hooks</b></ListItem></Appear>
             <Appear><ListItem><b>Code splitting</b> allows you to load functionality as you need</ListItem></Appear>
-            <Appear><ListItem><b>Hot Module Replacement</b> helped to popularize webpack</ListItem></Appear>
+            <Appear><ListItem><b>Hot Module Replacement</b> popularized webpack</ListItem></Appear>
             <Appear><ListItem>Webpack can generate <b>hashes</b> to filenames for caching</ListItem></Appear>
           </List>
         </Slide>
@@ -119,7 +119,39 @@ export default class Presentation extends React.Component {
 
         <Slide transition={slideTransition}>
           <Heading size={1}>
-            Main Ideas
+            Getting Started
+          </Heading>
+          <List>
+            <Appear><ListItem><b>webpack app/index.js build/index.js</b></ListItem></Appear>
+            <Appear><ListItem>Shortcut flags for common operations (avoid!)</ListItem></Appear>
+            <Appear><ListItem>Current development at <Link href="https://github.com/webpack/webpack-cli">webpack-cli</Link></ListItem></Appear>
+            <Appear><ListItem>Eventually you will need <b>webpack.config.js</b></ListItem></Appear>
+            <Appear><ListItem>Use <Link href="https://www.npmjs.com/package/html-webpack-plugin">html-webpack-plugin</Link> for generating <b>index.html</b></ListItem></Appear>
+            <Appear><ListItem>Use npm and <b>package.json</b> as your task runner</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={1}>
+            Automatic Browser Refresh
+          </Heading>
+          <List>
+            <Appear><ListItem>XXX</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={1}>
+            Linting JavaScript
+          </Heading>
+          <List>
+            <Appear><ListItem>XXX</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={1}>
+            Composing Configuration
           </Heading>
           <List>
             <Appear><ListItem>XXX</ListItem></Appear>
@@ -134,7 +166,43 @@ export default class Presentation extends React.Component {
 
         <Slide transition={slideTransition}>
           <Heading size={1}>
-            Main Ideas
+            Loading Styles
+          </Heading>
+          <List>
+            <Appear><ListItem>XXX</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={1}>
+            Separating CSS
+          </Heading>
+          <List>
+            <Appear><ListItem>XXX</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={1}>
+            Autoprefixing
+          </Heading>
+          <List>
+            <Appear><ListItem>XXX</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={1}>
+            Eliminating Unused CSS
+          </Heading>
+          <List>
+            <Appear><ListItem>XXX</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={1}>
+            Linting CSS
           </Heading>
           <List>
             <Appear><ListItem>XXX</ListItem></Appear>
@@ -149,7 +217,34 @@ export default class Presentation extends React.Component {
 
         <Slide transition={slideTransition}>
           <Heading size={1}>
-            Main Ideas
+            Loader Definitions
+          </Heading>
+          <List>
+            <Appear><ListItem>XXX</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={1}>
+            Loading Images
+          </Heading>
+          <List>
+            <Appear><ListItem>XXX</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={1}>
+            Loading Fonts
+          </Heading>
+          <List>
+            <Appear><ListItem>XXX</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={1}>
+            Loading JavaScript
           </Heading>
           <List>
             <Appear><ListItem>XXX</ListItem></Appear>
@@ -164,7 +259,34 @@ export default class Presentation extends React.Component {
 
         <Slide transition={slideTransition}>
           <Heading size={1}>
-            Main Ideas
+            Source Maps
+          </Heading>
+          <List>
+            <Appear><ListItem>XXX</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={1}>
+            Splitting Bundles
+          </Heading>
+          <List>
+            <Appear><ListItem>XXX</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={1}>
+            Code Splitting
+          </Heading>
+          <List>
+            <Appear><ListItem>XXX</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={1}>
+            Tidying Up
           </Heading>
           <List>
             <Appear><ListItem>XXX</ListItem></Appear>
