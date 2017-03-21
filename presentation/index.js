@@ -5,24 +5,24 @@ import mapValues from "lodash/mapValues";
 // Import Spectacle Core tags
 import {
   Appear,
-  BlockQuote,
+  //BlockQuote,
   //Cite,
   CodePane,
   Deck,
   //Fill,
   Heading,
   Image,
-  Layout,
+  //Layout,
   Link,
   List,
   ListItem,
   //Markdown,
-  Quote,
-  Slide,
-  Table,
-  TableRow,
-  TableHeaderItem,
-  TableItem
+  //Quote,
+  Slide
+  //Table,
+  //TableRow,
+  //TableHeaderItem,
+  //TableItem
   //Text
 } from "spectacle";
 
