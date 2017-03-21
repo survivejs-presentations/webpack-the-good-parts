@@ -2,6 +2,10 @@ pre code {
   font-size: 125%;
 }
 
+li code {
+  font-size: 75%;
+}
+
 pre {
   overflow: auto;
   max-height: 500px;

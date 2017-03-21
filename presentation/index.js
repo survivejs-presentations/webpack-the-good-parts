@@ -271,7 +271,11 @@ module.exports = (env) => {
             Loading Styles
           </Heading>
           <List>
-            <Appear><ListItem>XXX</ListItem></Appear>
+            <Appear><ListItem><code>use: ['style-loader', 'css-loader']</code></ListItem></Appear>
+            <Appear><ListItem>Read as <code>style(css(input))</code></ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/css-loader">css-loader</Link> evaluates <code>@import</code> and <code>url()</code> lookups</ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/style-loader">style-loader</Link> injects CSS to the DOM through a <code>style</code> tag and implements the HMR interface</ListItem></Appear>
+            <Appear><ListItem>Other formats supported through loaders</ListItem></Appear>
           </List>
         </Slide>
 
@@ -280,7 +284,10 @@ module.exports = (env) => {
             Separating CSS
           </Heading>
           <List>
-            <Appear><ListItem>XXX</ListItem></Appear>
+            <Appear><ListItem>Webpack inlines CSS by default &rarr; FOUC</ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/extract-text-webpack-plugin">extract-text-webpack-plugin (ETWP)</Link> and <Link href="https://www.npmjs.com/package/extract-loader">extract-loader</Link> to rescue</ListItem></Appear>
+            <Appear><ListItem>ETWP works through a loader/plugin pair</ListItem></Appear>
+            <Appear><ListItem>Usually you refer to CSS through JavaScript code but it can be maintained though entries or outside of webpack</ListItem></Appear>
           </List>
         </Slide>
 
@@ -289,16 +296,32 @@ module.exports = (env) => {
             Autoprefixing
           </Heading>
           <List>
-            <Appear><ListItem>XXX</ListItem></Appear>
+            <Appear><ListItem>Think of the old browsers!</ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/autoprefixer">autoprefixer</Link>, a PostCSS plugin, can solve this</ListItem></Appear>
+            <Appear><ListItem>Define a <b>browserslist</b>, let tooling do the rest</ListItem></Appear>
           </List>
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading size={1}>
+          <Heading fit>
+            browserslist
+          </Heading>
+          <CodePane lang="bash">
+        {`> 1% # Browser usage over 1%
+Last 2 versions # Last two versions too
+IE 8 # And IE 8`}
+          </CodePane>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
             Eliminating Unused CSS
           </Heading>
           <List>
-            <Appear><ListItem>XXX</ListItem></Appear>
+            <Appear><ListItem>Often CSS frameworks come with unused rules</ListItem></Appear>
+            <Appear><ListItem>Eliminating those rules will make your CSS bundle smaller</ListItem></Appear>
+            <Appear><ListItem>Ideal for static sites, more complex in dynamic cases</ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/purify-css">purify-css</Link> and <Link href="https://www.npmjs.com/package/purifycss-webpack">purifycss-webpack</Link> can do this</ListItem></Appear>
           </List>
         </Slide>
 
@@ -307,7 +330,9 @@ module.exports = (env) => {
             Linting CSS
           </Heading>
           <List>
-            <Appear><ListItem>XXX</ListItem></Appear>
+            <Appear><ListItem>Lint CSS too</ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/stylelint">Stylelint</Link> through PostCSS is enough</ListItem></Appear>
+            <Appear><ListItem><Link href="http://csslint.net/">CSSLint</Link> is another option</ListItem></Appear>
           </List>
         </Slide>
 
