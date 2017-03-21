@@ -69,9 +69,9 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
 
-        <Slide transition={slideTransition}>
+        <Slide transition={slideTransition} bgColor="secondary">
           <Heading size={2} textColor="tertiary">
-            <Link href="https://survivejs.com/webpack/what-is-webpack">What is Webpack</Link>
+            <Link href="https://survivejs.com/webpack/what-is-webpack" textColor="white">What is Webpack</Link>
           </Heading>
         </Slide>
 
@@ -80,7 +80,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading fit>
+          <Heading size={2}>
             Configuration
           </Heading>
           <CodePane lang="javascript">
@@ -104,7 +104,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading size={1}>
+          <Heading size={2}>
             Main Ideas
           </Heading>
           <List>
@@ -135,7 +135,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading size={1}>
+          <Heading size={2}>
             <Link href="https://survivejs.com/webpack/developing/getting-started">Getting Started</Link>
           </Heading>
           <List>
@@ -144,7 +144,7 @@ export default class Presentation extends React.Component {
             <Appear><ListItem>Current development at <Link href="https://github.com/webpack/webpack-cli">webpack-cli</Link></ListItem></Appear>
             <Appear><ListItem>Eventually you will need <b>webpack.config.js</b></ListItem></Appear>
             <Appear><ListItem>Use <Link href="https://www.npmjs.com/package/html-webpack-plugin">html-webpack-plugin</Link> for generating <b>index.html</b></ListItem></Appear>
-            <Appear><ListItem>Use npm and <b>package.json</b> as your task runner</ListItem></Appear>
+            <Appear><ListItem>Use npm scripts and <b>package.json</b> as your task runner</ListItem></Appear>
           </List>
         </Slide>
 
@@ -161,7 +161,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading size={1}>
+          <Heading size={2}>
             <Link href="https://survivejs.com/webpack/developing/linting">Linting JavaScript</Link>
           </Heading>
           <List>
@@ -176,14 +176,14 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading size={1}>
+          <Heading size={2}>
             WDS - Overlay Mode
           </Heading>
           <Image src={images.wdsOverlay} margin="40px auto" height="364px" />
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading fit>
+          <Heading size={2}>
             WDS - Overlay Mode Configuration
           </Heading>
           <CodePane lang="javascript">
@@ -200,7 +200,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading size={1}>
+          <Heading size={2}>
             <Link href="https://survivejs.com/webpack/developing/composing-configuration">Composing Configuration</Link>
           </Heading>
           <List>
@@ -222,7 +222,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading fit>
+          <Heading size={2}>
             webpack-merge - Demonstration
           </Heading>
           <CodePane lang="bash">
@@ -237,7 +237,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading fit>
+          <Heading size={2}>
             webpack-merge with webpack
           </Heading>
           <CodePane lang="javascript">
@@ -263,14 +263,14 @@ module.exports = (env) => {
           </CodePane>
         </Slide>
 
-        <Slide transition={slideTransition}>
+        <Slide transition={slideTransition} bgColor="secondary">
           <Heading size={2} textColor="tertiary">
-            <Link href="https://survivejs.com/webpack/styling">Styling</Link>
+            <Link href="https://survivejs.com/webpack/styling" textColor="white">Styling</Link>
           </Heading>
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading size={1}>
+          <Heading size={2}>
             <Link href="https://survivejs.com/webpack/styling/loading">Loading Styles</Link>
           </Heading>
           <List>
@@ -283,7 +283,7 @@ module.exports = (env) => {
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading size={1}>
+          <Heading size={2}>
             <Link href="https://survivejs.com/webpack/styling/separating-css">Separating CSS</Link>
           </Heading>
           <List>
@@ -295,7 +295,7 @@ module.exports = (env) => {
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading size={1}>
+          <Heading size={2}>
             <Link href="https://survivejs.com/webpack/styling/autoprefixing">Autoprefixing</Link>
           </Heading>
           <List>
@@ -306,7 +306,7 @@ module.exports = (env) => {
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading fit>
+          <Heading size={2}>
             browserslist
           </Heading>
           <CodePane lang="bash">
@@ -329,7 +329,7 @@ IE 8 # And IE 8`}
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading size={1}>
+          <Heading size={2}>
             <Link href="https://survivejs.com/webpack/styling/linting">Linting CSS</Link>
           </Heading>
           <List>
@@ -339,9 +339,9 @@ IE 8 # And IE 8`}
           </List>
         </Slide>
 
-        <Slide transition={slideTransition}>
+        <Slide transition={slideTransition} bgColor="secondary">
           <Heading size={2} textColor="tertiary">
-            <Link href="https://survivejs.com/webpack/loading">Loading Assets</Link>
+            <Link href="https://survivejs.com/webpack/loading" textColor="white">Loading Assets</Link>
           </Heading>
         </Slide>
 
@@ -468,7 +468,7 @@ import '!!url-loader!./bar.png';`}
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading size={1}>
+          <Heading size={2}>
             <Link href="https://survivejs.com/webpack/loading/images">Loading Images</Link>
           </Heading>
           <List>
@@ -480,7 +480,7 @@ import '!!url-loader!./bar.png';`}
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading size={1}>
+          <Heading size={2}>
             <Link href="https://survivejs.com/webpack/loading/fonts">Loading Fonts</Link>
           </Heading>
           <List>
@@ -491,7 +491,7 @@ import '!!url-loader!./bar.png';`}
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading size={1}>
+          <Heading size={2}>
             <Link href="https://survivejs.com/webpack/loading/javascript">Loading JavaScript</Link>
           </Heading>
           <List>
@@ -502,9 +502,9 @@ import '!!url-loader!./bar.png';`}
           </List>
         </Slide>
 
-        <Slide transition={slideTransition}>
+        <Slide transition={slideTransition} bgColor="secondary">
           <Heading size={2} textColor="tertiary">
-            <Link href="https://survivejs.com/webpack/building">Building</Link>
+            <Link href="https://survivejs.com/webpack/building" textColor="white">Building</Link>
           </Heading>
         </Slide>
 
@@ -516,7 +516,7 @@ import '!!url-loader!./bar.png';`}
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading size={1}>
+          <Heading size={2}>
             Source Maps in Webpack
           </Heading>
           <List>
@@ -529,7 +529,7 @@ import '!!url-loader!./bar.png';`}
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading size={1}>
+          <Heading size={2}>
             <Link href="https://survivejs.com/webpack/building/splitting-bundles">Splitting Bundles</Link>
           </Heading>
           <List>
@@ -612,7 +612,7 @@ import('./module').then((module) => {...}).catch((error) => {...});
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading size={1}>
+          <Heading size={2}>
             <Link href="https://survivejs.com/webpack/building/tidying-up">Tidying Up</Link>
           </Heading>
           <List>
