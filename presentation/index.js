@@ -255,8 +255,7 @@ module.exports = (env) => {
   }
 
   return merge(commonConfig, developmentConfig);
-};
-`}
+};`}
           </CodePane>
         </Slide>
 
@@ -343,12 +342,125 @@ IE 8 # And IE 8`}
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading size={1}>
-            Loader Definitions
+          <Heading size={2}>
+            Loader Definition
           </Heading>
-          <List>
-            <Appear><ListItem>XXX</ListItem></Appear>
-          </List>
+          <CodePane lang="javascript">
+        {`module: {
+  rules: [
+    {
+      // **Conditions**
+      // Match files against RegExp or a function.
+      test: /\.js$/,
+
+      // **Restrictions**
+      include: path.join(__dirname, 'app'),
+      exclude(path) {
+        return path.match(/node_modules/);
+      },
+
+      // **Actions**
+      use: 'babel-loader',
+    },
+  ],
+},`}
+          </CodePane>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            Loader Evaluation Order
+          </Heading>
+          <CodePane lang="javascript">
+        {`{
+  test: /\.css$/,
+  use: ['style-loader', 'css-loader'],
+}`}
+          </CodePane>
+          <Layout>equals</Layout>
+          <CodePane lang="javascript">
+        {`{
+  test: /\.css$/,
+  use: ['style-loader'],
+},
+{
+  test: /\.css$/,
+  use: ['css-loader'],
+},`}
+          </CodePane>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            Enforcing Order
+          </Heading>
+          <CodePane lang="javascript">
+        {`{
+  // Conditions
+  test: /\.js$/,
+  enforce: 'pre', // 'post' too
+
+  // Actions
+  loader: 'eslint-loader',
+},`}
+          </CodePane>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            Inline Definitions
+          </Heading>
+          <CodePane lang="javascript">
+        {`// Process foo.png through url-loader and other
+// possible matches.
+import 'url-loader!./foo.png';
+
+// Override possible higher level match completely
+import '!!url-loader!./bar.png';`}
+          </CodePane>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            Loading Based on <code>resourceQuery</code>
+          </Heading>
+          <CodePane lang="javascript">
+        {`{
+  test: /\.css$/,
+
+  oneOf: [
+    {
+      resourceQuery: /inline/,
+      use: 'url-loader',
+    },
+    {
+      resourceQuery: /external/,
+      use: 'file-loader',
+    },
+  ],
+},`}
+          </CodePane>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            Loading Based on <code>issuer</code>
+          </Heading>
+          <CodePane lang="javascript">
+        {`{
+  test: /\.css$/,
+
+  rules: [
+    {
+      issuer: /\.js$/,
+      use: 'style-loader',
+    },
+    {
+      use: 'css-loader',
+    },
+  ],
+},`}
+          </CodePane>
         </Slide>
 
         <Slide transition={slideTransition}>
