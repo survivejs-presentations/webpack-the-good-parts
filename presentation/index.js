@@ -641,6 +641,14 @@ import('./module').then((module) => {...}).catch((error) => {...});
             </Heading>
           </Link>
         </Slide>
+
+        <Slide transition={slideTransition}>
+          <Link href="https://presentations.survivejs.com/webpack-from-journeyman-to-master">
+            <Heading size={1}>
+              Continue to the next presentation
+            </Heading>
+          </Link>
+        </Slide>
       </Deck>
     );
   }
