@@ -165,7 +165,7 @@ export default class Presentation extends React.Component {
             <Link href="https://survivejs.com/webpack/developing/linting">Linting JavaScript</Link>
           </Heading>
           <List>
-            <Appear><ListItem>Lint to push quality and code on a higher standard</ListItem></Appear>
+            <Appear><ListItem>Lint to push code quality to a higher standard (disclaimer: does <b>not</b> replace testing)</ListItem></Appear>
             <Appear><ListItem>JSLint &rarr; <Link href="https://www.npmjs.com/package/jshint">JSHint</Link> &rarr; <Link href="http://eslint.org/">ESLint</Link></ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/eslint-config-airbnb">eslint-config-airbnb</Link></ListItem></Appear>
             <Appear><ListItem>Optional: connect with webpack using <Link href="https://www.npmjs.com/package/eslint-loader">eslint-loader</Link></ListItem></Appear>
@@ -277,7 +277,7 @@ module.exports = (env) => {
             <Appear><ListItem><code>use: ['style-loader', 'css-loader']</code></ListItem></Appear>
             <Appear><ListItem>Read as <code>style(css(input))</code></ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/css-loader">css-loader</Link> evaluates <code>@import</code> and <code>url()</code> lookups</ListItem></Appear>
-            <Appear><ListItem><Link href="https://www.npmjs.com/package/style-loader">style-loader</Link> injects CSS to the DOM through a <code>style</code> tag and implements the HMR interface</ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/style-loader">style-loader</Link> injects CSS to the DOM and implements HMR</ListItem></Appear>
             <Appear><ListItem>Other formats supported through loaders</ListItem></Appear>
           </List>
         </Slide>
@@ -287,10 +287,10 @@ module.exports = (env) => {
             <Link href="https://survivejs.com/webpack/styling/separating-css">Separating CSS</Link>
           </Heading>
           <List>
-            <Appear><ListItem>Webpack inlines CSS by default &rarr; FOUC</ListItem></Appear>
+            <Appear><ListItem>Webpack inlines CSS by default &rarr; Flash of Unstyled Content (FOUC)</ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/extract-text-webpack-plugin">extract-text-webpack-plugin (ETWP)</Link> and <Link href="https://www.npmjs.com/package/extract-loader">extract-loader</Link> to rescue</ListItem></Appear>
             <Appear><ListItem>ETWP works through a loader/plugin pair</ListItem></Appear>
-            <Appear><ListItem>Usually you refer to CSS through JavaScript code but it can be maintained though entries or outside of webpack</ListItem></Appear>
+            <Appear><ListItem>Usually you refer to CSS through JavaScript code but it can be maintained through entries or outside of webpack</ListItem></Appear>
           </List>
         </Slide>
 
@@ -311,8 +311,8 @@ module.exports = (env) => {
           </Heading>
           <CodePane lang="bash">
         {`> 1% # Browser usage over 1%
-Last 2 versions # Last two versions too
-IE 8 # And IE 8`}
+Last 2 versions # Or last two versions
+IE 8 # Or IE 8`}
           </CodePane>
         </Slide>
 
@@ -325,6 +325,7 @@ IE 8 # And IE 8`}
             <Appear><ListItem>Eliminating those rules will make your CSS bundle smaller</ListItem></Appear>
             <Appear><ListItem>Ideal for static sites, more complex in dynamic cases</ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/purify-css">purify-css</Link> and <Link href="https://www.npmjs.com/package/purifycss-webpack">purifycss-webpack</Link> can do this</ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/uncss">uncss</Link> is another option</ListItem></Appear>
           </List>
         </Slide>
 
@@ -405,7 +406,7 @@ IE 8 # And IE 8`}
   enforce: 'pre', // 'post' too
 
   // Actions
-  loader: 'eslint-loader',
+  use: 'eslint-loader',
 },`}
           </CodePane>
         </Slide>
@@ -536,7 +537,7 @@ import '!!url-loader!./bar.png';`}
             <Appear><ListItem>Anti-pattern - Single bundle with <b>application</b> and <b>vendor</b></ListItem></Appear>
             <Appear><ListItem>First step - Separate into two</ListItem></Appear>
             <Appear><ListItem><code>CommonsChunkPlugin</code> can do the job</ListItem></Appear>
-            <Appear><ListItem><code>AggressiveSplittingPlugin</code> and <code>AggressiveMergingPlugin</code> for advanced control</ListItem></Appear>
+            <Appear><ListItem><code>AggressiveSplittingPlugin</code> and others for advanced chunk control</ListItem></Appear>
           </List>
         </Slide>
 
