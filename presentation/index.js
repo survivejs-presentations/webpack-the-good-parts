@@ -566,11 +566,15 @@ import '!!url-loader!./bar.png';`}
             <code>import()</code>
           </Heading>
           <CodePane lang="javascript">
-            {`
-import('./module').then((module) => {...}).catch((error) => {...});
+            {`import('./module').then(
+  (module) => {...}
+).catch(
+  (error) => {...}
+);
 `}
           </CodePane>
         </Slide>
+
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
