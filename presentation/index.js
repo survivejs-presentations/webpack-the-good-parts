@@ -80,25 +80,56 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={slideTransition}>
+          <iframe
+            width="100%"
+            height="600px"
+            src="https://webpack.js.org/"
+          />
+        </Slide>
+
+        <Slide transition={slideTransition}>
           <Heading size={2}>
             Configuration
           </Heading>
           <CodePane lang="javascript">
         {`module.exports = {
+  // Where to start bundling
   entry: {
-    ...
+    app: './entry.js',
   },
+
+  // Where to output
   output: {
-    ...
+    // Output to the same directory
+    path: __dirname,
+
+    // Capture name from the entry using a pattern
+    filename: '[name].js',
   },
+
+  // How to resolve encountered imports
   module: {
     rules: [
-      ...
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.js$/,
+        use: 'babel-loader',
+      },
     ]
   },
+
+  // What extra processing to perform
   plugins: [
-    ...
-  ]
+    new webpack.optimize.UglifyJsPlugin(),
+  ],
+
+  // Adjust module resolution algorithm
+  resolve: {
+    alias: { ... },
+  },
 };`}
           </CodePane>
         </Slide>
@@ -129,6 +160,14 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={slideTransition}>
+          <iframe
+            width="100%"
+            height="600px"
+            src="https://opencollective.com/webpack"
+          />
+        </Slide>
+
+        <Slide transition={slideTransition}>
           <Heading size={2} textColor="tertiary">
             <Link href="https://survivejs.com/webpack/developing">Developing</Link>
           </Heading>
@@ -144,7 +183,7 @@ export default class Presentation extends React.Component {
             <Appear><ListItem>Current development at <Link href="https://github.com/webpack/webpack-cli">webpack-cli</Link></ListItem></Appear>
             <Appear><ListItem>Eventually you will need <b>webpack.config.js</b></ListItem></Appear>
             <Appear><ListItem>Use <Link href="https://www.npmjs.com/package/html-webpack-plugin">html-webpack-plugin</Link> for generating <b>index.html</b></ListItem></Appear>
-            <Appear><ListItem>Use npm scripts and <b>package.json</b> as your task runner</ListItem></Appear>
+            <Appear><ListItem>Use <b>package.json</b> <code>scripts</code> as your task runner</ListItem></Appear>
           </List>
         </Slide>
 
@@ -170,7 +209,7 @@ export default class Presentation extends React.Component {
             <Appear><ListItem><Link href="https://www.npmjs.com/package/eslint-config-airbnb">eslint-config-airbnb</Link></ListItem></Appear>
             <Appear><ListItem>Optional: connect with webpack using <Link href="https://www.npmjs.com/package/eslint-loader">eslint-loader</Link></ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/prettier">Prettier</Link> - Format code automatically</ListItem></Appear>
-            <Appear><ListItem><Link href="https://www.npmjs.com/package/danger">Danger</Link> - High level checks (think PR)</ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/danger">Danger</Link> - High level checks (think PRs)</ListItem></Appear>
             <Appear><ListItem><Link href="http://editorconfig.org/">EditorConfig</Link> - Editor level consistency</ListItem></Appear>
           </List>
         </Slide>
@@ -213,17 +252,7 @@ export default class Presentation extends React.Component {
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
-            <Link href="https://www.npmjs.com/package/webpack-merge">webpack-merge</Link>
-          </Heading>
-          <Image src={images.webpackMergePopularity} margin="40px auto" height="364px" />
-          <Layout>
-            <Link href="https://npm-stat.com/charts.html?package=webpack-merge&from=2015-06-19&to=2017-03-19">npm-stat.com</Link>
-          </Layout>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            webpack-merge - Demonstration
+            webpack-merge
           </Heading>
           <CodePane lang="bash">
         {`> merge = require('webpack-merge')
@@ -234,6 +263,16 @@ export default class Presentation extends React.Component {
 ... )
 { a: [ 1, 2 ], b: 10, c: 20, d: 421 }`}
           </CodePane>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            <Link href="https://www.npmjs.com/package/webpack-merge">webpack-merge</Link>
+          </Heading>
+          <Image src={images.webpackMergePopularity} margin="40px auto" height="364px" />
+          <Layout>
+            <Link href="https://npm-stat.com/charts.html?package=webpack-merge&from=2015-06-19&to=2017-03-19">npm-stat.com</Link>
+          </Layout>
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -261,6 +300,18 @@ module.exports = (env) => {
   return merge(commonConfig, developmentConfig);
 };`}
           </CodePane>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            Recap
+          </Heading>
+          <List>
+            <Appear><ListItem>Webpack provides specific techniques to speed up development</ListItem></Appear>
+            <Appear><ListItem>Learn to use especially <Link href="https://www.npmjs.com/package/webpack-dev-server">webpack-dev-server</Link> well</ListItem></Appear>
+            <Appear><ListItem>Lint code to push quality - different linters, different purposes</ListItem></Appear>
+            <Appear><ListItem>Compose configuration to conquer complexity</ListItem></Appear>
+          </List>
         </Slide>
 
         <Slide transition={slideTransition} bgColor="secondary">
@@ -299,7 +350,7 @@ module.exports = (env) => {
             <Link href="https://survivejs.com/webpack/styling/autoprefixing">Autoprefixing</Link>
           </Heading>
           <List>
-            <Appear><ListItem>Think of the old browsers!</ListItem></Appear>
+            <Appear><ListItem>Think of the legacy browsers!</ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/autoprefixer">autoprefixer</Link>, a PostCSS plugin, can solve this</ListItem></Appear>
             <Appear><ListItem>Define a <b>browserslist</b>, let tooling do the rest</ListItem></Appear>
           </List>
@@ -337,6 +388,20 @@ IE 8 # Or IE 8`}
             <Appear><ListItem>Lint CSS too</ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/stylelint">Stylelint</Link> through PostCSS is enough</ListItem></Appear>
             <Appear><ListItem><Link href="http://csslint.net/">CSSLint</Link> is another option</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            Recap
+          </Heading>
+          <List>
+            <Appear><ListItem>Starting points: <Link href="https://www.npmjs.com/package/style-loader">style-loader</Link>, <Link href="https://www.npmjs.com/package/css-loader">css-loader</Link></ListItem></Appear>
+            <Appear><ListItem>Since webpack inlines CSS by default, you will have to <b>extract</b></ListItem></Appear>
+            <Appear><ListItem><b>Autoprefix</b> to save time and to support legacy browsers</ListItem></Appear>
+            <Appear><ListItem>Manage browser support through a <b>browserslist</b></ListItem></Appear>
+            <Appear><ListItem><b>Eliminate unused CSS</b> to decrease payload</ListItem></Appear>
+            <Appear><ListItem>Remember to <b>lint CSS</b> too</ListItem></Appear>
           </List>
         </Slide>
 
@@ -474,8 +539,8 @@ import '!!url-loader!./bar.png';`}
           </Heading>
           <List>
             <Appear><ListItem>To inline or not?</ListItem></Appear>
-            <Appear><ListItem><Link href="https://www.npmjs.com/package/url-loader">url-loader</Link> inlines (with a limit)</ListItem></Appear>
-            <Appear><ListItem><Link href="https://www.npmjs.com/package/file-loader">file-loader</Link> returns paths and emits files</ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/url-loader">url-loader</Link> inlines (with a <code>limit</code>)</ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/file-loader">file-loader</Link> returns paths and <b>emits</b> files</ListItem></Appear>
             <Appear><ListItem>Lots of other loaders for specific image related purposes (spriting, srcsets, etc.)</ListItem></Appear>
           </List>
         </Slide>
@@ -497,7 +562,7 @@ import '!!url-loader!./bar.png';`}
           </Heading>
           <List>
             <Appear><ListItem>Webpack processes ES6 modules but not specific features</ListItem></Appear>
-            <Appear><ListItem>Problematic with older browsers!</ListItem></Appear>
+            <Appear><ListItem>Problematic with legacy browsers!</ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/babel-loader">babel-loader</Link> and <Link href="https://www.npmjs.com/package/babel-preset-env">babel-preset-env</Link> to rescue</ListItem></Appear>
             <Appear><ListItem><b>babel-preset-env</b> generates code/polyfills based on your browser definition</ListItem></Appear>
           </List>
@@ -522,10 +587,12 @@ import '!!url-loader!./bar.png';`}
           </Heading>
           <List>
             <Appear><ListItem>Inline and separate</ListItem></Appear>
+            <Appear><ListItem>Inline source maps are <b>included</b> in bundles</ListItem></Appear>
+            <Appear><ListItem>Separate source maps are written to <b>separate</b> files</ListItem></Appear>
             <Appear><ListItem>Inline === faster to rebundle, use for development</ListItem></Appear>
             <Appear><ListItem>Separate === slower to generate, use for production</ListItem></Appear>
-            <Appear><ListItem>Hidden source maps give only stack traces</ListItem></Appear>
-            <Appear><ListItem><code>devtool: 'source-map'</code></ListItem></Appear>
+            <Appear><ListItem>Hidden source maps give only stack traces (missing reference on purpose)</ListItem></Appear>
+            <Appear><ListItem><code>devtool: 'source-map'</code>, plugins also</ListItem></Appear>
           </List>
         </Slide>
 
@@ -534,8 +601,8 @@ import '!!url-loader!./bar.png';`}
             <Link href="https://survivejs.com/webpack/building/splitting-bundles">Splitting Bundles</Link>
           </Heading>
           <List>
-            <Appear><ListItem>Anti-pattern - Single bundle with <b>application</b> and <b>vendor</b></ListItem></Appear>
-            <Appear><ListItem>First step - Separate into two</ListItem></Appear>
+            <Appear><ListItem>Anti-pattern - <b>Single</b> bundle with <b>application</b> and <b>vendor</b></ListItem></Appear>
+            <Appear><ListItem>First step - Separate into two bundles</ListItem></Appear>
             <Appear><ListItem><code>CommonsChunkPlugin</code> can do the job</ListItem></Appear>
             <Appear><ListItem><code>AggressiveSplittingPlugin</code> and others for advanced chunk control</ListItem></Appear>
           </List>
@@ -550,9 +617,33 @@ import '!!url-loader!./bar.png';`}
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
+            <code>CommonsChunkPlugin</code>
+          </Heading>
+          <CodePane lang="javascript">
+        {`module.exports = {
+  ...
+  plugins: [
+    new webpack.optimize.CommonsChunkPlugin({
+      name: 'vendor',
+      minChunks: isVendor,
+    }),
+  ]
+};
+
+function isVendor({ resource }) {
+  return resource &&
+    resource.indexOf('node_modules') >= 0 &&
+    resource.match(/\.js$/);
+}`}
+          </CodePane>
+        </Slide>
+
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
             Default, children, async modes
           </Heading>
-          <Image src={images.commonschunk2} margin="40px auto" height="364px" />
+          <Image src={images.commonschunk2} margin="40px auto" height="324px" />
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -628,6 +719,26 @@ import '!!url-loader!./bar.png';`}
         </Slide>
 
         <Slide transition={slideTransition}>
+          <Heading size={2}>
+            Recap
+          </Heading>
+          <List>
+            <Appear><ListItem>Generate <b>source maps</b> to improve debugging flow</ListItem></Appear>
+            <Appear><ListItem>Split bundles to benefit from <b>caching</b></ListItem></Appear>
+            <Appear><ListItem>Split code to load functionality <b>as you need it</b></ListItem></Appear>
+            <Appear><ListItem>Tidy up the build to avoid confusion and to attach metadata to the build</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Link href="https://presentations.survivejs.com/webpack-from-journeyman-to-master">
+            <Heading size={1}>
+              Continue to the next presentation
+            </Heading>
+          </Link>
+        </Slide>
+
+        <Slide transition={slideTransition}>
           <Link href="https://www.survivejs.com/">
             <Heading size={1}>
               SurviveJS
@@ -643,14 +754,6 @@ import '!!url-loader!./bar.png';`}
           <Link href="https://twitter.com/bebraw">
             <Heading caps fit size={2} textColor="secondary">
               Juho Vepsäläinen
-            </Heading>
-          </Link>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Link href="https://presentations.survivejs.com/webpack-from-journeyman-to-master">
-            <Heading size={1}>
-              Continue to the next presentation
             </Heading>
           </Link>
         </Slide>
