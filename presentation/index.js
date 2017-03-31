@@ -88,26 +88,41 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading size={2}>
-            Configuration
+          <Heading size={2} fit>
+            <code>entry</code> - Where to Start Bundling
           </Heading>
           <CodePane lang="javascript">
-        {`module.exports = {
-  // Where to start bundling
+        {`{
   entry: {
     app: './entry.js',
   },
+}`}
+          </CodePane>
+        </Slide>
 
-  // Where to output
+        <Slide transition={slideTransition}>
+          <Heading size={2} fit>
+            <code>output</code> - Where to Emit Files
+          </Heading>
+          <CodePane lang="javascript">
+        {`{
   output: {
-    // Output to the same directory
-    path: __dirname,
+    // Output to the build directory
+    path: path.join(__dirname, 'build'),
 
     // Capture name from the entry using a pattern
     filename: '[name].js',
   },
+}`}
+          </CodePane>
+        </Slide>
 
-  // How to resolve encountered imports
+        <Slide transition={slideTransition}>
+          <Heading size={2} fit>
+            <code>module.rules</code> - How to Process?
+          </Heading>
+          <CodePane lang="javascript">
+        {`{
   module: {
     rules: [
       {
@@ -117,36 +132,78 @@ export default class Presentation extends React.Component {
       {
         test: /\.js$/,
         use: 'babel-loader',
+        exclude: /node_modules/,
       },
     ]
   },
+}`}
+          </CodePane>
+        </Slide>
 
-  // What extra processing to perform
+        <Slide transition={slideTransition}>
+          <Heading size={2} fit>
+            <code>plugins</code> - What Additional Processing to Perform
+          </Heading>
+          <CodePane lang="javascript">
+        {`{
   plugins: [
     new webpack.optimize.UglifyJsPlugin(),
   ],
+}`}
+          </CodePane>
+        </Slide>
 
-  // Adjust module resolution algorithm
+        <Slide transition={slideTransition}>
+          <Heading size={2} fit>
+            <code>resolve</code> - How to Resolve Modules
+          </Heading>
+          <CodePane lang="javascript">
+        {`{
   resolve: {
     alias: { ... },
   },
-};`}
+}`}
           </CodePane>
         </Slide>
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
-            Main Ideas
+            Configuration
           </Heading>
-          <List>
-            <Appear><ListItem>Focus on <b>bundling</b></ListItem></Appear>
-            <Appear><ListItem>Traverses dependency graph while matching using <b>loaders</b></ListItem></Appear>
-            <Appear><ListItem><b>Configuration</b> is used to describe these transformations</ListItem></Appear>
-            <Appear><ListItem><b>Plugins</b> have access to webpack <b>runtime hooks</b></ListItem></Appear>
-            <Appear><ListItem><b>Code splitting</b> allows you to load functionality as you need</ListItem></Appear>
-            <Appear><ListItem><b>Hot Module Replacement</b> popularized webpack</ListItem></Appear>
-            <Appear><ListItem>Webpack can generate <b>hashes</b> to filenames for caching</ListItem></Appear>
-          </List>
+          <CodePane lang="javascript">
+        {`module.exports = {
+  entry: {
+    app: './entry.js',
+  },
+
+  output: {
+    path: path.join(__dirname, 'build'),
+    filename: '[name].js',
+  },
+
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.js$/,
+        use: 'babel-loader',
+        exclude: /node_modules/,
+      },
+    ]
+  },
+
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin(),
+  ],
+
+  resolve: {
+    alias: { ... },
+  },
+};`}
+          </CodePane>
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -165,6 +222,21 @@ export default class Presentation extends React.Component {
             height="600px"
             src="https://opencollective.com/webpack"
           />
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            Recap
+          </Heading>
+          <List>
+            <Appear><ListItem>Focus on <b>bundling</b></ListItem></Appear>
+            <Appear><ListItem>Traverses dependency graph while matching using <b>loaders</b></ListItem></Appear>
+            <Appear><ListItem><b>Configuration</b> is used to describe these transformations</ListItem></Appear>
+            <Appear><ListItem><b>Plugins</b> have access to webpack <b>runtime hooks</b></ListItem></Appear>
+            <Appear><ListItem><b>Code splitting</b> allows you to load functionality as you need</ListItem></Appear>
+            <Appear><ListItem><b>Hot Module Replacement</b> popularized webpack</ListItem></Appear>
+            <Appear><ListItem>Webpack can generate <b>hashes</b> to filenames for caching</ListItem></Appear>
+          </List>
         </Slide>
 
         <Slide transition={slideTransition}>
