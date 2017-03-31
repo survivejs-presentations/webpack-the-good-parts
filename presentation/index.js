@@ -440,6 +440,27 @@ IE 8 # Or IE 8`}
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
+            <Link href="https://survivejs.com/webpack/styling/autoprefixing">Autoprefixing</Link>
+          </Heading>
+          <Appear><CodePane lang="css">
+        {`body {
+  background: cornsilk;
+  display: flex;
+}`}
+          </CodePane></Appear>
+          <Appear><div>autoprefixes to</div></Appear>
+          <Appear><CodePane lang="css">
+        {`body {
+  background: cornsilk;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}`}
+          </CodePane></Appear>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
             <Link href="https://survivejs.com/webpack/styling/eliminating-unused-css">Eliminating Unused CSS</Link>
           </Heading>
           <List>
@@ -491,14 +512,11 @@ IE 8 # Or IE 8`}
   rules: [
     {
       // **Conditions**
-      // Match files against RegExp or a function.
-      test: /\.js$/,
+      test: /\.js$/, // Match files against RegExp or a function.
 
       // **Restrictions**
       include: path.join(__dirname, 'app'),
-      exclude(path) {
-        return path.match(/node_modules/);
-      },
+      exclude: path => path.match(/node_modules/;
 
       // **Actions**
       use: 'babel-loader',
@@ -512,14 +530,14 @@ IE 8 # Or IE 8`}
           <Heading size={2}>
             Loader Evaluation Order
           </Heading>
-          <CodePane lang="javascript">
+          <Appear><CodePane lang="javascript">
         {`{
   test: /\.css$/,
   use: ['style-loader', 'css-loader'],
 }`}
-          </CodePane>
-          <Layout>equals</Layout>
-          <CodePane lang="javascript">
+          </CodePane></Appear>
+          <Appear><div>equals</div></Appear>
+          <Appear><CodePane lang="javascript">
         {`{
   test: /\.css$/,
   use: ['style-loader'],
@@ -528,7 +546,7 @@ IE 8 # Or IE 8`}
   test: /\.css$/,
   use: ['css-loader'],
 },`}
-          </CodePane>
+          </CodePane></Appear>
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -552,8 +570,7 @@ IE 8 # Or IE 8`}
             Inline Definitions
           </Heading>
           <CodePane lang="javascript">
-        {`// Process foo.png through url-loader and other
-// possible matches.
+        {`// Process foo.png through url-loader and other possible matches
 import 'url-loader!./foo.png';
 
 // Override possible higher level match completely
@@ -571,11 +588,11 @@ import '!!url-loader!./bar.png';`}
 
   oneOf: [
     {
-      resourceQuery: /inline/,
+      resourceQuery: /inline/, // foo.css?inline
       use: 'url-loader',
     },
     {
-      resourceQuery: /external/,
+      resourceQuery: /external/, // foo.css?external
       use: 'file-loader',
     },
   ],
@@ -593,7 +610,7 @@ import '!!url-loader!./bar.png';`}
 
   rules: [
     {
-      issuer: /\.js$/,
+      issuer: /\.js$/, // Apply only to imports from js files
       use: 'style-loader',
     },
     {
@@ -654,16 +671,70 @@ import '!!url-loader!./bar.png';`}
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
-            Source Maps in Webpack
+            Inline Source Maps
+          </Heading>
+          <Heading size={4}>
+            (<code>devtool: 'eval'</code>)
+          </Heading>
+          <CodePane lang="javascript">
+        {`webpackJsonp([1, 2], {
+  "./app/index.js": function(module, exports) {
+    eval("console.log('Hello world');\n\n//////////////////\n// WEBPACK FOOTER\n// ./app/index.js\n// module id = ./app/index.js\n// module chunks = 1\n\n//# sourceURL=webpack:///./app/index.js?")
+  }
+}, ["./app/index.js"]);`}
+          </CodePane>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            Inline Source Maps
           </Heading>
           <List>
-            <Appear><ListItem>Inline and separate</ListItem></Appear>
             <Appear><ListItem>Inline source maps are <b>included</b> in bundles</ListItem></Appear>
+            <Appear><ListItem>Inline === fast to rebundle, use for development</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            Separate Source Maps
+          </Heading>
+          <Heading size={4}>
+            (<code>devtool: 'source-map'</code>)
+          </Heading>
+          <div>app.js</div>
+          <CodePane lang="javascript">
+        {`webpackJsonp(
+  [2,4],
+  {"1Q41":function(){}, ... }
+); //# sourceMappingURL=app.js.map`}
+          </CodePane>
+          <div>app.js.map</div>
+          <CodePane lang="json">
+        {`{
+  "file": "app.9aff3b1eced1f089ef18.js",
+  "mappings": "AAAAA,...,kBDST",
+  "names": [
+    "webpackJsonp",
+    ...
+  ],
+  "sourceRoot": "",
+  "sources": [...],
+  "sourcesContent": [...],
+  "version": 3
+}`}
+          </CodePane>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            Separate Source Maps
+          </Heading>
+          <List>
             <Appear><ListItem>Separate source maps are written to <b>separate</b> files</ListItem></Appear>
-            <Appear><ListItem>Inline === faster to rebundle, use for development</ListItem></Appear>
-            <Appear><ListItem>Separate === slower to generate, use for production</ListItem></Appear>
+            <Appear><ListItem>Separate === slow to generate, use for production</ListItem></Appear>
             <Appear><ListItem>Hidden source maps give only stack traces (missing reference on purpose)</ListItem></Appear>
-            <Appear><ListItem><code>devtool: 'source-map'</code>, plugins also</ListItem></Appear>
+            <Appear><ListItem>Plugins for more control</ListItem></Appear>
           </List>
         </Slide>
 
@@ -730,9 +801,9 @@ function isVendor({ resource }) {
           </Heading>
           <CodePane lang="javascript">
             {`import('./module').then(
-  (module) => {...}
+  module => {...}
 ).catch(
-  (error) => {...}
+  error => {...}
 );
 `}
           </CodePane>
