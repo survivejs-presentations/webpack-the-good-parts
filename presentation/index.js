@@ -758,7 +758,7 @@ import '!!url-loader!./bar.png';`}
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading size={2}>
+          <Heading size={2} fit>
             <code>CommonsChunkPlugin</code>
           </Heading>
           <CodePane lang="javascript">
@@ -783,7 +783,7 @@ function isVendor({ resource }) {
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
-            Default, children, async modes
+            Default, children, async
           </Heading>
           <Image src={images.commonschunk2} margin="40px auto" height="324px" />
         </Slide>
