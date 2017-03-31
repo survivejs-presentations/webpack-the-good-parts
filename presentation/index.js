@@ -874,7 +874,7 @@ function isVendor({ resource }) {
 
         <Slide transition={slideTransition}>
           <Link href="https://presentations.survivejs.com/webpack-from-journeyman-to-master">
-            <Heading size={1}>
+            <Heading size={1} fit>
               Continue to the next presentation
             </Heading>
           </Link>
