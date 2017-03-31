@@ -294,19 +294,22 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading size={2}>
+          <Heading size={2} fit>
             WDS - Overlay Mode Configuration
           </Heading>
           <CodePane lang="javascript">
-        {`devServer: {
-  ...
+        {`{
+  devServer: {
+    ...
 
-  // overlay: true captures only errors
-  overlay: {
-    errors: true,
-    warnings: true,
+    // overlay: true captures only errors
+    overlay: {
+      errors: true,
+      warnings: true,
+    },
   },
-},`}
+  ...
+}`}
           </CodePane>
         </Slide>
 
@@ -315,7 +318,7 @@ export default class Presentation extends React.Component {
             <Link href="https://survivejs.com/webpack/developing/composing-configuration">Composing Configuration</Link>
           </Heading>
           <List>
-            <Appear><ListItem>The need for different targets - development, production, ...</ListItem></Appear>
+            <Appear><ListItem>The need for <b>different</b> targets - development, production, ...</ListItem></Appear>
             <Appear><ListItem>How to manage the targets?</ListItem></Appear>
             <Appear><ListItem>Solutions: higher level abstractions, composition</ListItem></Appear>
             <Appear><ListItem>Option: abstract and consume configuration as a dependency</ListItem></Appear>
@@ -352,17 +355,13 @@ export default class Presentation extends React.Component {
             webpack-merge with webpack
           </Heading>
           <CodePane lang="javascript">
-        {`...
-
-const commonConfig = merge([
+        {`const commonConfig = merge([
   ...
 ]);
 
 const productionConfig = merge([
   ...
 ]);
-
-...
 
 module.exports = (env) => {
   if (env === 'production') {
@@ -379,9 +378,9 @@ module.exports = (env) => {
             Recap
           </Heading>
           <List>
-            <Appear><ListItem>Webpack provides specific techniques to speed up development</ListItem></Appear>
+            <Appear><ListItem>Webpack allows you to speed up development</ListItem></Appear>
             <Appear><ListItem>Learn to use especially <Link href="https://www.npmjs.com/package/webpack-dev-server">webpack-dev-server</Link> well</ListItem></Appear>
-            <Appear><ListItem>Lint code to push quality - different linters, different purposes</ListItem></Appear>
+            <Appear><ListItem>Lint code to push quality and enforce consistency</ListItem></Appear>
             <Appear><ListItem>Compose configuration to conquer complexity</ListItem></Appear>
           </List>
         </Slide>
