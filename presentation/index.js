@@ -69,6 +69,19 @@ export default class Presentation extends React.Component {
           </Heading>
         </Slide>
 
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            Topics
+          </Heading>
+          <List>
+            <Appear><ListItem>What is Webpack</ListItem></Appear>
+            <Appear><ListItem>Developing</ListItem></Appear>
+            <Appear><ListItem>Styling</ListItem></Appear>
+            <Appear><ListItem>Loading Assets</ListItem></Appear>
+            <Appear><ListItem>Building</ListItem></Appear>
+          </List>
+        </Slide>
+
         <Slide transition={slideTransition} bgColor="secondary">
           <Heading size={2} textColor="tertiary">
             <Link href="https://survivejs.com/webpack/what-is-webpack" textColor="white">What is Webpack</Link>
