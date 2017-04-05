@@ -164,6 +164,11 @@ export default class Presentation extends React.Component {
   ],
 }`}
           </CodePane>
+          <List>
+            <Appear><ListItem>The most powerful way to extend webpack</ListItem></Appear>
+            <Appear><ListItem>Access to entire <b>lifecycle</b> of webpack</ListItem></Appear>
+            <Appear><ListItem>Webpack itself is a collection of plugins</ListItem></Appear>
+          </List>
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -177,6 +182,11 @@ export default class Presentation extends React.Component {
   },
 }`}
           </CodePane>
+          <List>
+            <Appear><ListItem>Hack around nasty packages</ListItem></Appear>
+            <Appear><ListItem>Alias for convenience</ListItem></Appear>
+            <Appear><ListItem>Also for <code>loaders</code> (<code>resolveLoader</code>)</ListItem></Appear>
+          </List>
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -244,11 +254,8 @@ export default class Presentation extends React.Component {
           <List>
             <Appear><ListItem>Focus on <b>bundling</b></ListItem></Appear>
             <Appear><ListItem>Traverses dependency graph while matching using <b>loaders</b></ListItem></Appear>
-            <Appear><ListItem><b>Configuration</b> is used to describe these transformations</ListItem></Appear>
             <Appear><ListItem><b>Plugins</b> have access to webpack <b>runtime hooks</b></ListItem></Appear>
-            <Appear><ListItem><b>Code splitting</b> allows you to load functionality as you need</ListItem></Appear>
-            <Appear><ListItem><b>Hot Module Replacement</b> popularized webpack</ListItem></Appear>
-            <Appear><ListItem>Webpack can generate <b>hashes</b> to filenames for caching</ListItem></Appear>
+            <Appear><ListItem><b>Configuration</b> how webpack <b>transforms</b> source</ListItem></Appear>
           </List>
         </Slide>
 
@@ -293,9 +300,6 @@ export default class Presentation extends React.Component {
             <Appear><ListItem>JSLint &rarr; <Link href="https://www.npmjs.com/package/jshint">JSHint</Link> &rarr; <Link href="http://eslint.org/">ESLint</Link></ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/eslint-config-airbnb">eslint-config-airbnb</Link></ListItem></Appear>
             <Appear><ListItem>Optional: connect with webpack using <Link href="https://www.npmjs.com/package/eslint-loader">eslint-loader</Link></ListItem></Appear>
-            <Appear><ListItem><Link href="https://www.npmjs.com/package/prettier">Prettier</Link> - Format code automatically</ListItem></Appear>
-            <Appear><ListItem><Link href="https://www.npmjs.com/package/danger">Danger</Link> - High level checks (think PRs)</ListItem></Appear>
-            <Appear><ListItem><Link href="http://editorconfig.org/">EditorConfig</Link> - Editor level consistency</ListItem></Appear>
           </List>
         </Slide>
 
@@ -324,6 +328,17 @@ export default class Presentation extends React.Component {
   ...
 }`}
           </CodePane>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            <Link href="https://survivejs.com/webpack/developing/linting">Linting JavaScript</Link>
+          </Heading>
+          <List>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/prettier">Prettier</Link> - Format code automatically</ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/danger">Danger</Link> - High level checks (think PRs)</ListItem></Appear>
+            <Appear><ListItem><Link href="http://editorconfig.org/">EditorConfig</Link> - Editor level consistency</ListItem></Appear>
+          </List>
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -414,6 +429,7 @@ module.exports = (env) => {
             <Appear><ListItem><Link href="https://www.npmjs.com/package/css-loader">css-loader</Link> evaluates <code>@import</code> and <code>url()</code> lookups</ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/style-loader">style-loader</Link> injects CSS to the DOM and implements HMR</ListItem></Appear>
             <Appear><ListItem>Other formats supported through loaders</ListItem></Appear>
+            <Appear><ListItem>Bundled within JavaScript by default!</ListItem></Appear>
           </List>
         </Slide>
 
@@ -425,7 +441,6 @@ module.exports = (env) => {
             <Appear><ListItem>Webpack inlines CSS by default &rarr; Flash of Unstyled Content (FOUC)</ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/extract-text-webpack-plugin">extract-text-webpack-plugin (ETWP)</Link> and <Link href="https://www.npmjs.com/package/extract-loader">extract-loader</Link> to rescue</ListItem></Appear>
             <Appear><ListItem>ETWP works through a loader/plugin pair</ListItem></Appear>
-            <Appear><ListItem>Usually you refer to CSS through JavaScript code but it can be maintained through entries or outside of webpack</ListItem></Appear>
           </List>
         </Slide>
 
@@ -757,7 +772,7 @@ import '!!url-loader!./bar.png';`}
           </Heading>
           <List>
             <Appear><ListItem>Anti-pattern - <b>Single</b> bundle with <b>application</b> and <b>vendor</b></ListItem></Appear>
-            <Appear><ListItem>First step - Separate into two bundles</ListItem></Appear>
+            <Appear><ListItem>First step - Separate into two bundles. Apply hash to name to bust cache.</ListItem></Appear>
             <Appear><ListItem><code>CommonsChunkPlugin</code> can do the job</ListItem></Appear>
             <Appear><ListItem><code>AggressiveSplittingPlugin</code> and others for advanced chunk control</ListItem></Appear>
           </List>
