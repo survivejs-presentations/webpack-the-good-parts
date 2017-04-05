@@ -753,7 +753,7 @@ import '!!url-loader!./bar.png';`}
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
-            <Link href="https://survivejs.com/webpack/building/splitting-bundles">Splitting Bundles</Link>
+            <Link href="https://survivejs.com/webpack/building/bundle-splitting">Bundle Splitting</Link>
           </Heading>
           <List>
             <Appear><ListItem>Anti-pattern - <b>Single</b> bundle with <b>application</b> and <b>vendor</b></ListItem></Appear>
