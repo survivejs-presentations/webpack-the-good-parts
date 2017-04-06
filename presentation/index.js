@@ -230,7 +230,7 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading size={2} fit>
+          <Heading size={2}>
             Webpack Output
           </Heading>
           <CodePane lang="javascript">
