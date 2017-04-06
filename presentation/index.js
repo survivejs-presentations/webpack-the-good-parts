@@ -321,8 +321,7 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
           <List>
             <Appear><ListItem><b>webpack --watch</b></ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/webpack-dev-server">webpack-dev-server</Link></ListItem></Appear>
-            <Appear><ListItem><b>--env</b>, <b>proxy</b></ListItem></Appear>
-            <Appear><ListItem>Hot Module Replacement (HMR)</ListItem></Appear>
+            <Appear><ListItem><b>proxy</b>, Hot Module Replacement (HMR)</ListItem></Appear>
           </List>
         </Slide>
 
@@ -331,7 +330,7 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
             <Link href="https://survivejs.com/webpack/developing/linting">Linting JavaScript</Link>
           </Heading>
           <List>
-            <Appear><ListItem>Lint to push code quality to a higher standard (disclaimer: does <b>not</b> replace testing)</ListItem></Appear>
+            <Appear><ListItem>Lint to push code quality to a higher standard</ListItem></Appear>
             <Appear><ListItem>JSLint &rarr; <Link href="https://www.npmjs.com/package/jshint">JSHint</Link> &rarr; <Link href="http://eslint.org/">ESLint</Link></ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/eslint-config-airbnb">eslint-config-airbnb</Link></ListItem></Appear>
             <Appear><ListItem>Optional: connect with webpack using <Link href="https://www.npmjs.com/package/eslint-loader">eslint-loader</Link></ListItem></Appear>
@@ -371,8 +370,9 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
           </Heading>
           <List>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/prettier">Prettier</Link> - Format code automatically</ListItem></Appear>
-            <Appear><ListItem><Link href="https://www.npmjs.com/package/danger">Danger</Link> - High level checks (think PRs)</ListItem></Appear>
             <Appear><ListItem><Link href="http://editorconfig.org/">EditorConfig</Link> - Editor level consistency</ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/danger">Danger</Link> - High level checks based on Git and GitHub metadata</ListItem></Appear>
+            <Appear><ListItem><Link href="https://github.com/open-bot/">open-bot</Link> - Push boring tasks to a bot</ListItem></Appear>
           </List>
         </Slide>
 
@@ -579,7 +579,7 @@ IE 8 # Or IE 8`}
 
       // **Restrictions**
       include: path.join(__dirname, 'app'),
-      exclude: path => path.match(/node_modules/;
+      exclude: path => path.match(/node_modules/);
 
       // **Actions**
       use: 'babel-loader',
@@ -796,8 +796,7 @@ import '!!url-loader!./bar.png';`}
           <List>
             <Appear><ListItem>Separate source maps are written to <b>separate</b> files</ListItem></Appear>
             <Appear><ListItem>Separate === slow to generate, use for production</ListItem></Appear>
-            <Appear><ListItem>Hidden source maps give only stack traces (missing reference on purpose)</ListItem></Appear>
-            <Appear><ListItem>Plugins for more control</ListItem></Appear>
+            <Appear><ListItem>Use plugins for more control</ListItem></Appear>
           </List>
         </Slide>
 
