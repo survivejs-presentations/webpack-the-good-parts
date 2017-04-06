@@ -814,7 +814,7 @@ import '!!url-loader!./bar.png';`}
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading size={2}>
+          <Heading size={2} fit>
             Separating Application and Vendor
           </Heading>
           <Image src={images.commonschunk1} margin="40px auto" height="364px" />
