@@ -363,7 +363,7 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
           <List>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/prettier">Prettier</Link> - Format code automatically</ListItem></Appear>
             <Appear><ListItem><Link href="http://editorconfig.org/">EditorConfig</Link> - Editor level consistency</ListItem></Appear>
-            <Appear><ListItem><Link href="https://www.npmjs.com/package/danger">Danger</Link> - High level checks based on Git and GitHub metadata</ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/danger">Danger</Link> - High level checks based on Git and GitHub</ListItem></Appear>
             <Appear><ListItem><Link href="https://github.com/open-bot/">open-bot</Link> - Push boring tasks to a bot</ListItem></Appear>
           </List>
         </Slide>
@@ -376,7 +376,7 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
             <Appear><ListItem>The need for <b>different</b> targets - development, production, ...</ListItem></Appear>
             <Appear><ListItem>How to manage the targets?</ListItem></Appear>
             <Appear><ListItem>Solutions: higher level abstractions, composition</ListItem></Appear>
-            <Appear><ListItem>Option: abstract and consume configuration as a dependency</ListItem></Appear>
+            <Appear><ListItem>Option: consume configuration as a dependency</ListItem></Appear>
           </List>
         </Slide>
 
@@ -465,8 +465,8 @@ module.exports = (env) => {
             <Link href="https://survivejs.com/webpack/styling/separating-css">Separating CSS</Link>
           </Heading>
           <List>
-            <Appear><ListItem>Webpack inlines CSS by default &rarr; Flash of Unstyled Content (FOUC)</ListItem></Appear>
-            <Appear><ListItem><Link href="https://www.npmjs.com/package/extract-text-webpack-plugin">extract-text-webpack-plugin (ETWP)</Link> and <Link href="https://www.npmjs.com/package/extract-loader">extract-loader</Link> to rescue</ListItem></Appear>
+            <Appear><ListItem>Flash of Unstyled Content (FOUC)</ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/extract-text-webpack-plugin">extract-text-webpack-plugin (ETWP)</Link> and <Link href="https://www.npmjs.com/package/extract-loader">extract-loader</Link></ListItem></Appear>
             <Appear><ListItem>ETWP works through a loader/plugin pair</ListItem></Appear>
           </List>
         </Slide>
@@ -513,10 +513,9 @@ IE 8 # Or IE 8`}
           </Heading>
           <List>
             <Appear><ListItem>Often CSS frameworks come with unused rules</ListItem></Appear>
-            <Appear><ListItem>Eliminating those rules will make your CSS bundle smaller</ListItem></Appear>
-            <Appear><ListItem>Ideal for static sites, more complex in dynamic cases</ListItem></Appear>
-            <Appear><ListItem><Link href="https://www.npmjs.com/package/purify-css">purify-css</Link> and <Link href="https://www.npmjs.com/package/purifycss-webpack">purifycss-webpack</Link> can do this</ListItem></Appear>
-            <Appear><ListItem><Link href="https://www.npmjs.com/package/uncss">uncss</Link> is another option</ListItem></Appear>
+            <Appear><ListItem>Eliminate redundant rules to make your CSS bundle <b>smaller</b></ListItem></Appear>
+            <Appear><ListItem>Ideal for <b>static sites</b>, more complex in dynamic cases</ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/purify-css">purify-css</Link> and <Link href="https://www.npmjs.com/package/purifycss-webpack">purifycss-webpack</Link> or <Link href="https://www.npmjs.com/package/uncss">uncss</Link> is another option</ListItem></Appear>
           </List>
         </Slide>
 
@@ -677,7 +676,7 @@ import '!!url-loader!./bar.png';`}
             <Appear><ListItem>To inline or not?</ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/url-loader">url-loader</Link> inlines (with a <code>limit</code>)</ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/file-loader">file-loader</Link> returns paths and <b>emits</b> files</ListItem></Appear>
-            <Appear><ListItem>Lots of other loaders for specific image related purposes (spriting, srcsets, etc.)</ListItem></Appear>
+            <Appear><ListItem>Loaders for specific purposes (spriting, srcsets, etc.)</ListItem></Appear>
           </List>
         </Slide>
 
@@ -700,7 +699,7 @@ import '!!url-loader!./bar.png';`}
             <Appear><ListItem>Webpack processes ES6 modules but not specific features</ListItem></Appear>
             <Appear><ListItem>Problematic with legacy browsers!</ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/babel-loader">babel-loader</Link> and <Link href="https://www.npmjs.com/package/babel-preset-env">babel-preset-env</Link> to rescue</ListItem></Appear>
-            <Appear><ListItem><b>babel-preset-env</b> generates code/polyfills based on your browser definition</ListItem></Appear>
+            <Appear><ListItem>Generate code/polyfills based on a <b>browser definition</b></ListItem></Appear>
           </List>
         </Slide>
 
@@ -791,9 +790,10 @@ import '!!url-loader!./bar.png';`}
           </Heading>
           <List>
             <Appear><ListItem>Anti-pattern - <b>Single</b> bundle with <b>application</b> and <b>vendor</b></ListItem></Appear>
-            <Appear><ListItem>First step - Separate into two bundles. Apply hash to name to bust cache.</ListItem></Appear>
+            <Appear><ListItem>First step - Separate into two bundles</ListItem></Appear>
+            <Appear><ListItem>Second step - Apply hashes to file names bust cache</ListItem></Appear>
             <Appear><ListItem><code>CommonsChunkPlugin</code> can do the job</ListItem></Appear>
-            <Appear><ListItem><code>AggressiveSplittingPlugin</code> and others for advanced chunk control</ListItem></Appear>
+            <Appear><ListItem><code>AggressiveSplittingPlugin</code> etc. for more control</ListItem></Appear>
           </List>
         </Slide>
 
@@ -915,7 +915,7 @@ function isVendor({ resource }) {
             <Appear><ListItem>Generate <b>source maps</b> to improve debugging flow</ListItem></Appear>
             <Appear><ListItem>Split bundles to benefit from <b>caching</b></ListItem></Appear>
             <Appear><ListItem>Split code to load functionality <b>as you need it</b></ListItem></Appear>
-            <Appear><ListItem>Tidy up the build to avoid confusion and to attach metadata to the build</ListItem></Appear>
+            <Appear><ListItem>Tidy up to avoid confusion and to attach metadata</ListItem></Appear>
           </List>
         </Slide>
 
