@@ -93,14 +93,6 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={slideTransition}>
-          <iframe
-            width="100%"
-            height="600px"
-            src="https://webpack.js.org/"
-          />
-        </Slide>
-
-        <Slide transition={slideTransition}>
           <Heading size={2} fit>
             <code>entry</code> - Where to Start Bundling
           </Heading>
@@ -173,7 +165,7 @@ export default class Presentation extends React.Component {
 
         <Slide transition={slideTransition}>
           <Heading size={2} fit>
-            <code>resolve</code> - How to Resolve Modules
+            <code>resolve</code> - What Happens on <code>require/import</code>
           </Heading>
           <CodePane lang="javascript">
         {`{
@@ -483,28 +475,6 @@ module.exports = (env) => {
           <Heading size={2}>
             <Link href="https://survivejs.com/webpack/styling/autoprefixing">Autoprefixing</Link>
           </Heading>
-          <List>
-            <Appear><ListItem>Think of the legacy browsers!</ListItem></Appear>
-            <Appear><ListItem><Link href="https://www.npmjs.com/package/autoprefixer">autoprefixer</Link>, a PostCSS plugin, can solve this</ListItem></Appear>
-            <Appear><ListItem>Define a <b>browserslist</b>, let tooling do the rest</ListItem></Appear>
-          </List>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            browserslist
-          </Heading>
-          <CodePane lang="bash">
-        {`> 1% # Browser usage over 1%
-Last 2 versions # Or last two versions
-IE 8 # Or IE 8`}
-          </CodePane>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            <Link href="https://survivejs.com/webpack/styling/autoprefixing">Autoprefixing</Link>
-          </Heading>
           <Appear><CodePane lang="css">
         {`body {
   background: cornsilk;
@@ -520,6 +490,21 @@ IE 8 # Or IE 8`}
   display: flex;
 }`}
           </CodePane></Appear>
+          <List>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/autoprefixer">autoprefixer</Link>, a PostCSS plugin, can solve this</ListItem></Appear>
+            <Appear><ListItem>Define a <b>browserslist</b>, let tooling do the rest</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            browserslist
+          </Heading>
+          <CodePane lang="bash">
+        {`> 1% # Browser usage over 1%
+Last 2 versions # Or last two versions
+IE 8 # Or IE 8`}
+          </CodePane>
         </Slide>
 
         <Slide transition={slideTransition}>
