@@ -703,6 +703,19 @@ import '!!url-loader!./bar.png';`}
           </List>
         </Slide>
 
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            Recap
+          </Heading>
+          <List>
+            <Appear><ListItem>Loaders contain <b>conditions</b>, <b>restrictions</b>, and <b>actions</b></ListItem></Appear>
+            <Appear><ListItem>Remember evaluation order, enforce, and inline rules</ListItem></Appear>
+            <Appear><ListItem>Specific fields (<code>issuer</code>) for more control</ListItem></Appear>
+            <Appear><ListItem>Inline or not, more techniques possible</ListItem></Appear>
+            <Appear><ListItem>Process through Babel to target specific browsers</ListItem></Appear>
+          </List>
+        </Slide>
+
         <Slide transition={slideTransition} bgColor="secondary">
           <Heading size={2} textColor="tertiary">
             <Link href="https://survivejs.com/webpack/building" textColor="white">Building</Link>
@@ -856,6 +869,24 @@ function isVendor({ resource }) {
           </CodePane>
         </Slide>
 
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            Code Splitting Output
+          </Heading>
+          <CodePane lang="javascript">
+            {`webpackJsonp([0], {
+  KMic: function(a, b, c) {
+    ...
+  },
+  co9Y: function(a, b, c) {
+    ...
+  },
+});`}
+          </CodePane>
+          <List>
+            <Appear><ListItem>In addition a small <code>Promise</code> based bit to load the code</ListItem></Appear>
+          </List>
+        </Slide>
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
