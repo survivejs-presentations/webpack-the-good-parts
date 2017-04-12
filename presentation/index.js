@@ -89,6 +89,24 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={slideTransition}>
+          <Heading size={2}>
+            Webpack
+          </Heading>
+          <Image src={images.webpackPopularity} margin="40px auto" height="364px" />
+          <Layout>
+            <Link href="https://npm-stat.com/charts.html?package=webpack&from=2014-03-19&to=2017-03-19">npm-stat.com</Link>
+          </Layout>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <iframe
+            width="100%"
+            height="600px"
+            src="https://webpack.js.org/"
+          />
+        </Slide>
+
+        <Slide transition={slideTransition}>
           <Image src={images.webpackProcess} height="364px" />
         </Slide>
 
@@ -254,24 +272,6 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
 /***/ })
 /******/ ]);`}
           </CodePane>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            Webpack
-          </Heading>
-          <Image src={images.webpackPopularity} margin="40px auto" height="364px" />
-          <Layout>
-            <Link href="https://npm-stat.com/charts.html?package=webpack&from=2014-03-19&to=2017-03-19">npm-stat.com</Link>
-          </Layout>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <iframe
-            width="100%"
-            height="600px"
-            src="https://opencollective.com/webpack"
-          />
         </Slide>
 
         <Slide transition={slideTransition}>
