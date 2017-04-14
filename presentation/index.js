@@ -298,8 +298,6 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
           </Heading>
           <List>
             <Appear><ListItem><b>webpack app/index.js build/index.js</b></ListItem></Appear>
-            <Appear><ListItem>Shortcut flags for common operations (avoid!)</ListItem></Appear>
-            <Appear><ListItem>Current development at <Link href="https://github.com/webpack/webpack-cli">webpack-cli</Link></ListItem></Appear>
             <Appear><ListItem>Eventually you will need <b>webpack.config.js</b></ListItem></Appear>
             <Appear><ListItem>Use <Link href="https://www.npmjs.com/package/html-webpack-plugin">html-webpack-plugin</Link> for generating <b>index.html</b></ListItem></Appear>
             <Appear><ListItem>Use <b>package.json</b> <code>scripts</code> as your task runner</ListItem></Appear>
@@ -313,7 +311,8 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
           <List>
             <Appear><ListItem><b>webpack --watch</b></ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/webpack-dev-server">webpack-dev-server</Link></ListItem></Appear>
-            <Appear><ListItem><b>proxy</b>, Hot Module Replacement (HMR)</ListItem></Appear>
+            <Appear><ListItem>Hot Module Replacement (HMR)</ListItem></Appear>
+            <Appear><ListItem><b>proxy</b></ListItem></Appear>
           </List>
         </Slide>
 
@@ -358,18 +357,6 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
-            <Link href="https://survivejs.com/webpack/developing/linting">Linting JavaScript</Link>
-          </Heading>
-          <List>
-            <Appear><ListItem><Link href="https://www.npmjs.com/package/prettier">Prettier</Link> - Format code automatically</ListItem></Appear>
-            <Appear><ListItem><Link href="http://editorconfig.org/">EditorConfig</Link> - Editor level consistency</ListItem></Appear>
-            <Appear><ListItem><Link href="https://www.npmjs.com/package/danger">Danger</Link> - High level checks based on Git and GitHub</ListItem></Appear>
-            <Appear><ListItem><Link href="https://github.com/open-bot/">open-bot</Link> - Push boring tasks to a bot</ListItem></Appear>
-          </List>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
             <Link href="https://survivejs.com/webpack/developing/composing-configuration">Composing Configuration</Link>
           </Heading>
           <List>
@@ -397,16 +384,6 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
-            <Link href="https://www.npmjs.com/package/webpack-merge">webpack-merge</Link>
-          </Heading>
-          <Image src={images.webpackMergePopularity} margin="40px auto" height="364px" />
-          <Layout>
-            <Link href="https://npm-stat.com/charts.html?package=webpack-merge&from=2015-06-19&to=2017-03-19">npm-stat.com</Link>
-          </Layout>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
             webpack-merge with webpack
           </Heading>
           <CodePane lang="javascript">
@@ -426,6 +403,16 @@ module.exports = (env) => {
   return merge(commonConfig, developmentConfig);
 };`}
           </CodePane>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            <Link href="https://www.npmjs.com/package/webpack-merge">webpack-merge</Link>
+          </Heading>
+          <Image src={images.webpackMergePopularity} margin="40px auto" height="364px" />
+          <Layout>
+            <Link href="https://npm-stat.com/charts.html?package=webpack-merge&from=2015-06-19&to=2017-03-19">npm-stat.com</Link>
+          </Layout>
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -838,14 +825,6 @@ function isVendor({ resource }) {
     resource.match(/\.js$/);
 }`}
           </CodePane>
-        </Slide>
-
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            Default, children, async
-          </Heading>
-          <Image src={images.commonschunk2} margin="40px auto" height="324px" />
         </Slide>
 
         <Slide transition={slideTransition}>
