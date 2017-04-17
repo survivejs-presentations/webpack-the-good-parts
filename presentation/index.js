@@ -89,6 +89,14 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={slideTransition}>
+          <iframe
+            width="100%"
+            height="600px"
+            src="https://webpack.js.org/"
+          />
+        </Slide>
+
+        <Slide transition={slideTransition}>
           <Heading size={2}>
             Webpack
           </Heading>
@@ -96,14 +104,6 @@ export default class Presentation extends React.Component {
           <Layout>
             <Link href="https://npm-stat.com/charts.html?package=webpack&from=2014-03-19&to=2017-03-19">npm-stat.com</Link>
           </Layout>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <iframe
-            width="100%"
-            height="600px"
-            src="https://webpack.js.org/"
-          />
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -157,7 +157,7 @@ export default class Presentation extends React.Component {
         use: 'babel-loader',
         exclude: /node_modules/,
       },
-    ]
+    ],
   },
 }`}
           </CodePane>
@@ -189,12 +189,13 @@ export default class Presentation extends React.Component {
         {`{
   resolve: {
     alias: { ... },
+    extensions: [ ... ],
+    modules: [ ... ],
   },
 }`}
           </CodePane>
           <List>
             <Appear><ListItem>Hack around nasty packages</ListItem></Appear>
-            <Appear><ListItem>Alias for convenience</ListItem></Appear>
             <Appear><ListItem>Also for <code>loaders</code> (<code>resolveLoader</code>)</ListItem></Appear>
           </List>
         </Slide>
@@ -232,9 +233,7 @@ export default class Presentation extends React.Component {
     new webpack.optimize.UglifyJsPlugin(),
   ],
 
-  resolve: {
-    alias: { ... },
-  },
+  resolve: { ... },
 };`}
           </CodePane>
         </Slide>
@@ -333,26 +332,6 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
             WDS - Overlay Mode
           </Heading>
           <Image src={images.wdsOverlay} margin="40px auto" height="364px" />
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2} fit>
-            WDS - Overlay Mode Configuration
-          </Heading>
-          <CodePane lang="javascript">
-        {`{
-  devServer: {
-    ...
-
-    // overlay: true captures only errors
-    overlay: {
-      errors: true,
-      warnings: true,
-    },
-  },
-  ...
-}`}
-          </CodePane>
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -839,12 +818,29 @@ function isVendor({ resource }) {
             <code>import()</code>
           </Heading>
           <CodePane lang="javascript">
-            {`import('./module').then(
+            {`import(/* webpackChunkName: "optional-name" */ './module').then(
   module => {...}
 ).catch(
   error => {...}
 );
 `}
+          </CodePane>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            <code>Promise</code> Patterns
+          </Heading>
+          <CodePane lang="javascript">
+        {`Promise.all([
+  import('lunr'),
+  import('../search_index.json'),
+]).then(([lunr, search]) => {
+  return {
+    index: lunr.Index.load(search.index),
+    lines: search.lines,
+  };
+});`}
           </CodePane>
         </Slide>
 
@@ -869,23 +865,6 @@ function isVendor({ resource }) {
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
-            <code>Promise</code> Patterns
-          </Heading>
-          <CodePane lang="javascript">
-        {`Promise.all([
-  import('lunr'),
-  import('../search_index.json'),
-]).then(([lunr, search]) => {
-  return {
-    index: lunr.Index.load(search.index),
-    lines: search.lines,
-  };
-});`}
-          </CodePane>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
             <code>require.ensure</code>
           </Heading>
           <CodePane lang="javascript">
@@ -901,7 +880,8 @@ function isVendor({ resource }) {
 
     ...
   },
-  'optional name'
+  (err) => { ... },
+  'optional-name'
 );`}
           </CodePane>
         </Slide>
