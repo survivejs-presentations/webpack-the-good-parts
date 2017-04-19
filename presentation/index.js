@@ -89,24 +89,6 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={slideTransition}>
-          <iframe
-            width="100%"
-            height="600px"
-            src="https://webpack.js.org/"
-          />
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            Webpack
-          </Heading>
-          <Image src={images.webpackPopularity} margin="40px auto" height="364px" />
-          <Layout>
-            <Link href="https://npm-stat.com/charts.html?package=webpack&from=2014-03-19&to=2017-03-19">npm-stat.com</Link>
-          </Layout>
-        </Slide>
-
-        <Slide transition={slideTransition}>
           <Image src={images.webpackProcess} height="364px" />
         </Slide>
 
@@ -310,8 +292,7 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
           <List>
             <Appear><ListItem><b>webpack --watch</b></ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/webpack-dev-server">webpack-dev-server</Link></ListItem></Appear>
-            <Appear><ListItem>Hot Module Replacement (HMR)</ListItem></Appear>
-            <Appear><ListItem><b>proxy</b></ListItem></Appear>
+            <Appear><ListItem>Hot Module Replacement (HMR), <b>proxy</b></ListItem></Appear>
           </List>
         </Slide>
 
@@ -418,7 +399,6 @@ module.exports = (env) => {
           </Heading>
           <List>
             <Appear><ListItem><code>use: ['style-loader', 'css-loader']</code></ListItem></Appear>
-            <Appear><ListItem>Read as <code>style(css(input))</code></ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/css-loader">css-loader</Link> evaluates <code>@import</code> and <code>url()</code> lookups</ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/style-loader">style-loader</Link> injects CSS to the DOM and implements HMR</ListItem></Appear>
             <Appear><ListItem>Other formats supported through loaders</ListItem></Appear>
@@ -433,7 +413,6 @@ module.exports = (env) => {
           <List>
             <Appear><ListItem>Flash of Unstyled Content (FOUC)</ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/extract-text-webpack-plugin">extract-text-webpack-plugin (ETWP)</Link> and <Link href="https://www.npmjs.com/package/extract-loader">extract-loader</Link></ListItem></Appear>
-            <Appear><ListItem>ETWP works through a loader/plugin pair</ListItem></Appear>
           </List>
         </Slide>
 
