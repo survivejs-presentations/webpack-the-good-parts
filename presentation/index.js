@@ -261,9 +261,8 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
           </Heading>
           <List>
             <Appear><ListItem>Focus on <b>bundling</b></ListItem></Appear>
-            <Appear><ListItem>Traverses dependency graph while matching using <b>loaders</b></ListItem></Appear>
-            <Appear><ListItem><b>Plugins</b> have access to webpack <b>runtime hooks</b></ListItem></Appear>
-            <Appear><ListItem><b>Configuration</b> how webpack <b>transforms</b> source</ListItem></Appear>
+            <Appear><ListItem>Traverses dependency graph while matching using <b>loaders</b> and applying <b>plugins</b></ListItem></Appear>
+            <Appear><ListItem><b>Configuration</b> describes how webpack <b>transforms</b> source</ListItem></Appear>
           </List>
         </Slide>
 
@@ -292,7 +291,7 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
           <List>
             <Appear><ListItem><b>webpack --watch</b></ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/webpack-dev-server">webpack-dev-server</Link></ListItem></Appear>
-            <Appear><ListItem>Hot Module Replacement (HMR), <b>proxy</b></ListItem></Appear>
+            <Appear><ListItem>Hot Module Replacement (HMR)</ListItem></Appear>
           </List>
         </Slide>
 
@@ -437,7 +436,6 @@ module.exports = (env) => {
           </CodePane></Appear>
           <List>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/autoprefixer">autoprefixer</Link>, a PostCSS plugin, can solve this</ListItem></Appear>
-            <Appear><ListItem>Define a <b>browserslist</b>, let tooling do the rest</ListItem></Appear>
           </List>
         </Slide>
 
@@ -470,8 +468,7 @@ IE 8 # Or IE 8`}
           </Heading>
           <List>
             <Appear><ListItem>Lint CSS too</ListItem></Appear>
-            <Appear><ListItem><Link href="https://www.npmjs.com/package/stylelint">Stylelint</Link> through PostCSS is enough</ListItem></Appear>
-            <Appear><ListItem><Link href="http://csslint.net/">CSSLint</Link> is another option</ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/stylelint">Stylelint</Link> through PostCSS is enough. <Link href="http://csslint.net/">CSSLint</Link> works too</ListItem></Appear>
           </List>
         </Slide>
 
@@ -504,7 +501,7 @@ IE 8 # Or IE 8`}
   rules: [
     {
       // **Conditions**
-      test: /\.js$/, // Match files against RegExp or a function.
+      test: /\.js$/, // Match files
 
       // **Restrictions**
       include: path.join(__dirname, 'app'),
@@ -562,7 +559,7 @@ IE 8 # Or IE 8`}
             Inline Definitions
           </Heading>
           <CodePane lang="javascript">
-        {`// Process foo.png through url-loader and other possible matches
+        {`// Process foo.png through url-loader and other matches
 import 'url-loader!./foo.png';
 
 // Override possible higher level match completely
@@ -797,7 +794,9 @@ function isVendor({ resource }) {
             <code>import()</code>
           </Heading>
           <CodePane lang="javascript">
-            {`import(/* webpackChunkName: "optional-name" */ './module').then(
+            {`import(
+  /* webpackChunkName: "optional-name" */ './module'
+).then(
   module => {...}
 ).catch(
   error => {...}
