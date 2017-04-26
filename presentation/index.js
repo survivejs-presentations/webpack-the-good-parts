@@ -131,10 +131,6 @@ export default class Presentation extends React.Component {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
         test: /\.js$/,
         use: 'babel-loader',
         exclude: /node_modules/,
@@ -143,6 +139,9 @@ export default class Presentation extends React.Component {
   },
 }`}
           </CodePane>
+          <List>
+            <Appear><ListItem>Focus on transforming assets</ListItem></Appear>
+          </List>
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -200,15 +199,11 @@ export default class Presentation extends React.Component {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
         test: /\.js$/,
         use: 'babel-loader',
         exclude: /node_modules/,
       },
-    ]
+    ],
   },
 
   plugins: [
@@ -261,8 +256,8 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
           </Heading>
           <List>
             <Appear><ListItem>Focus on <b>bundling</b></ListItem></Appear>
-            <Appear><ListItem>Traverses dependency graph while matching using <b>loaders</b> and applying <b>plugins</b></ListItem></Appear>
-            <Appear><ListItem><b>Configuration</b> describes how webpack <b>transforms</b> source</ListItem></Appear>
+            <Appear><ListItem>Traverses dependency graph while processing with <b>loaders</b> and applying <b>plugins</b></ListItem></Appear>
+            <Appear><ListItem><b>Configuration</b> declares how to <b>transform</b> source. Also inline definitions (code splitting)</ListItem></Appear>
           </List>
         </Slide>
 
@@ -455,7 +450,6 @@ IE 8 # Or IE 8`}
             <Link href="https://survivejs.com/webpack/styling/eliminating-unused-css">Eliminating Unused CSS</Link>
           </Heading>
           <List>
-            <Appear><ListItem>Often CSS frameworks come with unused rules</ListItem></Appear>
             <Appear><ListItem>Eliminate redundant rules to make your CSS bundle <b>smaller</b></ListItem></Appear>
             <Appear><ListItem>Ideal for <b>static sites</b>, more complex in dynamic cases</ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/purify-css">purify-css</Link> and <Link href="https://www.npmjs.com/package/purifycss-webpack">purifycss-webpack</Link> or <Link href="https://www.npmjs.com/package/uncss">uncss</Link> is another option</ListItem></Appear>
@@ -468,7 +462,7 @@ IE 8 # Or IE 8`}
           </Heading>
           <List>
             <Appear><ListItem>Lint CSS too</ListItem></Appear>
-            <Appear><ListItem><Link href="https://www.npmjs.com/package/stylelint">Stylelint</Link> through PostCSS is enough. <Link href="http://csslint.net/">CSSLint</Link> works too</ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/stylelint">Stylelint</Link> through PostCSS is enough. <Link href="http://csslint.net/">CSSLint</Link> an option</ListItem></Appear>
           </List>
         </Slide>
 
@@ -568,7 +562,7 @@ import '!!url-loader!./bar.png';`}
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Heading size={2}>
+          <Heading size={2} fit>
             Loading Based on <code>resourceQuery</code>
           </Heading>
           <CodePane lang="javascript">
@@ -628,7 +622,6 @@ import '!!url-loader!./bar.png';`}
           </Heading>
           <List>
             <Appear><ListItem><b>url-loader</b> and <b>file-loader</b> again</ListItem></Appear>
-            <Appear><ListItem>Choose formats to support carefully. <Link href="https://www.npmjs.com/package/canifont">canifont</Link> to rescue.</ListItem></Appear>
             <Appear><ListItem>Specific loaders like <Link href="https://www.npmjs.com/package/webfonts-loader">webfonts-loader</Link></ListItem></Appear>
           </List>
         </Slide>
@@ -837,7 +830,7 @@ function isVendor({ resource }) {
 });`}
           </CodePane>
           <List>
-            <Appear><ListItem>In addition a small <code>Promise</code> based bit to load the code</ListItem></Appear>
+            <Appear><ListItem>In addition, a small <code>Promise</code> based bit to load the code</ListItem></Appear>
           </List>
         </Slide>
 
@@ -883,7 +876,7 @@ function isVendor({ resource }) {
             <Appear><ListItem>Generate <b>source maps</b> to improve debugging flow</ListItem></Appear>
             <Appear><ListItem>Split bundles to benefit from <b>caching</b></ListItem></Appear>
             <Appear><ListItem>Split code to load functionality <b>as you need it</b></ListItem></Appear>
-            <Appear><ListItem>Tidy up to avoid confusion and to attach metadata</ListItem></Appear>
+            <Appear><ListItem>Tidy up to avoid confusion</ListItem></Appear>
           </List>
         </Slide>
 
