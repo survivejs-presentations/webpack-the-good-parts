@@ -436,7 +436,7 @@ module.exports = (env) => {
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
-            browserslist
+            .browserslistrc
           </Heading>
           <CodePane lang="bash">
         {`> 1% # Browser usage over 1%
@@ -474,7 +474,7 @@ IE 8 # Or IE 8`}
             <Appear><ListItem>Starting points: <Link href="https://www.npmjs.com/package/style-loader">style-loader</Link>, <Link href="https://www.npmjs.com/package/css-loader">css-loader</Link></ListItem></Appear>
             <Appear><ListItem>Since webpack inlines CSS by default, you will have to <b>extract</b></ListItem></Appear>
             <Appear><ListItem><b>Autoprefix</b> to save time and to support legacy browsers</ListItem></Appear>
-            <Appear><ListItem>Manage browser support through a <b>browserslist</b></ListItem></Appear>
+            <Appear><ListItem>Manage browser support through a <b>.browserslistrc</b></ListItem></Appear>
             <Appear><ListItem><b>Eliminate unused CSS</b> to decrease payload</ListItem></Appear>
             <Appear><ListItem>Remember to <b>lint CSS</b> too</ListItem></Appear>
           </List>
