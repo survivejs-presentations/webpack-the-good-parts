@@ -190,12 +190,10 @@ export default class Presentation extends React.Component {
   entry: {
     app: './entry.js',
   },
-
   output: {
     path: path.join(__dirname, 'build'),
     filename: '[name].js',
   },
-
   module: {
     rules: [
       {
@@ -205,14 +203,25 @@ export default class Presentation extends React.Component {
       },
     ],
   },
-
   plugins: [
     new webpack.optimize.UglifyJsPlugin(),
   ],
-
   resolve: { ... },
+  resolveModules: { ... },
 };`}
           </CodePane>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            <Link href="https://survivejs.com/webpack/developing/getting-started">Getting Started</Link>
+          </Heading>
+          <List>
+            <Appear><ListItem><b>webpack app/index.js build/index.js</b></ListItem></Appear>
+            <Appear><ListItem>Eventually you will need <b>webpack.config.js</b></ListItem></Appear>
+            <Appear><ListItem>Use <Link href="https://www.npmjs.com/package/html-webpack-plugin">html-webpack-plugin</Link> for generating <b>index.html</b></ListItem></Appear>
+            <Appear><ListItem>Use <b>package.json</b> <code>scripts</code> as your task runner</ListItem></Appear>
+          </List>
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -269,18 +278,6 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
-            <Link href="https://survivejs.com/webpack/developing/getting-started">Getting Started</Link>
-          </Heading>
-          <List>
-            <Appear><ListItem><b>webpack app/index.js build/index.js</b></ListItem></Appear>
-            <Appear><ListItem>Eventually you will need <b>webpack.config.js</b></ListItem></Appear>
-            <Appear><ListItem>Use <Link href="https://www.npmjs.com/package/html-webpack-plugin">html-webpack-plugin</Link> for generating <b>index.html</b></ListItem></Appear>
-            <Appear><ListItem>Use <b>package.json</b> <code>scripts</code> as your task runner</ListItem></Appear>
-          </List>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
             <Link href="https://survivejs.com/webpack/developing/automatic-browser-refresh">Automatic Browser Refresh</Link>
           </Heading>
           <List>
@@ -325,15 +322,23 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
           <Heading size={2}>
             webpack-merge
           </Heading>
-          <CodePane lang="bash">
-        {`> merge = require('webpack-merge')
-...
-> merge(
-... { a: [1], b: 5, c: 20 },
-... { a: [2], b: 10, d: 421 }
-... )
-{ a: [ 1, 2 ], b: 10, c: 20, d: 421 }`}
+          <CodePane lang="javascript">
+        {`const merge = require('webpack-merge');
+
+merge(
+  { a: [1], b: 5, c: 20 },
+  { a: [2], b: 10, d: 421 }
+);`}
           </CodePane>
+          <Appear><div>merges to</div></Appear>
+          <Appear><CodePane lang="javascript">
+        {`{
+  a: [1, 2], // Concat
+  b: 10, // Latter wins
+  c: 20, // From former
+  d: 421 // From latter
+}`}
+          </CodePane></Appear>
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -367,6 +372,18 @@ module.exports = (env) => {
           <Layout>
             <Link href="https://npm-stat.com/charts.html?package=webpack-merge&from=2015-06-19&to=2017-03-19">npm-stat.com</Link>
           </Layout>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            Related Solutions
+          </Heading>
+          <List>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/webpack-blocks">webpack-blocks</Link> - Andy read the book!</ListItem></Appear>
+            <Appear><ListItem><Link href="https://neutrino.js.org/">neutrino</Link> - Chaining DSL</ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/create-react-app">create-react-app</Link> - Opinionated wrapper for React development</ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/nwb">nwb</Link> - Less opinionated wrapper for React development</ListItem></Appear>
+          </List>
         </Slide>
 
         <Slide transition={slideTransition}>
