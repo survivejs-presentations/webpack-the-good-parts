@@ -567,15 +567,15 @@ import '!!url-loader!./bar.png';`}
           </Heading>
           <CodePane lang="javascript">
         {`{
-  test: /\.css$/,
+  test: /\.png$/,
 
   oneOf: [
     {
-      resourceQuery: /inline/, // foo.css?inline
+      resourceQuery: /inline/, // foo.png?inline
       use: 'url-loader',
     },
     {
-      resourceQuery: /external/, // foo.css?external
+      resourceQuery: /external/, // foo.png?external
       use: 'file-loader',
     },
   ],
