@@ -99,7 +99,7 @@ export default class Presentation extends React.Component {
           <CodePane lang="javascript">
         {`{
   entry: {
-    app: './entry.js',
+    app: path.join(__dirname, 'app', 'entry.js'),
   },
 }`}
           </CodePane>
@@ -188,7 +188,7 @@ export default class Presentation extends React.Component {
           <CodePane lang="javascript">
         {`module.exports = {
   entry: {
-    app: './entry.js',
+    app: path.join(__dirname, 'app', 'entry.js'),
   },
   output: {
     path: path.join(__dirname, 'build'),
