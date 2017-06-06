@@ -151,7 +151,7 @@ export default class Presentation extends React.Component {
           <CodePane lang="javascript">
         {`{
   plugins: [
-    new webpack.optimize.UglifyJsPlugin(),
+    new UglifyJsPlugin(),
   ],
 }`}
           </CodePane>
@@ -187,13 +187,14 @@ export default class Presentation extends React.Component {
           </Heading>
           <CodePane lang="javascript">
         {`module.exports = {
-  entry: {
+  entry: { // 1. Where to begin
     app: path.join(__dirname, 'app'),
   },
-  output: {
+  output: { // 2. Where to write
     path: path.join(__dirname, 'build'),
     filename: '[name].js',
   },
+  // 3. How to process modules
   module: {
     rules: [
       {
@@ -203,9 +204,11 @@ export default class Presentation extends React.Component {
       },
     ],
   },
+  // 4. Additional processing to perform
   plugins: [
-    new webpack.optimize.UglifyJsPlugin(),
+    new UglifyJsPlugin(),
   ],
+  // 5. How to resolve modules and loaders
   resolve: { ... },
   resolveModules: { ... },
 };`}
