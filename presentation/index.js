@@ -210,7 +210,7 @@ export default class Presentation extends React.Component {
   ],
   // 5. How to resolve modules and loaders
   resolve: { ... },
-  resolveModules: { ... },
+  resolveLoader: { ... },
 };`}
           </CodePane>
         </Slide>
