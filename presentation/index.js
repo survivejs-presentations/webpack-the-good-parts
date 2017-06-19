@@ -76,9 +76,10 @@ export default class Presentation extends React.Component {
           <List>
             <Appear><ListItem>What is Webpack</ListItem></Appear>
             <Appear><ListItem>Developing</ListItem></Appear>
-            <Appear><ListItem>Styling</ListItem></Appear>
-            <Appear><ListItem>Loading Assets</ListItem></Appear>
             <Appear><ListItem>Building</ListItem></Appear>
+            <Appear><ListItem>Assets</ListItem></Appear>
+            <Appear><ListItem>Bundle/code Splitting</ListItem></Appear>
+            <Appear><ListItem>Analysis and Troubleshooting</ListItem></Appear>
           </List>
         </Slide>
 
@@ -86,6 +87,17 @@ export default class Presentation extends React.Component {
           <Heading size={2} textColor="tertiary">
             <Link href="https://survivejs.com/webpack/what-is-webpack" textColor="white">What is Webpack</Link>
           </Heading>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            <Link href="https://survivejs.com/webpack/appendices/comparison">Comparison of Build Tools</Link>
+          </Heading>
+          <List>
+            <Appear><ListItem><b>Task runners</b> and <b>bundlers</b></ListItem></Appear>
+            <Appear><ListItem>They can completement each other. You can also defer task running to npm.</ListItem></Appear>
+            <Appear><ListItem>Evolution from generic tools to specific ones</ListItem></Appear>
+          </List>
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -217,13 +229,15 @@ export default class Presentation extends React.Component {
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
-            <Link href="https://survivejs.com/webpack/developing/getting-started">Getting Started</Link>
+            <Link href="https://survivejs.com/webpack/developing/getting-started">Get Started</Link>
           </Heading>
           <List>
-            <Appear><ListItem><b>webpack app/index.js build/index.js</b></ListItem></Appear>
-            <Appear><ListItem>Eventually you will need <b>webpack.config.js</b></ListItem></Appear>
-            <Appear><ListItem>Use <Link href="https://www.npmjs.com/package/html-webpack-plugin">html-webpack-plugin</Link> for generating <b>index.html</b></ListItem></Appear>
-            <Appear><ListItem>Use <b>package.json</b> <code>scripts</code> as your task runner</ListItem></Appear>
+            <Appear><ListItem>0. <code>mkdir webpack-workshop</code>, <code>npm i webpack -D</code></ListItem></Appear>
+            <Appear><ListItem>1. Set up a project <Link href="https://survivejs.com/webpack/developing/getting-started">as in the book</Link></ListItem></Appear>
+            <Appear><ListItem>2. <b>webpack app/index.js build/index.js</b></ListItem></Appear>
+            <Appear><ListItem>3. Set up <Link href="https://www.npmjs.com/package/html-webpack-plugin">html-webpack-plugin</Link>. Can you see why it is useful?</ListItem></Appear>
+            <Appear><ListItem>4. Set up npm shortcut (<code>npm run build</code>)</ListItem></Appear>
+            <Appear><ListItem>5. Study webpack output. Can you see what is going on?*</ListItem></Appear>
           </List>
         </Slide>
 
@@ -268,7 +282,7 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
           </Heading>
           <List>
             <Appear><ListItem>Focus on <b>bundling</b></ListItem></Appear>
-            <Appear><ListItem>Traverses dependency graph while processing with <b>loaders</b> and applying <b>plugins</b></ListItem></Appear>
+            <Appear><ListItem>Traverses dependency graph while processing with <b>loaders</b> and applying <b>plugins</b>. Can you understand the difference?</ListItem></Appear>
             <Appear><ListItem><b>Configuration</b> declares how to <b>transform</b> source. Also inline definitions (code splitting)</ListItem></Appear>
           </List>
         </Slide>
@@ -284,9 +298,34 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
             <Link href="https://survivejs.com/webpack/developing/automatic-browser-refresh">Automatic Browser Refresh</Link>
           </Heading>
           <List>
-            <Appear><ListItem><b>webpack --watch</b></ListItem></Appear>
-            <Appear><ListItem><Link href="https://www.npmjs.com/package/webpack-dev-server">webpack-dev-server</Link></ListItem></Appear>
-            <Appear><ListItem>Hot Module Replacement (HMR)</ListItem></Appear>
+            <Appear><ListItem>0. Execute <code>npm run build -- --watch</code></ListItem></Appear>
+            <Appear><ListItem>1. Alter code and see what happens in the terminal</ListItem></Appear>
+            <Appear><ListItem>2. <code>npm i <Link href="https://www.npmjs.com/package/webpack-dev-server">webpack-dev-server</Link> -D</code></ListItem></Appear>
+            <Appear><ListItem>3. Set up <Link href="https://survivejs.com/webpack/appendices/hmr/">Hot Module Replacement (HMR)</Link>. Can you see what it is doing?*</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2} fit>
+            <Link href="https://survivejs.com/webpack/appendices/configuring-hmr">Configuring Hot Module Replacement</Link>
+          </Heading>
+          <List>
+            <Appear><ListItem>HMR allows patching of the application while it is running</ListItem></Appear>
+            <Appear><ListItem>Run WDS in <b>hot</b> mode</ListItem></Appear>
+            <Appear><ListItem>Provide hot updates through webpack using <code>HotModuleReplacementPlugin</code></ListItem></Appear>
+            <Appear><ListItem>The client has to hook into WDS scripts (WDS <code>inline</code>)</ListItem></Appear>
+            <Appear><ListItem>The client has to implement the HMR interface through <code>module.hot.accept</code></ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2} fit>
+            <Link href="https://survivejs.com/webpack/appendices/hmr-with-react">Hot Module Replacement with React</Link>
+          </Heading>
+          <List>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/react-hot-loader">react-hot-loader</Link> does the hard part</ListItem></Appear>
+            <Appear><ListItem>You have to connect it with Babel, webpack, and application</ListItem></Appear>
+            <Appear><ListItem>react-hot-loader 3 is still in beta - Rough edges to work around.</ListItem></Appear>
           </List>
         </Slide>
 
@@ -298,7 +337,7 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
             <Appear><ListItem>Lint to push code quality to a higher standard</ListItem></Appear>
             <Appear><ListItem>JSLint &rarr; <Link href="https://www.npmjs.com/package/jshint">JSHint</Link> &rarr; <Link href="http://eslint.org/">ESLint</Link></ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/eslint-config-airbnb">eslint-config-airbnb</Link></ListItem></Appear>
-            <Appear><ListItem>Optional: connect with webpack using <Link href="https://www.npmjs.com/package/eslint-loader">eslint-loader</Link></ListItem></Appear>
+            <Appear><ListItem><b>Exercise:</b> Connect with webpack using <Link href="https://www.npmjs.com/package/eslint-loader">eslint-loader</Link> as <Link href="https://survivejs.com/webpack/developing/linting">in the book</Link></ListItem></Appear>
           </List>
         </Slide>
 
@@ -309,16 +348,28 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
           <Image src={images.wdsOverlay} margin="40px auto" height="364px" />
         </Slide>
 
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            <Link href="https://survivejs.com/webpack/developing/composing-configuration">Composing Configuration</Link>
+        <Slide transition={slideTransition} bgColor="secondary">
+          <Heading size={2} textColor="tertiary">
+            Building
           </Heading>
-          <List>
-            <Appear><ListItem>The need for <b>different</b> targets - development, production, ...</ListItem></Appear>
-            <Appear><ListItem>How to manage the targets?</ListItem></Appear>
-            <Appear><ListItem>Solutions: higher level abstractions, composition</ListItem></Appear>
-            <Appear><ListItem>Option: consume configuration as a dependency</ListItem></Appear>
-          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2} fit>
+            Managing Webpack Through <b>package.json</b>
+          </Heading>
+          <CodePane lang="javascript">
+        {`{
+  "scripts": {
+    "build": "webpack --env production",
+    "start": "webpack-dev-server --env development",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch",
+    ...
+  }
+}`}
+          </CodePane>
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -391,14 +442,105 @@ module.exports = (env) => {
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
-            Recap
+            Exercises
           </Heading>
           <List>
-            <Appear><ListItem>Webpack allows you to speed up development</ListItem></Appear>
-            <Appear><ListItem>Learn to use especially <Link href="https://www.npmjs.com/package/webpack-dev-server">webpack-dev-server</Link> well</ListItem></Appear>
-            <Appear><ListItem>Lint code to push quality and enforce consistency</ListItem></Appear>
-            <Appear><ListItem>Compose configuration to conquer complexity</ListItem></Appear>
+            <Appear><ListItem>0. Port the configuration to <Link href="https://www.npmjs.com/package/webpack-merge">webpack-merge</Link> as <Link href="https://survivejs.com/webpack/developing/composing-configuration">in the book</Link></ListItem></Appear>
+            <Appear><ListItem>1. Try different configuration file layouts (target per file etc.). Can you see pros/cons?</ListItem></Appear>
+            <Appear><ListItem>2. What would it take to package the configuration into something you can consume across multiple projects?</ListItem></Appear>
           </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            <Link href="https://survivejs.com/webpack/building/source-maps">Source Maps</Link>
+          </Heading>
+          <Image src={images.sourcemaps} margin="40px auto" height="364px" />
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            Inline Source Maps
+          </Heading>
+          <Heading size={4}>
+            (<code>devtool: 'eval'</code>)
+          </Heading>
+          <CodePane lang="javascript">
+        {`webpackJsonp([1, 2], {
+  "./app/index.js": function(module, exports) {
+    eval("console.log('Hello world');\n\n//////////////////\n// WEBPACK FOOTER\n// ./app/index.js\n// module id = ./app/index.js\n// module chunks = 1\n\n//# sourceURL=webpack:///./app/index.js?")
+  }
+}, ["./app/index.js"]);`}
+          </CodePane>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            Inline Source Maps
+          </Heading>
+          <List>
+            <Appear><ListItem>Inline source maps are <b>included</b> in bundles</ListItem></Appear>
+            <Appear><ListItem>Inline === fast to rebundle, use for development</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            Separate Source Maps
+          </Heading>
+          <Heading size={4}>
+            (<code>devtool: 'source-map'</code>)
+          </Heading>
+          <div>app.js</div>
+          <CodePane lang="javascript">
+        {`webpackJsonp(
+  [2,4],
+  {"1Q41":function(){}, ... }
+); //# sourceMappingURL=app.js.map`}
+          </CodePane>
+          <div>app.js.map</div>
+          <CodePane lang="json">
+        {`{
+  "file": "app.9aff3b1eced1f089ef18.js",
+  "mappings": "AAAAA,...,kBDST",
+  "names": [
+    "webpackJsonp",
+    ...
+  ],
+  "sourceRoot": "",
+  "sources": [...],
+  "sourcesContent": [...],
+  "version": 3
+}`}
+          </CodePane>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            Separate Source Maps
+          </Heading>
+          <List>
+            <Appear><ListItem>Separate source maps are written to <b>separate</b> files</ListItem></Appear>
+            <Appear><ListItem>Separate === slow to generate, use for production</ListItem></Appear>
+            <Appear><ListItem>Use plugins for more control</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            Exercises
+          </Heading>
+          <List>
+            <Appear><ListItem>0. Set up development source maps</ListItem></Appear>
+            <Appear><ListItem>1. Set up production source maps</ListItem></Appear>
+            <Appear><ListItem>2. Examine source maps in the browser</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition} bgColor="secondary">
+          <Heading size={2} textColor="tertiary">
+            Assets
+          </Heading>
         </Slide>
 
         <Slide transition={slideTransition} bgColor="secondary">
@@ -416,7 +558,7 @@ module.exports = (env) => {
             <Appear><ListItem><Link href="https://www.npmjs.com/package/css-loader">css-loader</Link> evaluates <code>@import</code> and <code>url()</code> lookups</ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/style-loader">style-loader</Link> injects CSS to the DOM and implements HMR</ListItem></Appear>
             <Appear><ListItem>Other formats supported through loaders</ListItem></Appear>
-            <Appear><ListItem>Bundled within JavaScript by default!</ListItem></Appear>
+            <Appear><ListItem><b>Exercise:</b> Set up style loading and examine the output</ListItem></Appear>
           </List>
         </Slide>
 
@@ -427,6 +569,7 @@ module.exports = (env) => {
           <List>
             <Appear><ListItem>Flash of Unstyled Content (FOUC)</ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/extract-text-webpack-plugin">extract-text-webpack-plugin (ETWP)</Link> and <Link href="https://www.npmjs.com/package/extract-loader">extract-loader</Link></ListItem></Appear>
+            <Appear><ListItem><b>Exercise:</b> Set up style extraction using the plugin (you can also try the loader)</ListItem></Appear>
           </List>
         </Slide>
 
@@ -451,6 +594,7 @@ module.exports = (env) => {
           </CodePane></Appear>
           <List>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/autoprefixer">autoprefixer</Link>, a PostCSS plugin, can solve this</ListItem></Appear>
+            <Appear><ListItem><b>Exercise:</b> Set up autoprefixing</ListItem></Appear>
           </List>
         </Slide>
 
@@ -473,6 +617,7 @@ IE 8 # Or IE 8`}
             <Appear><ListItem>Eliminate redundant rules to make your CSS bundle <b>smaller</b></ListItem></Appear>
             <Appear><ListItem>Ideal for <b>static sites</b>, more complex in dynamic cases</ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/purify-css">purify-css</Link> and <Link href="https://www.npmjs.com/package/purifycss-webpack">purifycss-webpack</Link> or <Link href="https://www.npmjs.com/package/uncss">uncss</Link> is another option</ListItem></Appear>
+            <Appear><ListItem><b>Exercise:</b> Set up style elimination</ListItem></Appear>
           </List>
         </Slide>
 
@@ -483,6 +628,7 @@ IE 8 # Or IE 8`}
           <List>
             <Appear><ListItem>Lint CSS too</ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/stylelint">Stylelint</Link> through PostCSS is enough. <Link href="http://csslint.net/">CSSLint</Link> an option</ListItem></Appear>
+            <Appear><ListItem><b>Exercise:</b> Set up CSS linting</ListItem></Appear>
           </List>
         </Slide>
 
@@ -500,9 +646,46 @@ IE 8 # Or IE 8`}
           </List>
         </Slide>
 
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            <Link href="https://survivejs.com/webpack/loading/images">Loading Images</Link>
+          </Heading>
+          <List>
+            <Appear><ListItem>To inline or not? Or to sprite?</ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/url-loader">url-loader</Link> inlines (with a <code>limit</code>)</ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/file-loader">file-loader</Link> returns paths and <b>emits</b> files</ListItem></Appear>
+            <Appear><ListItem>Loaders for specific purposes (spriting, srcsets, etc.)</ListItem></Appear>
+            <Appear><ListItem><b>Exercise:</b> Set up image loading</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            <Link href="https://survivejs.com/webpack/loading/fonts">Loading Fonts</Link>
+          </Heading>
+          <List>
+            <Appear><ListItem><b>url-loader</b> and <b>file-loader</b> again</ListItem></Appear>
+            <Appear><ListItem>Specific loaders like <Link href="https://www.npmjs.com/package/webfonts-loader">webfonts-loader</Link></ListItem></Appear>
+            <Appear><ListItem><b>Exercise:</b> Set up font loading</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            <Link href="https://survivejs.com/webpack/loading/javascript">Loading JavaScript</Link>
+          </Heading>
+          <List>
+            <Appear><ListItem>Webpack processes ES6 modules but not specific features</ListItem></Appear>
+            <Appear><ListItem>Problematic with legacy browsers!</ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/babel-loader">babel-loader</Link> and <Link href="https://www.npmjs.com/package/babel-preset-env">babel-preset-env</Link> to rescue</ListItem></Appear>
+            <Appear><ListItem>Generate code/polyfills based on a <b>browser definition</b></ListItem></Appear>
+            <Appear><ListItem><b>Exercise:</b> Set up Babel (target IE 8) and compare the output to previous</ListItem></Appear>
+          </List>
+        </Slide>
+
         <Slide transition={slideTransition} bgColor="secondary">
           <Heading size={2} textColor="tertiary">
-            <Link href="https://survivejs.com/webpack/loading" textColor="white">Loading Assets</Link>
+            <Link href="https://survivejs.com/webpack/loading/loader-definitions/" textColor="white">Understanding Loaders</Link>
           </Heading>
         </Slide>
 
@@ -624,132 +807,10 @@ import '!!url-loader!./bar.png';`}
           </CodePane>
         </Slide>
 
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            <Link href="https://survivejs.com/webpack/loading/images">Loading Images</Link>
-          </Heading>
-          <List>
-            <Appear><ListItem>To inline or not?</ListItem></Appear>
-            <Appear><ListItem><Link href="https://www.npmjs.com/package/url-loader">url-loader</Link> inlines (with a <code>limit</code>)</ListItem></Appear>
-            <Appear><ListItem><Link href="https://www.npmjs.com/package/file-loader">file-loader</Link> returns paths and <b>emits</b> files</ListItem></Appear>
-            <Appear><ListItem>Loaders for specific purposes (spriting, srcsets, etc.)</ListItem></Appear>
-          </List>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            <Link href="https://survivejs.com/webpack/loading/fonts">Loading Fonts</Link>
-          </Heading>
-          <List>
-            <Appear><ListItem><b>url-loader</b> and <b>file-loader</b> again</ListItem></Appear>
-            <Appear><ListItem>Specific loaders like <Link href="https://www.npmjs.com/package/webfonts-loader">webfonts-loader</Link></ListItem></Appear>
-          </List>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            <Link href="https://survivejs.com/webpack/loading/javascript">Loading JavaScript</Link>
-          </Heading>
-          <List>
-            <Appear><ListItem>Webpack processes ES6 modules but not specific features</ListItem></Appear>
-            <Appear><ListItem>Problematic with legacy browsers!</ListItem></Appear>
-            <Appear><ListItem><Link href="https://www.npmjs.com/package/babel-loader">babel-loader</Link> and <Link href="https://www.npmjs.com/package/babel-preset-env">babel-preset-env</Link> to rescue</ListItem></Appear>
-            <Appear><ListItem>Generate code/polyfills based on a <b>browser definition</b></ListItem></Appear>
-          </List>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            Recap
-          </Heading>
-          <List>
-            <Appear><ListItem>Loaders contain <b>conditions</b>, <b>restrictions</b>, and <b>actions</b></ListItem></Appear>
-            <Appear><ListItem>Remember evaluation order, enforce, and inline rules</ListItem></Appear>
-            <Appear><ListItem>Specific fields (<code>issuer</code>) for more control</ListItem></Appear>
-            <Appear><ListItem>Inline or not, more techniques possible</ListItem></Appear>
-            <Appear><ListItem>Process through Babel to target specific browsers</ListItem></Appear>
-          </List>
-        </Slide>
-
         <Slide transition={slideTransition} bgColor="secondary">
           <Heading size={2} textColor="tertiary">
-            <Link href="https://survivejs.com/webpack/building" textColor="white">Building</Link>
+            Bundle/code Splitting
           </Heading>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            <Link href="https://survivejs.com/webpack/building/source-maps">Source Maps</Link>
-          </Heading>
-          <Image src={images.sourcemaps} margin="40px auto" height="364px" />
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            Inline Source Maps
-          </Heading>
-          <Heading size={4}>
-            (<code>devtool: 'eval'</code>)
-          </Heading>
-          <CodePane lang="javascript">
-        {`webpackJsonp([1, 2], {
-  "./app/index.js": function(module, exports) {
-    eval("console.log('Hello world');\n\n//////////////////\n// WEBPACK FOOTER\n// ./app/index.js\n// module id = ./app/index.js\n// module chunks = 1\n\n//# sourceURL=webpack:///./app/index.js?")
-  }
-}, ["./app/index.js"]);`}
-          </CodePane>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            Inline Source Maps
-          </Heading>
-          <List>
-            <Appear><ListItem>Inline source maps are <b>included</b> in bundles</ListItem></Appear>
-            <Appear><ListItem>Inline === fast to rebundle, use for development</ListItem></Appear>
-          </List>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            Separate Source Maps
-          </Heading>
-          <Heading size={4}>
-            (<code>devtool: 'source-map'</code>)
-          </Heading>
-          <div>app.js</div>
-          <CodePane lang="javascript">
-        {`webpackJsonp(
-  [2,4],
-  {"1Q41":function(){}, ... }
-); //# sourceMappingURL=app.js.map`}
-          </CodePane>
-          <div>app.js.map</div>
-          <CodePane lang="json">
-        {`{
-  "file": "app.9aff3b1eced1f089ef18.js",
-  "mappings": "AAAAA,...,kBDST",
-  "names": [
-    "webpackJsonp",
-    ...
-  ],
-  "sourceRoot": "",
-  "sources": [...],
-  "sourcesContent": [...],
-  "version": 3
-}`}
-          </CodePane>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            Separate Source Maps
-          </Heading>
-          <List>
-            <Appear><ListItem>Separate source maps are written to <b>separate</b> files</ListItem></Appear>
-            <Appear><ListItem>Separate === slow to generate, use for production</ListItem></Appear>
-            <Appear><ListItem>Use plugins for more control</ListItem></Appear>
-          </List>
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -793,6 +854,9 @@ function isVendor({ resource }) {
     resource.match(/\.js$/);
 }`}
           </CodePane>
+          <List>
+            <Appear><ListItem><b>Exercise:</b> Set up bundle splitting</ListItem></Appear>
+          </List>
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -816,6 +880,9 @@ function isVendor({ resource }) {
 );
 `}
           </CodePane>
+          <List>
+            <Appear><ListItem><b>Exercise:</b> Set up bundle splitting</ListItem></Appear>
+          </List>
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -833,6 +900,9 @@ function isVendor({ resource }) {
   };
 });`}
           </CodePane>
+          <List>
+            <Appear><ListItem><b>Exercise:</b> Set up the above pattern so that each import is named the same way</ListItem></Appear>
+          </List>
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -879,6 +949,17 @@ function isVendor({ resource }) {
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
+            <Link href="https://survivejs.com/webpack/appendices/searching-with-react">Searching with React</Link>
+          </Heading>
+          <List>
+            <Appear><ListItem>Indexing static content through <Link href="http://lunrjs.com/">lunr</Link> is enough</ListItem></Appear>
+            <Appear><ListItem>Good use case for <code>import()</code></ListItem></Appear>
+            <Appear><ListItem>Enough for small static sites</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
             <Link href="https://survivejs.com/webpack/building/tidying-up">Tidying Up</Link>
           </Heading>
           <List>
@@ -888,15 +969,35 @@ function isVendor({ resource }) {
           </List>
         </Slide>
 
+        <Slide transition={slideTransition} bgColor="secondary">
+          <Heading size={2} textColor="tertiary">
+            Analysis and Troubleshooting
+          </Heading>
+        </Slide>
+
         <Slide transition={slideTransition}>
           <Heading size={2}>
-            Recap
+            <Link href="https://survivejs.com/webpack/optimizing/analyzing-build-statistics">Analyzing Build Statistics</Link>
           </Heading>
           <List>
-            <Appear><ListItem>Generate <b>source maps</b> to improve debugging flow</ListItem></Appear>
-            <Appear><ListItem>Split bundles to benefit from <b>caching</b></ListItem></Appear>
-            <Appear><ListItem>Split code to load functionality <b>as you need it</b></ListItem></Appear>
-            <Appear><ListItem>Tidy up to avoid confusion</ListItem></Appear>
+            <Appear><ListItem>To know what your build consists of, generate <b>build statistics</b></ListItem></Appear>
+            <Appear><ListItem>Use <code>--json</code> for statistics</ListItem></Appear>
+            <Appear><ListItem>Use <code>--profile</code> to capture timing information</ListItem></Appear>
+            <Appear><ListItem>Node API gives access to statistics too and you can find a couple of plugins</ListItem></Appear>
+            <Appear><ListItem>Plenty of tools for analysis</ListItem></Appear>
+            <Appear><ListItem><b>Exercise:</b> Generate stats and analyze through tooling</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            <Link href="https://survivejs.com/webpack/appendices/troubleshooting">Troubleshooting</Link>
+          </Heading>
+          <List>
+            <Appear><ListItem>Follow a debugging process. This captures most problems.</ListItem></Appear>
+            <Appear><ListItem>If you found a real issue, take care in reporting it well</ListItem></Appear>
+            <Appear><ListItem>Figure out whether the problem is on your side or in dependencies</ListItem></Appear>
+            <Appear><ListItem><b>Exercise:</b> Figure out how to make your build error in different ways</ListItem></Appear>
           </List>
         </Slide>
 
