@@ -238,6 +238,7 @@ export default class Presentation extends React.Component {
             <Appear><ListItem>3. Set up <Link href="https://www.npmjs.com/package/html-webpack-plugin">html-webpack-plugin</Link>. Can you see why it is useful?</ListItem></Appear>
             <Appear><ListItem>4. Set up npm shortcut (<code>npm run build</code>)</ListItem></Appear>
             <Appear><ListItem>5. Study webpack output. Can you see what is going on?*</ListItem></Appear>
+            <Appear><ListItem>6. Study <Link href="https://github.com/webpack/webpack.js.org/issues/487">webpack class hierarchy</Link>**</ListItem></Appear>
           </List>
         </Slide>
 
@@ -338,6 +339,7 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
             <Appear><ListItem>JSLint &rarr; <Link href="https://www.npmjs.com/package/jshint">JSHint</Link> &rarr; <Link href="http://eslint.org/">ESLint</Link></ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/eslint-config-airbnb">eslint-config-airbnb</Link></ListItem></Appear>
             <Appear><ListItem><b>Exercise:</b> Connect with webpack using <Link href="https://www.npmjs.com/package/eslint-loader">eslint-loader</Link> as <Link href="https://survivejs.com/webpack/developing/linting">in the book</Link></ListItem></Appear>
+            <Appear><ListItem><b>Exercise:</b> Add <Link href="https://www.npmjs.com/package/prettier">prettier</Link> to the setup (hint: there is an <Link href="https://www.npmjs.com/package/eslint-plugin-prettier">ESLint plugin</Link>)*</ListItem></Appear>
           </List>
         </Slide>
 
@@ -370,6 +372,18 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
   }
 }`}
           </CodePane>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            <Link href="https://survivejs.com/webpack/developing/composing-configuration">Composing Configuration</Link>
+          </Heading>
+          <List>
+            <Appear><ListItem>The need for <b>different</b> targets - development, production, ...</ListItem></Appear>
+            <Appear><ListItem>How to manage the targets?</ListItem></Appear>
+            <Appear><ListItem>Solutions: higher level abstractions, composition</ListItem></Appear>
+            <Appear><ListItem>Option: consume configuration as a dependency</ListItem></Appear>
+          </List>
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -528,6 +542,16 @@ module.exports = (env) => {
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
+            Which option to use?
+          </Heading>
+          <List>
+            <Appear><ListItem><Link href="https://github.com/webpack/webpack/issues/2145#issuecomment-294361203">GitHub to rescue</Link></ListItem></Appear>
+            <Appear><ListItem><b>cheap-module-source-map</b>, <b>cheap-module-inline-source-map</b></ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
             Exercises
           </Heading>
           <List>
@@ -570,6 +594,7 @@ module.exports = (env) => {
             <Appear><ListItem>Flash of Unstyled Content (FOUC)</ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/extract-text-webpack-plugin">extract-text-webpack-plugin (ETWP)</Link> and <Link href="https://www.npmjs.com/package/extract-loader">extract-loader</Link></ListItem></Appear>
             <Appear><ListItem><b>Exercise:</b> Set up style extraction using the plugin (you can also try the loader)</ListItem></Appear>
+            <Appear><ListItem><b>Exercise:</b> Study <Link href="https://medium.com/webpack/the-new-css-workflow-step-1-79583bd107d7">the proposed CSS workflow</Link>*</ListItem></Appear>
           </List>
         </Slide>
 
@@ -600,7 +625,7 @@ module.exports = (env) => {
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
-            .browserslistrc
+            <Link href="https://www.npmjs.com/package/browserslist">.browserslistrc</Link>
           </Heading>
           <CodePane lang="bash">
         {`> 1% # Browser usage over 1%
@@ -799,12 +824,13 @@ import '!!url-loader!./bar.png';`}
       issuer: /\.js$/, // Apply only to imports from js files
       use: 'style-loader',
     },
-    {
-      use: 'css-loader',
-    },
+    'css-loader',
   ],
 },`}
           </CodePane>
+          <List>
+            <Appear><ListItem><b>Exercise:</b> Study <Link href="https://github.com/webpack/webpack/blob/master/schemas/webpackOptionsSchema.json">webpack configuration schema related to loaders</Link></ListItem></Appear>
+          </List>
         </Slide>
 
         <Slide transition={slideTransition} bgColor="secondary">
@@ -881,7 +907,18 @@ function isVendor({ resource }) {
 `}
           </CodePane>
           <List>
-            <Appear><ListItem><b>Exercise:</b> Set up bundle splitting</ListItem></Appear>
+            <Appear><ListItem><b>Exercise:</b> Set up code splitting</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            <Link href="https://survivejs.com/webpack/appendices/searching-with-react">Searching with React</Link>
+          </Heading>
+          <List>
+            <Appear><ListItem>Indexing static content through <Link href="http://lunrjs.com/">lunr</Link> is enough</ListItem></Appear>
+            <Appear><ListItem>Good use case for <code>import()</code></ListItem></Appear>
+            <Appear><ListItem>Enough for small static sites</ListItem></Appear>
           </List>
         </Slide>
 
@@ -945,17 +982,6 @@ function isVendor({ resource }) {
   'optional-name'
 );`}
           </CodePane>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            <Link href="https://survivejs.com/webpack/appendices/searching-with-react">Searching with React</Link>
-          </Heading>
-          <List>
-            <Appear><ListItem>Indexing static content through <Link href="http://lunrjs.com/">lunr</Link> is enough</ListItem></Appear>
-            <Appear><ListItem>Good use case for <code>import()</code></ListItem></Appear>
-            <Appear><ListItem>Enough for small static sites</ListItem></Appear>
-          </List>
         </Slide>
 
         <Slide transition={slideTransition}>
