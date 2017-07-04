@@ -302,7 +302,8 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
             <Appear><ListItem>0. Execute <code>npm run build -- --watch</code></ListItem></Appear>
             <Appear><ListItem>1. Alter code and see what happens in the terminal</ListItem></Appear>
             <Appear><ListItem>2. <code>npm i <Link href="https://www.npmjs.com/package/webpack-dev-server">webpack-dev-server</Link> -D</code></ListItem></Appear>
-            <Appear><ListItem>3. Set up <Link href="https://survivejs.com/webpack/appendices/hmr/">Hot Module Replacement (HMR)</Link>. Can you see what it is doing?*</ListItem></Appear>
+            <Appear><ListItem>3. <Link href="https://survivejs.com/webpack/developing/automatic-browser-refresh">Follow the chapter <code>--env</code> setup</Link></ListItem></Appear>
+            <Appear><ListItem>4. Set up <Link href="https://survivejs.com/webpack/appendices/hmr/">Hot Module Replacement (HMR)</Link>. Can you see what it is doing?*</ListItem></Appear>
           </List>
         </Slide>
 
