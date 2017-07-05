@@ -301,33 +301,7 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
           <List>
             <Appear><ListItem>0. Execute <code>npm run build -- --watch</code></ListItem></Appear>
             <Appear><ListItem>1. Alter code and see what happens in the terminal</ListItem></Appear>
-            <Appear><ListItem>2. <code>npm i <Link href="https://www.npmjs.com/package/webpack-dev-server">webpack-dev-server</Link> -D</code></ListItem></Appear>
-            <Appear><ListItem>3. <Link href="https://survivejs.com/webpack/developing/automatic-browser-refresh">Follow the chapter <code>--env</code> setup</Link></ListItem></Appear>
-            <Appear><ListItem>4. Set up <Link href="https://survivejs.com/webpack/appendices/hmr/">Hot Module Replacement (HMR)</Link>. Can you see what it is doing?*</ListItem></Appear>
-          </List>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2} fit>
-            <Link href="https://survivejs.com/webpack/appendices/configuring-hmr">Configuring Hot Module Replacement</Link>
-          </Heading>
-          <List>
-            <Appear><ListItem>HMR allows patching of the application while it is running</ListItem></Appear>
-            <Appear><ListItem>Run WDS in <b>hot</b> mode</ListItem></Appear>
-            <Appear><ListItem>Provide hot updates through webpack using <code>HotModuleReplacementPlugin</code></ListItem></Appear>
-            <Appear><ListItem>The client has to hook into WDS scripts (WDS <code>inline</code>)</ListItem></Appear>
-            <Appear><ListItem>The client has to implement the HMR interface through <code>module.hot.accept</code></ListItem></Appear>
-          </List>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2} fit>
-            <Link href="https://survivejs.com/webpack/appendices/hmr-with-react">Hot Module Replacement with React</Link>
-          </Heading>
-          <List>
-            <Appear><ListItem><Link href="https://www.npmjs.com/package/react-hot-loader">react-hot-loader</Link> does the hard part</ListItem></Appear>
-            <Appear><ListItem>You have to connect it with Babel, webpack, and application</ListItem></Appear>
-            <Appear><ListItem>react-hot-loader 3 is still in beta - Rough edges to work around.</ListItem></Appear>
+            <Appear><ListItem>2. <Link href="https://survivejs.com/webpack/developing/automatic-browser-refresh">Follow the chapter <code>--env</code> setup</Link></ListItem></Appear>
           </List>
         </Slide>
 
