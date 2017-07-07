@@ -234,7 +234,7 @@ export default class Presentation extends React.Component {
           <List>
             <Appear><ListItem>0. <code>mkdir webpack-workshop</code>, <code>npm init -y</code>, <code>npm i webpack -D</code></ListItem></Appear>
             <Appear><ListItem>1. Set up a project <Link href="https://survivejs.com/webpack/developing/getting-started">as in the book</Link></ListItem></Appear>
-            <Appear><ListItem>2. <b>webpack app/index.js build/index.js</b></ListItem></Appear>
+            <Appear><ListItem>2. <b>node_modules/.bin/webpack app/index.js build/index.js</b></ListItem></Appear>
             <Appear><ListItem>3. Set up <Link href="https://www.npmjs.com/package/html-webpack-plugin">html-webpack-plugin</Link>. Can you see why it is useful?</ListItem></Appear>
             <Appear><ListItem>4. Set up npm shortcut (<code>npm run build</code>)</ListItem></Appear>
             <Appear><ListItem>5. Study webpack output. Can you see what is going on?*</ListItem></Appear>
