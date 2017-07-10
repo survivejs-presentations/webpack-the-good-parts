@@ -1,3 +1,3 @@
-# Webpack - From Apprentice to Journeyman
+# Webpack - The Good Parts
 
-This presentation covers [SurviveJS - Webpack](https://survivejs.com/webpack) topics from the beginning to the building part.
+This presentation covers [SurviveJS - Webpack](https://survivejs.com/webpack) the best parts of the full two-day workshop.
