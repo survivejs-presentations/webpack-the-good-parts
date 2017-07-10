@@ -5,7 +5,7 @@ import mapValues from "lodash/mapValues";
 // Import Spectacle Core tags
 import {
   Appear,
-  //BlockQuote,
+  BlockQuote,
   //Cite,
   CodePane,
   Deck,
@@ -17,7 +17,7 @@ import {
   List,
   ListItem,
   //Markdown,
-  //Quote,
+  Quote,
   Slide
   //Table,
   //TableRow,
@@ -65,7 +65,7 @@ export default class Presentation extends React.Component {
       <Deck transition={slideTransition} transitionDuration={500} theme={theme}>
         <Slide transition={slideTransition} bgColor="secondary">
           <Heading size={1} fit caps lineHeight={1} textColor="tertiary">
-            Webpack - From Apprentice to Journeyman
+            Webpack - The Good Parts
           </Heading>
         </Slide>
 
@@ -80,6 +80,7 @@ export default class Presentation extends React.Component {
             <Appear><ListItem>Assets</ListItem></Appear>
             <Appear><ListItem>Bundle/code Splitting</ListItem></Appear>
             <Appear><ListItem>Analysis and Troubleshooting</ListItem></Appear>
+            <Appear><ListItem>Optimizing</ListItem></Appear>
           </List>
         </Slide>
 
@@ -302,19 +303,6 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
             <Appear><ListItem>0. Execute <code>npm run build -- --watch</code></ListItem></Appear>
             <Appear><ListItem>1. Alter code and see what happens in the terminal</ListItem></Appear>
             <Appear><ListItem>2. <Link href="https://survivejs.com/webpack/developing/automatic-browser-refresh">Follow the chapter <code>--env</code> setup</Link></ListItem></Appear>
-          </List>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            <Link href="https://survivejs.com/webpack/developing/linting">Linting JavaScript</Link>
-          </Heading>
-          <List>
-            <Appear><ListItem>Lint to push code quality to a higher standard</ListItem></Appear>
-            <Appear><ListItem>JSLint &rarr; <Link href="https://www.npmjs.com/package/jshint">JSHint</Link> &rarr; <Link href="http://eslint.org/">ESLint</Link></ListItem></Appear>
-            <Appear><ListItem><Link href="https://www.npmjs.com/package/eslint-config-airbnb">eslint-config-airbnb</Link></ListItem></Appear>
-            <Appear><ListItem><b>Exercise:</b> Connect with webpack using <Link href="https://www.npmjs.com/package/eslint-loader">eslint-loader</Link> as <Link href="https://survivejs.com/webpack/developing/linting">in the book</Link></ListItem></Appear>
-            <Appear><ListItem><b>Exercise:</b> Add <Link href="https://www.npmjs.com/package/prettier">prettier</Link> to the setup (hint: there is an <Link href="https://www.npmjs.com/package/eslint-plugin-prettier">ESLint plugin</Link>)*</ListItem></Appear>
           </List>
         </Slide>
 
@@ -575,79 +563,6 @@ module.exports = (env) => {
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
-            <Link href="https://survivejs.com/webpack/styling/autoprefixing">Autoprefixing</Link>
-          </Heading>
-          <Appear><CodePane lang="css">
-        {`body {
-  background: cornsilk;
-  display: flex;
-}`}
-          </CodePane></Appear>
-          <Appear><div>autoprefixes to</div></Appear>
-          <Appear><CodePane lang="css">
-        {`body {
-  background: cornsilk;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}`}
-          </CodePane></Appear>
-          <List>
-            <Appear><ListItem><Link href="https://www.npmjs.com/package/autoprefixer">autoprefixer</Link>, a PostCSS plugin, can solve this</ListItem></Appear>
-            <Appear><ListItem><b>Exercise:</b> Set up autoprefixing</ListItem></Appear>
-          </List>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            <Link href="https://www.npmjs.com/package/browserslist">.browserslistrc</Link>
-          </Heading>
-          <CodePane lang="bash">
-        {`> 1% # Browser usage over 1%
-Last 2 versions # Or last two versions
-IE 8 # Or IE 8`}
-          </CodePane>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            <Link href="https://survivejs.com/webpack/styling/eliminating-unused-css">Eliminating Unused CSS</Link>
-          </Heading>
-          <List>
-            <Appear><ListItem>Eliminate redundant rules to make your CSS bundle <b>smaller</b></ListItem></Appear>
-            <Appear><ListItem>Ideal for <b>static sites</b>, more complex in dynamic cases</ListItem></Appear>
-            <Appear><ListItem><Link href="https://www.npmjs.com/package/purify-css">purify-css</Link> and <Link href="https://www.npmjs.com/package/purifycss-webpack">purifycss-webpack</Link> or <Link href="https://www.npmjs.com/package/uncss">uncss</Link> is another option</ListItem></Appear>
-            <Appear><ListItem><b>Exercise:</b> Set up style elimination</ListItem></Appear>
-          </List>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            <Link href="https://survivejs.com/webpack/styling/linting">Linting CSS</Link>
-          </Heading>
-          <List>
-            <Appear><ListItem>Lint CSS too</ListItem></Appear>
-            <Appear><ListItem><Link href="https://www.npmjs.com/package/stylelint">Stylelint</Link> through PostCSS is enough. <Link href="http://csslint.net/">CSSLint</Link> an option</ListItem></Appear>
-            <Appear><ListItem><b>Exercise:</b> Set up CSS linting</ListItem></Appear>
-          </List>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            Recap
-          </Heading>
-          <List>
-            <Appear><ListItem>Starting points: <Link href="https://www.npmjs.com/package/style-loader">style-loader</Link>, <Link href="https://www.npmjs.com/package/css-loader">css-loader</Link></ListItem></Appear>
-            <Appear><ListItem>Since webpack inlines CSS by default, you will have to <b>extract</b></ListItem></Appear>
-            <Appear><ListItem><b>Autoprefix</b> to save time and to support legacy browsers</ListItem></Appear>
-            <Appear><ListItem>Manage browser support through a <b>.browserslistrc</b></ListItem></Appear>
-            <Appear><ListItem><b>Eliminate unused CSS</b> to decrease payload</ListItem></Appear>
-            <Appear><ListItem>Remember to <b>lint CSS</b> too</ListItem></Appear>
-          </List>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
             <Link href="https://survivejs.com/webpack/loading/images">Loading Images</Link>
           </Heading>
           <List>
@@ -764,50 +679,6 @@ import '!!url-loader!./bar.png';`}
           </CodePane>
         </Slide>
 
-        <Slide transition={slideTransition}>
-          <Heading size={2} fit>
-            Loading Based on <code>resourceQuery</code>
-          </Heading>
-          <CodePane lang="javascript">
-        {`{
-  test: /\.png$/,
-
-  oneOf: [
-    {
-      resourceQuery: /inline/, // foo.png?inline
-      use: 'url-loader',
-    },
-    {
-      resourceQuery: /external/, // foo.png?external
-      use: 'file-loader',
-    },
-  ],
-},`}
-          </CodePane>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            Loading Based on <code>issuer</code>
-          </Heading>
-          <CodePane lang="javascript">
-        {`{
-  test: /\.css$/,
-
-  rules: [
-    {
-      issuer: /\.js$/, // Apply only to imports from js files
-      use: 'style-loader',
-    },
-    'css-loader',
-  ],
-},`}
-          </CodePane>
-          <List>
-            <Appear><ListItem><b>Exercise:</b> Study <Link href="https://github.com/webpack/webpack/blob/master/schemas/webpackOptionsSchema.json">webpack configuration schema related to loaders</Link></ListItem></Appear>
-          </List>
-        </Slide>
-
         <Slide transition={slideTransition} bgColor="secondary">
           <Heading size={2} textColor="tertiary">
             Bundle/code Splitting
@@ -888,12 +759,20 @@ function isVendor({ resource }) {
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
-            <Link href="https://survivejs.com/webpack/appendices/searching-with-react">Searching with React</Link>
+            Code Splitting Output
           </Heading>
+          <CodePane lang="javascript">
+            {`webpackJsonp([0], {
+  KMic: function(a, b, c) {
+    ...
+  },
+  co9Y: function(a, b, c) {
+    ...
+  },
+});`}
+          </CodePane>
           <List>
-            <Appear><ListItem>Indexing static content through <Link href="http://lunrjs.com/">lunr</Link> is enough</ListItem></Appear>
-            <Appear><ListItem>Good use case for <code>import()</code></ListItem></Appear>
-            <Appear><ListItem>Enough for small static sites</ListItem></Appear>
+            <Appear><ListItem>In addition, a small <code>Promise</code> based bit to load the code</ListItem></Appear>
           </List>
         </Slide>
 
@@ -919,25 +798,6 @@ function isVendor({ resource }) {
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
-            Code Splitting Output
-          </Heading>
-          <CodePane lang="javascript">
-            {`webpackJsonp([0], {
-  KMic: function(a, b, c) {
-    ...
-  },
-  co9Y: function(a, b, c) {
-    ...
-  },
-});`}
-          </CodePane>
-          <List>
-            <Appear><ListItem>In addition, a small <code>Promise</code> based bit to load the code</ListItem></Appear>
-          </List>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
             <code>require.ensure</code>
           </Heading>
           <CodePane lang="javascript">
@@ -957,17 +817,6 @@ function isVendor({ resource }) {
   'optional-name'
 );`}
           </CodePane>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            <Link href="https://survivejs.com/webpack/building/tidying-up">Tidying Up</Link>
-          </Heading>
-          <List>
-            <Appear><ListItem>Even though webpack is a bundler, you can find task-oriented plugins for it</ListItem></Appear>
-            <Appear><ListItem>Examples: <Link href="https://www.npmjs.com/package/clean-webpack-plugin">clean-webpack-plugin</Link>, <Link href="https://www.npmjs.com/package/git-revision-webpack-plugin">git-revision-webpack-plugin</Link>, <code>BannerPlugin</code></ListItem></Appear>
-            <Appear><ListItem>Copy through <Link href="https://www.npmjs.com/package/copy-webpack-plugin">copy-webpack-plugin</Link> or outside of webpack</ListItem></Appear>
-          </List>
         </Slide>
 
         <Slide transition={slideTransition} bgColor="secondary">
@@ -1002,12 +851,205 @@ function isVendor({ resource }) {
           </List>
         </Slide>
 
+        <Slide transition={slideTransition} bgColor="secondary">
+          <Heading size={2} textColor="tertiary">
+            <Link href="https://survivejs.com/webpack/optimizing" textColor="white">Optimizing</Link>
+          </Heading>
+        </Slide>
+
         <Slide transition={slideTransition}>
-          <Link href="https://presentations.survivejs.com/webpack-from-journeyman-to-master">
-            <Heading size={1} fit>
-              Continue to the next presentation
-            </Heading>
-          </Link>
+          <Heading size={2}>
+            Performance Budgets
+          </Heading>
+          <CodePane lang="javascript">
+        {`{
+  performance: {
+    hints: 'warning', // 'error' or false are valid too
+    maxEntrypointSize: 100000, // in bytes
+    maxAssetSize: 100000, // in bytes
+  },
+},`}
+          </CodePane>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            Budget Warnings/Errors
+          </Heading>
+          <CodePane lang="javascript">
+        {`...
+WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds
+the recommended limit (100 kB). This can impact web performance.
+Entrypoints:
+  app (156 kB)
+      vendor.js
+,      app.js
+,      app.css
+...`}
+          </CodePane>
+          <List>
+            <Appear><ListItem><b>Exercise:</b> Set up a performance budget</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition} bgColor="black">
+          <BlockQuote>
+            <Quote>Minifying === How to convert code into a smaller form without losing anything essential?</Quote>
+          </BlockQuote>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            <Link href="https://survivejs.com/webpack/optimizing/minifying">Minifying</Link>
+          </Heading>
+          <List>
+            <Appear><ListItem>Certain unsafe transformations can <b>break</b> code</ListItem></Appear>
+            <Appear><ListItem><Link href="https://github.com/webpack-contrib/uglifyjs-webpack-plugin">UglifyJs</Link>, <Link href="https://www.npmjs.com/package/babili-webpack-plugin">Babili</Link>, <Link href="https://www.npmjs.com/package/webpack-closure-compiler">Closure Compiler</Link></ListItem></Appear>
+            <Appear><ListItem>CSS can be minified too through <Link href="https://www.npmjs.com/package/clean-css">clean-css</Link> and <Link href="http://cssnano.co">cssnano</Link></ListItem></Appear>
+            <Appear><ListItem>Same for HTML. See <Link href="https://www.npmjs.com/package/posthtml">posthtml</Link></ListItem></Appear>
+            <Appear><ListItem><b>Exercise:</b> Set up <Link href="https://www.npmjs.com/package/babili-webpack-plugin">babili-webpack-plugin</Link> and study its implementation (can you see anything particular?)</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            <Link href="https://survivejs.com/webpack/optimizing/tree-shaking">Tree Shaking</Link>
+          </Heading>
+          <CodePane lang="javascript">
+        {`const shake = () => console.log('shake');
+const bake = () => console.log('bake');
+
+export { shake, bake };`}
+          </CodePane>
+          <div>shake it with</div>
+          <CodePane lang="javascript">
+        {`import { bake } from './shake';
+
+bake();`}
+          </CodePane>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            <Link href="https://survivejs.com/webpack/optimizing/tree-shaking">Tree Shaking</Link>
+          </Heading>
+          <List>
+            <Appear><ListItem>Relies on ES6 module definition</ListItem></Appear>
+            <Appear><ListItem>If you author packages, set <code>module</code> field in <b>package.json</b>, precompile everything <b>except</b> module definitions</ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/babel-plugin-transform-imports">babel-plugin-transform-imports</Link></ListItem></Appear>
+            <Appear><ListItem><b>Exercise:</b> Set up a tree shaking demonstration as in the example and examine the output</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            <Link href="https://survivejs.com/webpack/optimizing/environment-variables">Feature Flags</Link>
+          </Heading>
+          <List>
+            <Appear><ListItem><code>DefinePlugin</code> replaces free variables. Babel can do this too</ListItem></Appear>
+          </List>
+          <Appear><CodePane lang="javascript">
+        {`let foo;
+
+// Not free due to "foo" above, not ok to replace
+if (foo === 'bar') { ... }
+
+// Free since you don't refer to "bar", ok to replace
+if (process.env.NODE_ENV === 'development') {
+  console.log('bar');
+}`}
+          </CodePane></Appear>
+          <List>
+            <Appear><ListItem><b>Exercise:</b> Set up <code>DefinePlugin</code> and replace as above</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            <Link href="https://survivejs.com/webpack/optimizing/adding-hashes-to-filenames">Adding Hashes to Filenames</Link>
+          </Heading>
+          <List>
+            <Appear><ListItem>Integrating a hash to a filename allows cache busting</ListItem></Appear>
+            <Appear><ListItem>Example: <code>app.d587bbd6e38337f5accd.js</code></ListItem></Appear>
+            <Appear><ListItem>Common placeholders: <code>[name]</code>, <code>[ext]</code>, <code>[chunkhash]</code>, <code>[contenthash]</code> (<code>ExtractTextPlugin</code> only)</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            Placeholders
+          </Heading>
+          <CodePane lang="javascript">
+        {`{
+  output: {
+    path: PATHS.build,
+    filename: '[name].[chunkhash].js',
+  },
+},`}
+          </CodePane>
+          <List>
+            <Appear><ListItem><b>Exercise:</b> Add hashing to filenames</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            Module Ids
+          </Heading>
+          <List>
+            <Appear><ListItem>Modules use numbered ids by default (0, 1, 2, ...)</ListItem></Appear>
+            <Appear><ListItem><code>NamedModulesPlugin</code> returns paths to modules (useful for development!)</ListItem></Appear>
+            <Appear><ListItem><code>HashedModuleIdsPlugin</code> is the same except it hashes the paths</ListItem></Appear>
+            <Appear><ListItem><b>Exercise:</b> Add <code>NamedModulesPlugin</code> to the setup</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            <Link href="https://survivejs.com/webpack/optimizing/separating-manifest">Separating a Manifest</Link>
+          </Heading>
+          <List>
+            <Appear><ListItem>Webpack generates a <b>manifest</b> to keep track of entries</ListItem></Appear>
+            <Appear><ListItem>Manifest in a <b>vendor</b> bundle can lead to invalidation if <b>app</b> bundle changes!</ListItem></Appear>
+            <Appear><ListItem>Extract to a file or inline to HTML through a plugin</ListItem></Appear>
+            <Appear><ListItem><code>CommonsChunkPlugin</code> can do the job</ListItem></Appear>
+            <Appear><ListItem><b>Exercise:</b> Separate manifest</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            Records
+          </Heading>
+          <List>
+            <Appear><ListItem>Records allow to <b>keep track of module IDs</b> across builds</ListItem></Appear>
+            <Appear><ListItem>Problem: you have a new file (<b>records.json</b>) to manage</ListItem></Appear>
+            <Appear><ListItem><Link href="https://medium.com/webpack/predictable-long-term-caching-with-webpack-d3eee1d3fa31">Alternative name based approach by Tim Sebastian</Link></ListItem></Appear>
+          </List>
+          <Appear><CodePane lang="javascript">
+        {`{
+  recordsPath: path.join(__dirname, 'records.json'),
+},`}
+          </CodePane></Appear>
+          <List>
+            <Appear><ListItem><b>Exercise:</b> Set up records</ListItem></Appear>
+            <Appear><ListItem><b>Exercise:</b> Study {`Tim's`} approach and implement it*</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
+            <Link href="https://survivejs.com/webpack/optimizing/performance">Performance</Link>
+          </Heading>
+          <List>
+            <Appear><ListItem>Parallelism through <Link href="https://www.npmjs.com/package/parallel-webpack">parallel-webpack</Link> and <Link href="https://www.npmjs.com/package/happypack">happypack</Link></ListItem></Appear>
+            <Appear><ListItem>Consider <b>faster source map variants</b> or skipping even</ListItem></Appear>
+            <Appear><ListItem><b>Skip polyfills</b> during development</ListItem></Appear>
+            <Appear><ListItem><b>Disable portions</b> of an application you {"don't"} need</ListItem></Appear>
+            <Appear><ListItem>Use <b>DLLs</b> for vendor dependencies (less to rebundle)</ListItem></Appear>
+            <Appear><ListItem><b>Exercise:</b> Set up Babel to do less work during development</ListItem></Appear>
+            <Appear><ListItem><b>Exercise:</b> Try <Link href="https://www.npmjs.com/package/happypack">happypack</Link> with Babel*</ListItem></Appear>
+          </List>
         </Slide>
 
         <Slide transition={slideTransition}>
