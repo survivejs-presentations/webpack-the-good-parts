@@ -308,6 +308,19 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
+            <Link href="https://survivejs.com/webpack/developing/linting">Linting JavaScript</Link>
+          </Heading>
+          <List>
+            <Appear><ListItem>Lint to push code quality to a higher standard</ListItem></Appear>
+            <Appear><ListItem>JSLint &rarr; <Link href="https://www.npmjs.com/package/jshint">JSHint</Link> &rarr; <Link href="http://eslint.org/">ESLint</Link></ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/eslint-config-airbnb">eslint-config-airbnb</Link></ListItem></Appear>
+            <Appear><ListItem><b>Exercise:</b> Connect with webpack using <Link href="https://www.npmjs.com/package/eslint-loader">eslint-loader</Link> as <Link href="https://survivejs.com/webpack/developing/linting">in the book</Link></ListItem></Appear>
+            <Appear><ListItem><b>Exercise:</b> Add <Link href="https://www.npmjs.com/package/prettier">prettier</Link> to the setup (hint: there is an <Link href="https://www.npmjs.com/package/eslint-plugin-prettier">ESLint plugin</Link>)*</ListItem></Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>
             WDS - Overlay Mode
           </Heading>
           <Image src={images.wdsOverlay} margin="40px auto" height="364px" />
@@ -796,29 +809,6 @@ function isVendor({ resource }) {
           </List>
         </Slide>
 
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            <code>require.ensure</code>
-          </Heading>
-          <CodePane lang="javascript">
-        {`require.ensure(
-  // Modules to load, but not execute yet
-  ['./load-earlier'],
-  () => {
-    const loadEarlier = require('./load-earlier');
-
-    // Load later on demand and include to the same chunk
-    const module1 = require('./module1');
-    const module2 = require('./module2');
-
-    ...
-  },
-  (err) => { ... },
-  'optional-name'
-);`}
-          </CodePane>
-        </Slide>
-
         <Slide transition={slideTransition} bgColor="secondary">
           <Heading size={2} textColor="tertiary">
             Analysis and Troubleshooting
@@ -1023,17 +1013,18 @@ if (process.env.NODE_ENV === 'development') {
           </Heading>
           <List>
             <Appear><ListItem>Records allow to <b>keep track of module IDs</b> across builds</ListItem></Appear>
-            <Appear><ListItem>Problem: you have a new file (<b>records.json</b>) to manage</ListItem></Appear>
-            <Appear><ListItem><Link href="https://medium.com/webpack/predictable-long-term-caching-with-webpack-d3eee1d3fa31">Alternative name based approach by Tim Sebastian</Link></ListItem></Appear>
           </List>
           <Appear><CodePane lang="javascript">
         {`{
   recordsPath: path.join(__dirname, 'records.json'),
 },`}
           </CodePane></Appear>
+
           <List>
+            <Appear><ListItem>Problem: you have a new file (<b>records.json</b>) to manage</ListItem></Appear>
+            <Appear><ListItem><Link href="https://medium.com/webpack/predictable-long-term-caching-with-webpack-d3eee1d3fa31">Alternative name based approach by Tim Sebastian</Link></ListItem></Appear>
             <Appear><ListItem><b>Exercise:</b> Set up records</ListItem></Appear>
-            <Appear><ListItem><b>Exercise:</b> Study {`Tim's`} approach and implement it*</ListItem></Appear>
+            <Appear><ListItem><b>Exercise:</b> Study {"Tim's"} approach and implement it*</ListItem></Appear>
           </List>
         </Slide>
 
