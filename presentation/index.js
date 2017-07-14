@@ -311,9 +311,8 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
           <List>
             <Appear><ListItem>Lint to push code quality to a higher standard</ListItem></Appear>
             <Appear><ListItem>JSLint &rarr; <Link href="https://www.npmjs.com/package/jshint">JSHint</Link> &rarr; <Link href="http://eslint.org/">ESLint</Link></ListItem></Appear>
-            <Appear><ListItem><Link href="https://www.npmjs.com/package/eslint-config-airbnb">eslint-config-airbnb</Link></ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/eslint-config-airbnb">eslint-config-airbnb</Link>, <Link href="https://www.npmjs.com/package/husky">husky</Link>, <Link href="https://www.npmjs.com/package/lint-staged">lint-staged</Link>, <Link href="https://www.npmjs.com/package/prettier">prettier</Link></ListItem></Appear>
             <Appear><ListItem><b>Exercise:</b> Connect with webpack using <Link href="https://www.npmjs.com/package/eslint-loader">eslint-loader</Link> as <Link href="https://survivejs.com/webpack/developing/linting">in the book</Link></ListItem></Appear>
-            <Appear><ListItem><b>Exercise:</b> Add <Link href="https://www.npmjs.com/package/prettier">prettier</Link> to the setup (hint: there is an <Link href="https://www.npmjs.com/package/eslint-plugin-prettier">ESLint plugin</Link>)*</ListItem></Appear>
           </List>
         </Slide>
 
