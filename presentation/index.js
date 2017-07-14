@@ -79,7 +79,7 @@ export default class Presentation extends React.Component {
             <Appear><ListItem>Building</ListItem></Appear>
             <Appear><ListItem>Assets</ListItem></Appear>
             <Appear><ListItem>Bundle/code Splitting</ListItem></Appear>
-            <Appear><ListItem>Analysis and Troubleshooting</ListItem></Appear>
+            <Appear><ListItem>Analysis</ListItem></Appear>
             <Appear><ListItem>Optimizing</ListItem></Appear>
           </List>
         </Slide>
@@ -235,11 +235,9 @@ export default class Presentation extends React.Component {
           <List>
             <Appear><ListItem>0. <code>mkdir webpack-workshop</code>, <code>npm init -y</code>, <code>npm i webpack -D</code></ListItem></Appear>
             <Appear><ListItem>1. Set up a project <Link href="https://survivejs.com/webpack/developing/getting-started">as in the book</Link></ListItem></Appear>
-            <Appear><ListItem>2. <b>node_modules/.bin/webpack app/index.js build/index.js</b></ListItem></Appear>
-            <Appear><ListItem>3. Set up <Link href="https://www.npmjs.com/package/html-webpack-plugin">html-webpack-plugin</Link>. Can you see why it is useful?</ListItem></Appear>
-            <Appear><ListItem>4. Set up npm shortcut (<code>npm run build</code>)</ListItem></Appear>
-            <Appear><ListItem>5. Study webpack output. Can you see what is going on?*</ListItem></Appear>
-            <Appear><ListItem>6. Study <Link href="https://github.com/webpack/webpack.js.org/issues/487">webpack class hierarchy</Link>**</ListItem></Appear>
+            <Appear><ListItem>2. Set up <Link href="https://www.npmjs.com/package/html-webpack-plugin">html-webpack-plugin</Link>. Can you see why it is useful?</ListItem></Appear>
+            <Appear><ListItem>3. Study webpack output. Can you see what is going on?*</ListItem></Appear>
+            <Appear><ListItem>4. Study <Link href="https://github.com/webpack/webpack.js.org/issues/487">webpack class hierarchy</Link>**</ListItem></Appear>
           </List>
         </Slide>
 
@@ -526,17 +524,6 @@ module.exports = (env) => {
           </List>
         </Slide>
 
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            Exercises
-          </Heading>
-          <List>
-            <Appear><ListItem>0. Set up development source maps</ListItem></Appear>
-            <Appear><ListItem>1. Set up production source maps</ListItem></Appear>
-            <Appear><ListItem>2. Examine source maps in the browser</ListItem></Appear>
-          </List>
-        </Slide>
-
         <Slide transition={slideTransition} bgColor="secondary">
           <Heading size={2} textColor="tertiary">
             Assets
@@ -584,17 +571,6 @@ module.exports = (env) => {
             <Appear><ListItem><Link href="https://www.npmjs.com/package/file-loader">file-loader</Link> returns paths and <b>emits</b> files</ListItem></Appear>
             <Appear><ListItem>Loaders for specific purposes (spriting, srcsets, etc.)</ListItem></Appear>
             <Appear><ListItem><b>Exercise:</b> Set up image loading</ListItem></Appear>
-          </List>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            <Link href="https://survivejs.com/webpack/loading/fonts">Loading Fonts</Link>
-          </Heading>
-          <List>
-            <Appear><ListItem><b>url-loader</b> and <b>file-loader</b> again</ListItem></Appear>
-            <Appear><ListItem>Specific loaders like <Link href="https://www.npmjs.com/package/webfonts-loader">webfonts-loader</Link></ListItem></Appear>
-            <Appear><ListItem><b>Exercise:</b> Set up font loading</ListItem></Appear>
           </List>
         </Slide>
 
@@ -734,8 +710,7 @@ import '!!url-loader!./bar.png';`}
 };
 
 function isVendor({ resource }) {
-  return resource &&
-    resource.indexOf('node_modules') >= 0 &&
+  return resource && resource.indexOf('node_modules') >= 0 &&
     resource.match(/\.js$/);
 }`}
           </CodePane>
@@ -766,7 +741,9 @@ function isVendor({ resource }) {
 `}
           </CodePane>
           <List>
-            <Appear><ListItem><b>Exercise:</b> Set up code splitting</ListItem></Appear>
+            <Appear><ListItem>Familiar <code>Promise</code> patterns work here</ListItem></Appear>
+            <Appear><ListItem>Consider <Link href="https://www.npmjs.com/package/react-loadable">react-loadable</Link> and others</ListItem></Appear>
+            <Appear><ListItem><b>Exercise:</b> <Link href="https://survivejs.com/webpack/building/code-splitting/">Set up code splitting as in the book</Link></ListItem></Appear>
           </List>
         </Slide>
 
@@ -789,29 +766,9 @@ function isVendor({ resource }) {
           </List>
         </Slide>
 
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            <code>Promise</code> Patterns
-          </Heading>
-          <CodePane lang="javascript">
-        {`Promise.all([
-  import('lunr'),
-  import('../search_index.json'),
-]).then(([lunr, search]) => {
-  return {
-    index: lunr.Index.load(search.index),
-    lines: search.lines,
-  };
-});`}
-          </CodePane>
-          <List>
-            <Appear><ListItem><b>Exercise:</b> Set up the above pattern so that each import is named the same way</ListItem></Appear>
-          </List>
-        </Slide>
-
         <Slide transition={slideTransition} bgColor="secondary">
           <Heading size={2} textColor="tertiary">
-            Analysis and Troubleshooting
+            Analysis
           </Heading>
         </Slide>
 
@@ -826,18 +783,6 @@ function isVendor({ resource }) {
             <Appear><ListItem>Node API gives access to statistics too and you can find a couple of plugins</ListItem></Appear>
             <Appear><ListItem>Plenty of tools for analysis</ListItem></Appear>
             <Appear><ListItem><b>Exercise:</b> Generate stats and analyze through tooling</ListItem></Appear>
-          </List>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>
-            <Link href="https://survivejs.com/webpack/appendices/troubleshooting">Troubleshooting</Link>
-          </Heading>
-          <List>
-            <Appear><ListItem>Follow a debugging process. This captures most problems.</ListItem></Appear>
-            <Appear><ListItem>If you found a real issue, take care in reporting it well</ListItem></Appear>
-            <Appear><ListItem>Figure out whether the problem is on your side or in dependencies</ListItem></Appear>
-            <Appear><ListItem><b>Exercise:</b> Figure out how to make your build error in different ways</ListItem></Appear>
           </List>
         </Slide>
 
@@ -1003,7 +948,7 @@ if (process.env.NODE_ENV === 'development') {
             <Appear><ListItem>Manifest in a <b>vendor</b> bundle can lead to invalidation if <b>app</b> bundle changes!</ListItem></Appear>
             <Appear><ListItem>Extract to a file or inline to HTML through a plugin</ListItem></Appear>
             <Appear><ListItem><code>CommonsChunkPlugin</code> can do the job</ListItem></Appear>
-            <Appear><ListItem><b>Exercise:</b> Separate manifest</ListItem></Appear>
+            <Appear><ListItem><b>Exercise:</b> Separate a manifest</ListItem></Appear>
           </List>
         </Slide>
 
