@@ -144,7 +144,7 @@ export default class Presentation extends React.Component {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\\.js$/,
         use: 'babel-loader',
         exclude: /node_modules/,
       },
@@ -211,7 +211,7 @@ export default class Presentation extends React.Component {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\\.js$/,
         use: 'babel-loader',
         exclude: /node_modules/,
       },
@@ -602,7 +602,7 @@ module.exports = (env) => {
   rules: [
     {
       // **Conditions**
-      test: /\.js$/, // Match files
+      test: /\\.js$/, // Match files
 
       // **Restrictions**
       include: path.join(__dirname, 'app'),
@@ -622,18 +622,18 @@ module.exports = (env) => {
           </Heading>
           <Appear><CodePane lang="javascript">
         {`{
-  test: /\.css$/,
+  test: /\\.css$/,
   use: ['style-loader', 'css-loader'],
 }`}
           </CodePane></Appear>
           <Appear><div>equals</div></Appear>
           <Appear><CodePane lang="javascript">
         {`{
-  test: /\.css$/,
+  test: /\\.css$/,
   use: ['style-loader'],
 },
 {
-  test: /\.css$/,
+  test: /\\.css$/,
   use: ['css-loader'],
 },`}
           </CodePane></Appear>
@@ -646,7 +646,7 @@ module.exports = (env) => {
           <CodePane lang="javascript">
         {`{
   // Conditions
-  test: /\.js$/,
+  test: /\\.js$/,
   enforce: 'pre', // 'post' too
 
   // Actions
@@ -711,7 +711,7 @@ import '!!url-loader!./bar.png';`}
 
 function isVendor({ resource }) {
   return resource && resource.indexOf('node_modules') >= 0 &&
-    resource.match(/\.js$/);
+    resource.match(/\\.js$/);
 }`}
           </CodePane>
           <List>
