@@ -422,7 +422,7 @@ module.exports = (env) => {
           <List>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/webpack-blocks">webpack-blocks</Link> - Andy read the book!</ListItem></Appear>
             <Appear><ListItem><Link href="https://neutrino.js.org/">neutrino</Link> - Chaining DSL</ListItem></Appear>
-            <Appear><ListItem><Link href="https://www.npmjs.com/package/create-react-app">create-react-app</Link> - Opinionated wrapper for React development</ListItem></Appear>
+            <Appear><ListItem><Link href="https://www.npmjs.com/package/create-react-app">create-react-app</Link> - Opinionated wrapper for React development. See also <Link href="https://www.npmjs.com/package/react-app-rewired">react-app-rewired</Link></ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/nwb">nwb</Link> - Less opinionated wrapper for React development</ListItem></Appear>
             <Appear><ListItem><Link href="https://www.npmjs.com/package/kyt">kyt</Link> - Common app configuration in a single place</ListItem></Appear>
           </List>
