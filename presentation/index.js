@@ -124,8 +124,8 @@ export default class Presentation extends React.Component {
             </Appear>
             <Appear>
               <ListItem>
-                They can completement each other. You can also defer task
-                running to npm.
+                They can complement each other. You can also defer task running
+                to npm.
               </ListItem>
             </Appear>
             <Appear>
