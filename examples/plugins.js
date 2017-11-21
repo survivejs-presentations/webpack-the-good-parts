@@ -1,0 +1,5 @@
+{
+  plugins: [
+    new UglifyJsPlugin(),
+  ],
+}

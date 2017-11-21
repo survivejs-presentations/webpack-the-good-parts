@@ -1,20 +1,12 @@
 pre {
-  font-size: 1rem !important;
-}
-
-pre code {
-  font-size: 150%;
-}
-
-li code {
-  font-size: 75%;
-}
-
-pre {
   overflow: auto;
-  max-height: 475px;
+  max-height: 500px;
 }
 
 li {
   line-height: 1.5;
+}
+
+code {
+  font-size: 75%;
 }

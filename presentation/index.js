@@ -34,7 +34,6 @@ import createTheme from "spectacle/lib/themes/default";
 
 // Require CSS
 require("normalize.css");
-require("spectacle/lib/themes/default/index.css");
 require("./custom.css");
 
 const slideTransition = ["slide"];
@@ -59,8 +58,9 @@ const theme = createTheme({
   primary: "white",
   secondary: "black",
   tertiary: "#09b5c4",
-  quartenary: "rgba(255, 219, 169, 0.43)",
+  quarternary: "rgba(255, 219, 169, 0.43)",
 });
+theme.screen.components.codePane.fontSize = "50%";
 
 export default class Presentation extends React.Component {
   render() {
@@ -142,49 +142,36 @@ export default class Presentation extends React.Component {
           <Heading size={2} fit>
             <code>entry</code> - Where to Start Bundling
           </Heading>
-          <CodePane lang="javascript">
-            {`{
-  entry: {
-    app: path.join(__dirname, 'app'),
-  },
-}`}
-          </CodePane>
+          <CodePane
+            lang="javascript"
+            source={require("raw-loader!../examples/entry.js")}
+            margin="20px auto"
+            overflow="overflow"
+          />
         </Slide>
 
         <Slide transition={slideTransition}>
           <Heading size={2} fit>
             <code>output</code> - Where to Emit Files
           </Heading>
-          <CodePane lang="javascript">
-            {`{
-  output: {
-    // Output to the build directory
-    path: path.join(__dirname, 'build'),
-
-    // Capture name from the entry using a pattern
-    filename: '[name].js',
-  },
-}`}
-          </CodePane>
+          <CodePane
+            lang="javascript"
+            source={require("raw-loader!../examples/output.js")}
+            margin="20px auto"
+            overflow="overflow"
+          />
         </Slide>
 
         <Slide transition={slideTransition}>
           <Heading size={2} fit>
             <code>module.rules</code> - How to Process?
           </Heading>
-          <CodePane lang="javascript">
-            {`{
-  module: {
-    rules: [
-      {
-        test: /\\.js$/,
-        use: 'babel-loader',
-        exclude: /node_modules/,
-      },
-    ],
-  },
-}`}
-          </CodePane>
+          <CodePane
+            lang="javascript"
+            source={require("raw-loader!../examples/rules.js")}
+            margin="20px auto"
+            overflow="overflow"
+          />
           <List>
             <Appear>
               <ListItem>Focus on transforming assets</ListItem>
@@ -196,13 +183,12 @@ export default class Presentation extends React.Component {
           <Heading size={2} fit>
             <code>plugins</code> - What Additional Processing to Perform
           </Heading>
-          <CodePane lang="javascript">
-            {`{
-  plugins: [
-    new UglifyJsPlugin(),
-  ],
-}`}
-          </CodePane>
+          <CodePane
+            lang="javascript"
+            source={require("raw-loader!../examples/rules.js")}
+            margin="20px auto"
+            overflow="overflow"
+          />
           <List>
             <Appear>
               <ListItem>The most powerful way to extend webpack</ListItem>
@@ -222,15 +208,12 @@ export default class Presentation extends React.Component {
           <Heading size={2} fit>
             <code>resolve</code> - What Happens on <code>require/import</code>
           </Heading>
-          <CodePane lang="javascript">
-            {`{
-  resolve: {
-    alias: { ... },
-    extensions: [ ... ],
-    modules: [ ... ],
-  },
-}`}
-          </CodePane>
+          <CodePane
+            lang="javascript"
+            source={require("raw-loader!../examples/resolve.js")}
+            margin="20px auto"
+            overflow="overflow"
+          />
           <List>
             <Appear>
               <ListItem>Hack around nasty packages</ListItem>
@@ -245,34 +228,12 @@ export default class Presentation extends React.Component {
 
         <Slide transition={slideTransition}>
           <Heading size={2}>Configuration</Heading>
-          <CodePane lang="javascript">
-            {`module.exports = {
-  entry: { // 1. Where to begin
-    app: path.join(__dirname, 'app'),
-  },
-  output: { // 2. Where to write
-    path: path.join(__dirname, 'build'),
-    filename: '[name].js',
-  },
-  // 3. How to process modules
-  module: {
-    rules: [
-      {
-        test: /\\.js$/,
-        use: 'babel-loader',
-        exclude: /node_modules/,
-      },
-    ],
-  },
-  // 4. Additional processing to perform
-  plugins: [
-    new UglifyJsPlugin(),
-  ],
-  // 5. How to resolve modules and loaders
-  resolve: { ... },
-  resolveLoader: { ... },
-};`}
-          </CodePane>
+          <CodePane
+            lang="javascript"
+            source={require("raw-loader!../examples/configuration.js")}
+            margin="20px auto"
+            overflow="overflow"
+          />
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -324,35 +285,12 @@ export default class Presentation extends React.Component {
 
         <Slide transition={slideTransition}>
           <Heading size={2}>Webpack Output</Heading>
-          <CodePane lang="javascript">
-            {`/******/ (function(modules) { // webpackBootstrap
-...
-/* 0 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony default export */ __webpack_exports__["a"] = ( => {
-  const element = document.createElement('div');
-
-  element.innerHTML = 'Hello world';
-
-  return element;
-});
-
-/***/ }),
-/* 1 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__component__ = __webpack_require__(0);
-
-
-document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__component__["a" /* default */])());
-
-/***/ })
-/******/ ]);`}
-          </CodePane>
+          <CodePane
+            lang="javascript"
+            source={require("raw-loader!../examples/webpack-output.js")}
+            margin="20px auto"
+            overflow="overflow"
+          />
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -380,7 +318,10 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
 
         <Slide transition={slideTransition}>
           <Heading size={2} textColor="tertiary">
-            <Link href="https://survivejs.com/webpack/developing">
+            <Link
+              href="https://survivejs.com/webpack/developing"
+              textColor="white"
+            >
               Developing
             </Link>
           </Heading>
@@ -388,8 +329,8 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
-            <Link href="https://survivejs.com/webpack/developing/automatic-browser-refresh">
-              Automatic Browser Refresh
+            <Link href="https://survivejs.com/webpack/developing/webpack-dev-server">
+              webpack-dev-server
             </Link>
           </Heading>
           <List>
@@ -406,22 +347,22 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
             <Appear>
               <ListItem>
                 2.{" "}
-                <Link href="https://survivejs.com/webpack/developing/automatic-browser-refresh">
-                  Follow the chapter <code>--env</code> setup
+                <Link href="https://survivejs.com/webpack/developing/webpack-dev-server">
+                  Follow the chapter setup
                 </Link>
               </ListItem>
             </Appear>
           </List>
         </Slide>
 
-        <Slide transition={slideTransition}>
-          <Heading size={2}>WDS - Overlay Mode</Heading>
-          <Image src={images.wdsOverlay} margin="40px auto" height="364px" />
-        </Slide>
-
         <Slide transition={slideTransition} bgColor="secondary">
           <Heading size={2} textColor="tertiary">
-            Building
+            <Link
+              href="https://survivejs.com/webpack/building"
+              textColor="white"
+            >
+              Building
+            </Link>
           </Heading>
         </Slide>
 
@@ -429,18 +370,12 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
           <Heading size={2} fit>
             Managing Webpack Through <b>package.json</b>
           </Heading>
-          <CodePane lang="javascript">
-            {`{
-  "scripts": {
-    "build": "webpack --env production",
-    "start": "webpack-dev-server --env development",
-    "test": "jest",
-    "test:coverage": "jest --coverage",
-    "test:watch": "jest --watch",
-    ...
-  }
-}`}
-          </CodePane>
+          <CodePane
+            lang="json"
+            source={require("raw-loader!../examples/npm-scripts.json")}
+            margin="20px auto"
+            overflow="overflow"
+          />
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -472,48 +407,33 @@ document.body.appendChild(__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_0__com
 
         <Slide transition={slideTransition}>
           <Heading size={2}>webpack-merge</Heading>
-          <CodePane lang="javascript">
-            {`const merge = require('webpack-merge');
-
-merge(
-  { a: [1], b: 5, c: 20 },
-  { a: [2], b: 10, d: 421 }
-);`}
-          </CodePane>
+          <CodePane
+            lang="javascript"
+            source={require("raw-loader!../examples/merge-1.js")}
+            margin="20px auto"
+            overflow="overflow"
+          />
           <Appear>
             <div>merges to</div>
           </Appear>
           <Appear>
-            <CodePane lang="javascript">
-              {`{
-  a: [1, 2], // Concat
-  b: 10, // Latter wins
-  c: 20, // From former
-  d: 421 // From latter
-}`}
-            </CodePane>
+            <CodePane
+              lang="javascript"
+              source={require("raw-loader!../examples/merge-2.js")}
+              margin="20px auto"
+              overflow="overflow"
+            />
           </Appear>
         </Slide>
 
         <Slide transition={slideTransition}>
           <Heading size={2}>webpack-merge with webpack</Heading>
-          <CodePane lang="javascript">
-            {`const commonConfig = merge([
-  ...
-]);
-
-const productionConfig = merge([
-  ...
-]);
-
-module.exports = (env) => {
-  if (env === 'production') {
-    return merge(commonConfig, productionConfig);
-  }
-
-  return merge(commonConfig, developmentConfig);
-};`}
-          </CodePane>
+          <CodePane
+            lang="javascript"
+            source={require("raw-loader!../examples/merge-3.js")}
+            margin="20px auto"
+            overflow="overflow"
+          />
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -609,7 +529,10 @@ module.exports = (env) => {
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
-            <Link href="https://survivejs.com/webpack/building/source-maps">
+            <Link
+              href="https://survivejs.com/webpack/building/source-maps"
+              textColor="white"
+            >
               Source Maps
             </Link>
           </Heading>
@@ -621,13 +544,12 @@ module.exports = (env) => {
           <Heading size={4}>
             (<code>devtool: 'eval'</code>)
           </Heading>
-          <CodePane lang="javascript">
-            {`webpackJsonp([1, 2], {
-  "./app/index.js": function(module, exports) {
-    eval("console.log('Hello world');\n\n//////////////////\n// WEBPACK FOOTER\n// ./app/index.js\n// module id = ./app/index.js\n// module chunks = 1\n\n//# sourceURL=webpack:///./app/index.js?")
-  }
-}, ["./app/index.js"]);`}
-          </CodePane>
+          <CodePane
+            lang="javascript"
+            source={require("raw-loader!../examples/inline-source-map.js")}
+            margin="20px auto"
+            overflow="overflow"
+          />
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -652,27 +574,19 @@ module.exports = (env) => {
             (<code>devtool: 'source-map'</code>)
           </Heading>
           <div>app.js</div>
-          <CodePane lang="javascript">
-            {`webpackJsonp(
-  [2,4],
-  {"1Q41":function(){}, ... }
-); //# sourceMappingURL=app.js.map`}
-          </CodePane>
+          <CodePane
+            lang="javascript"
+            source={require("raw-loader!../examples/source-map-1.js")}
+            margin="20px auto"
+            overflow="overflow"
+          />
           <div>app.js.map</div>
-          <CodePane lang="json">
-            {`{
-  "file": "app.9aff3b1eced1f089ef18.js",
-  "mappings": "AAAAA,...,kBDST",
-  "names": [
-    "webpackJsonp",
-    ...
-  ],
-  "sourceRoot": "",
-  "sources": [...],
-  "sourcesContent": [...],
-  "version": 3
-}`}
-          </CodePane>
+          <CodePane
+            lang="json"
+            source={require("raw-loader!../examples/source-map-2.json")}
+            margin="20px auto"
+            overflow="overflow"
+          />
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -739,7 +653,7 @@ module.exports = (env) => {
           <List>
             <Appear>
               <ListItem>
-                <code>use: ['style-loader', 'css-loader']</code>
+                <code>use: ["style-loader", "css-loader"]</code>
               </ListItem>
             </Appear>
             <Appear>
@@ -904,79 +818,59 @@ module.exports = (env) => {
               Loader Definition
             </Link>
           </Heading>
-          <CodePane lang="javascript">
-            {`module: {
-  rules: [
-    {
-      // **Conditions**
-      test: /\\.js$/, // Match files
-
-      // **Restrictions**
-      include: path.join(__dirname, 'app'),
-      exclude: path => path.match(/node_modules/);
-
-      // **Actions**
-      use: 'babel-loader',
-    },
-  ],
-},`}
-          </CodePane>
+          <CodePane
+            lang="javascript"
+            source={require("raw-loader!../examples/loader-definition.js")}
+            margin="20px auto"
+            overflow="overflow"
+          />
         </Slide>
 
         <Slide transition={slideTransition}>
           <Heading size={2}>Loader Evaluation Order</Heading>
           <Appear>
-            <CodePane lang="javascript">
-              {`{
-  test: /\\.css$/,
-  use: ['style-loader', 'css-loader'],
-}`}
-            </CodePane>
+            <CodePane
+              lang="javascript"
+              source={require("raw-loader!../examples/eval-1.js")}
+              margin="20px auto"
+              overflow="overflow"
+            />
           </Appear>
           <Appear>
             <div>equals</div>
           </Appear>
           <Appear>
-            <CodePane lang="javascript">
-              {`{
-  test: /\\.css$/,
-  use: ['style-loader'],
-},
-{
-  test: /\\.css$/,
-  use: ['css-loader'],
-},`}
-            </CodePane>
+            <CodePane
+              lang="javascript"
+              source={require("raw-loader!../examples/eval-2.js")}
+              margin="20px auto"
+              overflow="overflow"
+            />
           </Appear>
         </Slide>
 
         <Slide transition={slideTransition}>
           <Heading size={2}>Enforcing Order</Heading>
-          <CodePane lang="javascript">
-            {`{
-  // Conditions
-  test: /\\.js$/,
-  enforce: 'pre', // 'post' too
-
-  // Actions
-  use: 'eslint-loader',
-},`}
-          </CodePane>
+          <CodePane
+            lang="javascript"
+            source={require("raw-loader!../examples/enforce-order.js")}
+            margin="20px auto"
+            overflow="overflow"
+          />
         </Slide>
 
         <Slide transition={slideTransition}>
           <Heading size={2}>Inline Definitions</Heading>
-          <CodePane lang="javascript">
-            {`// Process foo.png through url-loader and other matches
-import 'url-loader!./foo.png';
-
-// Override possible higher level match completely
-import '!!url-loader!./bar.png';`}
-          </CodePane>
+          <CodePane
+            lang="javascript"
+            source={require("raw-loader!../examples/inline.js")}
+            margin="20px auto"
+            overflow="overflow"
+          />
         </Slide>
 
         <Slide transition={slideTransition} bgColor="secondary">
-          <Heading size={2} textColor="tertiary">
+          <Heading size={2} textColor="tertiary" textColor="white">
             Bundle/code Splitting
           </Heading>
         </Slide>
@@ -1026,22 +920,12 @@ import '!!url-loader!./bar.png';`}
           <Heading size={2} fit>
             <code>CommonsChunkPlugin</code>
           </Heading>
-          <CodePane lang="javascript">
-            {`module.exports = {
-  ...
-  plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      minChunks: isVendor,
-    }),
-  ]
-};
-
-function isVendor({ resource }) {
-  return resource && resource.indexOf('node_modules') >= 0 &&
-    resource.match(/\\.js$/);
-}`}
-          </CodePane>
+          <CodePane
+            lang="javascript"
+            source={require("raw-loader!../examples/commons.js")}
+            margin="20px auto"
+            overflow="overflow"
+          />
           <List>
             <Appear>
               <ListItem>
@@ -1053,7 +937,10 @@ function isVendor({ resource }) {
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
-            <Link href="https://survivejs.com/webpack/building/code-splitting">
+            <Link
+              href="https://survivejs.com/webpack/building/code-splitting"
+              textColor="white"
+            >
               Code Splitting
             </Link>
           </Heading>
@@ -1064,16 +951,12 @@ function isVendor({ resource }) {
           <Heading size={2}>
             <code>import()</code>
           </Heading>
-          <CodePane lang="javascript">
-            {`import(
-  /* webpackChunkName: "optional-name" */ './module'
-).then(
-  module => {...}
-).catch(
-  error => {...}
-);
-`}
-          </CodePane>
+          <CodePane
+            lang="javascript"
+            source={require("raw-loader!../examples/import.js")}
+            margin="20px auto"
+            overflow="overflow"
+          />
           <List>
             <Appear>
               <ListItem>
@@ -1102,16 +985,12 @@ function isVendor({ resource }) {
 
         <Slide transition={slideTransition}>
           <Heading size={2}>Code Splitting Output</Heading>
-          <CodePane lang="javascript">
-            {`webpackJsonp([0], {
-  KMic: function(a, b, c) {
-    ...
-  },
-  co9Y: function(a, b, c) {
-    ...
-  },
-});`}
-          </CodePane>
+          <CodePane
+            lang="javascript"
+            source={require("raw-loader!../examples/split-output.js")}
+            margin="20px auto"
+            overflow="overflow"
+          />
           <List>
             <Appear>
               <ListItem>
@@ -1124,13 +1003,18 @@ function isVendor({ resource }) {
 
         <Slide transition={slideTransition} bgColor="secondary">
           <Heading size={2} textColor="tertiary">
-            Analysis
+            <Link
+              href="https://survivejs.com/webpack/optimizing/build-analysis/"
+              textColor="white"
+            >
+              Build Analysis
+            </Link>
           </Heading>
         </Slide>
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
-            <Link href="https://survivejs.com/webpack/optimizing/analyzing-build-statistics">
+            <Link href="https://survivejs.com/webpack/optimizing/build-analysis/">
               Analyzing Build Statistics
             </Link>
           </Heading>
@@ -1181,30 +1065,22 @@ function isVendor({ resource }) {
 
         <Slide transition={slideTransition}>
           <Heading size={2}>Performance Budgets</Heading>
-          <CodePane lang="javascript">
-            {`{
-  performance: {
-    hints: 'warning', // 'error' or false are valid too
-    maxEntrypointSize: 100000, // in bytes
-    maxAssetSize: 100000, // in bytes
-  },
-},`}
-          </CodePane>
+          <CodePane
+            lang="javascript"
+            source={require("raw-loader!../examples/budget-1.js")}
+            margin="20px auto"
+            overflow="overflow"
+          />
         </Slide>
 
         <Slide transition={slideTransition}>
           <Heading size={2}>Budget Warnings/Errors</Heading>
-          <CodePane lang="javascript">
-            {`...
-WARNING in entrypoint size limit: The following entrypoint(s) combined asset size exceeds
-the recommended limit (100 kB). This can impact web performance.
-Entrypoints:
-  app (156 kB)
-      vendor.js
-,      app.js
-,      app.css
-...`}
-          </CodePane>
+          <CodePane
+            lang="javascript"
+            source={require("raw-loader!../examples/budget-2.js")}
+            margin="20px auto"
+            overflow="overflow"
+          />
           <List>
             <Appear>
               <ListItem>
@@ -1283,18 +1159,19 @@ Entrypoints:
               Tree Shaking
             </Link>
           </Heading>
-          <CodePane lang="javascript">
-            {`const shake = () => console.log('shake');
-const bake = () => console.log('bake');
-
-export { shake, bake };`}
-          </CodePane>
+          <CodePane
+            lang="javascript"
+            source={require("raw-loader!../examples/tree-1.js")}
+            margin="20px auto"
+            overflow="overflow"
+          />
           <div>shake it with</div>
-          <CodePane lang="javascript">
-            {`import { bake } from './shake';
-
-bake();`}
-          </CodePane>
+          <CodePane
+            lang="javascript"
+            source={require("raw-loader!../examples/tree-2.js")}
+            margin="20px auto"
+            overflow="overflow"
+          />
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -1345,17 +1222,12 @@ bake();`}
             </Appear>
           </List>
           <Appear>
-            <CodePane lang="javascript">
-              {`let foo;
-
-// Not free due to "foo" above, not ok to replace
-if (foo === 'bar') { ... }
-
-// Free since you don't refer to "bar", ok to replace
-if (process.env.NODE_ENV === 'development') {
-  console.log('bar');
-}`}
-            </CodePane>
+            <CodePane
+              lang="javascript"
+              source={require("raw-loader!../examples/define.js")}
+              margin="20px auto"
+              overflow="overflow"
+            />
           </Appear>
           <List>
             <Appear>
@@ -1387,7 +1259,9 @@ if (process.env.NODE_ENV === 'development') {
             <Appear>
               <ListItem>
                 Common placeholders: <code>[name]</code>, <code>[ext]</code>,{" "}
-                <code>[chunkhash]</code>, <code>[contenthash]</code> (<code>ExtractTextPlugin</code>{" "}
+                <code>[chunkhash]</code>, <code>[contenthash]</code> (<code>
+                  ExtractTextPlugin
+                </code>{" "}
                 only)
               </ListItem>
             </Appear>
@@ -1396,14 +1270,12 @@ if (process.env.NODE_ENV === 'development') {
 
         <Slide transition={slideTransition}>
           <Heading size={2}>Placeholders</Heading>
-          <CodePane lang="javascript">
-            {`{
-  output: {
-    path: PATHS.build,
-    filename: '[name].[chunkhash].js',
-  },
-},`}
-          </CodePane>
+          <CodePane
+            lang="javascript"
+            source={require("raw-loader!../examples/placeholders.js")}
+            margin="20px auto"
+            overflow="overflow"
+          />
           <List>
             <Appear>
               <ListItem>
@@ -1488,11 +1360,12 @@ if (process.env.NODE_ENV === 'development') {
             </Appear>
           </List>
           <Appear>
-            <CodePane lang="javascript">
-              {`{
-  recordsPath: path.join(__dirname, 'records.json'),
-},`}
-            </CodePane>
+            <CodePane
+              lang="javascript"
+              source={require("raw-loader!../examples/records.js")}
+              margin="20px auto"
+              overflow="overflow"
+            />
           </Appear>
 
           <List>

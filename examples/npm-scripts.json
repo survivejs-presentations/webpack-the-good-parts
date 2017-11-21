@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "build": "webpack --env production",
+    "start": "webpack-dev-server --env development",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
+    "test:watch": "jest --watch",
+    ...
+  }
+}
