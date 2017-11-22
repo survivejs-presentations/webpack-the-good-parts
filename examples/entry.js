@@ -1,5 +1,5 @@
-{
+const config = {
   entry: {
-    app: path.join(__dirname, 'app'),
+    app: path.join(__dirname, "app"),
   },
-}
+};

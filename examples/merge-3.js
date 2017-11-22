@@ -1,13 +1,15 @@
 const commonConfig = merge([
-  ...
+  /* ... */
 ]);
 
 const productionConfig = merge([
-  ...
+  /*  ... */
 ]);
 
-module.exports = (env) => {
-  if (env === 'production') {
+/*  ... */
+
+module.exports = env => {
+  if (env === "production") {
     return merge(commonConfig, productionConfig);
   }
 

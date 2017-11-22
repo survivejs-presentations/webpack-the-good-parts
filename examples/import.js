@@ -1,7 +1,7 @@
-import(
-  /* webpackChunkName: "optional-name" */ "./module"
-).then(
-  module => {...}
-).catch(
-  error => {...}
-);
+import(/* webpackChunkName: "optional-name" */ "./module")
+  .then(module => {
+    /* ... */
+  })
+  .catch(error => {
+    /* ... */
+  });

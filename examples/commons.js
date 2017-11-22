@@ -1,14 +1,11 @@
+const isVendor = ({ resource }) => /node_modules/.test(resource);
+
 module.exports = {
-  ...
+  /* ... */
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
+      name: "vendor",
       minChunks: isVendor,
     }),
-  ]
+  ],
 };
-
-function isVendor({ resource }) {
-  return resource && resource.indexOf('node_modules') >= 0 &&
-    resource.match(/\\.js$/);
-}

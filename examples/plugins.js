@@ -1,5 +1,3 @@
-{
-  plugins: [
-    new UglifyJsPlugin(),
-  ],
-}
+const config = {
+  plugins: [new UglifyJsPlugin()],
+};

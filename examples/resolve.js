@@ -1,7 +1,13 @@
-{
+const config = {
   resolve: {
-    alias: { ... },
-    extensions: [ ... ],
-    modules: [ ... ],
+    alias: {
+      /*...*/
+    },
+    extensions: [
+      /*...*/
+    ],
+    modules: [
+      /*...*/
+    ],
   },
-}
+};

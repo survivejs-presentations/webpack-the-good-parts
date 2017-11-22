@@ -60,7 +60,7 @@ const theme = createTheme({
   tertiary: "#09b5c4",
   quarternary: "rgba(255, 219, 169, 0.43)",
 });
-theme.screen.components.codePane.fontSize = "50%";
+theme.screen.components.codePane.fontSize = "60%";
 
 export default class Presentation extends React.Component {
   render() {
@@ -119,13 +119,13 @@ export default class Presentation extends React.Component {
           <List>
             <Appear>
               <ListItem>
-                <b>Task runners</b> and <b>bundlers</b>
+                <b>Task runners</b> and <b>bundlers</b> can complement each
+                other
               </ListItem>
             </Appear>
             <Appear>
               <ListItem>
-                They can complement each other. You can also defer task running
-                to npm.
+                npm <b>package.json</b> can be used as a task runner as well
               </ListItem>
             </Appear>
             <Appear>
@@ -185,7 +185,7 @@ export default class Presentation extends React.Component {
           </Heading>
           <CodePane
             lang="javascript"
-            source={require("raw-loader!../examples/rules.js")}
+            source={require("raw-loader!../examples/plugins.js")}
             margin="20px auto"
             overflow="overflow"
           />
@@ -316,7 +316,7 @@ export default class Presentation extends React.Component {
           </List>
         </Slide>
 
-        <Slide transition={slideTransition}>
+        <Slide transition={slideTransition} bgColor="secondary">
           <Heading size={2} textColor="tertiary">
             <Link
               href="https://survivejs.com/webpack/developing"
@@ -529,10 +529,7 @@ export default class Presentation extends React.Component {
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
-            <Link
-              href="https://survivejs.com/webpack/building/source-maps"
-              textColor="white"
-            >
+            <Link href="https://survivejs.com/webpack/building/source-maps">
               Source Maps
             </Link>
           </Heading>
@@ -937,10 +934,7 @@ export default class Presentation extends React.Component {
 
         <Slide transition={slideTransition}>
           <Heading size={2}>
-            <Link
-              href="https://survivejs.com/webpack/building/code-splitting"
-              textColor="white"
-            >
+            <Link href="https://survivejs.com/webpack/building/code-splitting">
               Code Splitting
             </Link>
           </Heading>
@@ -1295,14 +1289,12 @@ export default class Presentation extends React.Component {
             </Appear>
             <Appear>
               <ListItem>
-                <code>NamedModulesPlugin</code> returns paths to modules (useful
-                for development!)
+                <code>NamedModulesPlugin</code> returns paths to modules
               </ListItem>
             </Appear>
             <Appear>
               <ListItem>
                 <code>HashedModuleIdsPlugin</code> is the same except it hashes
-                the paths
               </ListItem>
             </Appear>
             <Appear>
