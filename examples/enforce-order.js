@@ -3,7 +3,7 @@ const config = {
     rules: [
       {
         // Conditions
-        test: /\\.js$/,
+        test: /\.js$/,
         enforce: "pre", // "post" too
 
         // Actions
