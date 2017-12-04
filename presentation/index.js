@@ -1107,7 +1107,7 @@ export default class Presentation extends React.Component {
             </Appear>
             <Appear>
               <ListItem>
-                <Link href="https://github.com/webpack-contrib/uglifyjs-webpack-plugin">
+                <Link href="https://www.npmjs.com/package/uglifyjs-webpack-plugin">
                   UglifyJs
                 </Link>,{" "}
                 <Link href="https://www.npmjs.com/package/babel-minify-webpack-plugin">
@@ -1138,10 +1138,9 @@ export default class Presentation extends React.Component {
             <Appear>
               <ListItem>
                 <b>Exercise:</b> Set up{" "}
-                <Link href="https://www.npmjs.com/package/babel-minify-webpack-plugin">
-                  babel-minify-webpack-plugin
-                </Link>{" "}
-                and study its implementation (can you see anything particular?)
+                <Link href="https://www.npmjs.com/package/uglifyjs-webpack-plugin">
+                  uglifyjs-webpack-plugin-webpack-plugin
+                </Link>
               </ListItem>
             </Appear>
           </List>
