@@ -1442,21 +1442,13 @@ export default class Presentation extends React.Component {
         </Slide>
 
         <Slide transition={slideTransition}>
-          <Link href="https://www.survivejs.com/">
-            <Heading size={1}>SurviveJS</Heading>
+          <Link href="https://www.survivejs.com/webpack/">
+            <Heading size={1}>SurviveJS - Webpack</Heading>
           </Link>
-          <Image src={images.survivejs} margin="0px auto 40px" height="524px" />
-        </Slide>
-
-        <Slide transition={slideTransition} bgColor="tertiary">
-          <Heading size={1} caps fit textColor="primary">
-            Made in Finland by
+          <Image src={images.survivejs} margin="0px auto 40px" height="324px" />
+          <Heading size={2}>
+            by <Link href="https://twitter.com/bebraw">Juho Vepsäläinen</Link>
           </Heading>
-          <Link href="https://twitter.com/bebraw">
-            <Heading caps fit size={2} textColor="secondary">
-              Juho Vepsäläinen
-            </Heading>
-          </Link>
         </Slide>
       </Deck>
     );
