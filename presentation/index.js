@@ -621,6 +621,14 @@ export default class Presentation extends React.Component {
                 <b>cheap-module-inline-source-map</b>
               </ListItem>
             </Appear>
+            <Appear>
+              <ListItem>
+                <b>Exercise:</b> Try out{" "}
+                <Link href="https://sokra.github.io/source-map-visualization/">
+                  source-map-visualization
+                </Link>
+              </ListItem>
+            </Appear>
           </List>
         </Slide>
 
