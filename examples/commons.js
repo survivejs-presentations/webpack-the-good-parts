@@ -1,11 +1,14 @@
-const isVendor = ({ resource }) => /node_modules/.test(resource);
-
 module.exports = {
   /* ... */
-  plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: "vendor",
-      minChunks: isVendor,
-    }),
-  ],
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendor",
+          chunks: "all",
+        },
+      },
+    },
+  },
 };

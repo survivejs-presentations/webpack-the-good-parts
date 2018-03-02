@@ -1,3 +1,5 @@
+const webpack = require("webpack");
+
 const config = {
-  plugins: [new UglifyJsPlugin()],
+  plugins: [new webpack.DefinePlugin()],
 };

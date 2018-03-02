@@ -1,3 +1,6 @@
+const path = require("path");
+const webpack = require("webpack");
+
 module.exports = {
   entry: {
     // 1. Where to begin
@@ -19,7 +22,7 @@ module.exports = {
     ],
   },
   // 4. Additional processing to perform
-  plugins: [new UglifyJsPlugin()],
+  plugins: [new webpack.DefinePlugin()],
   // 5. How to resolve modules and loaders
   resolve: {
     /* ... */

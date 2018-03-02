@@ -1,3 +1,5 @@
+const merge = require("webpack-merge");
+
 const commonConfig = merge([
   /* ... */
 ]);
@@ -8,10 +10,10 @@ const productionConfig = merge([
 
 /*  ... */
 
-module.exports = env => {
-  if (env === "production") {
-    return merge(commonConfig, productionConfig);
+module.exports = mode => {
+  if (mode === "production") {
+    return merge(commonConfig, productionConfig, { mode });
   }
 
-  return merge(commonConfig, developmentConfig);
+  return merge(commonConfig, developmentConfig, { mode });
 };

@@ -622,6 +622,9 @@ export default class Presentation extends React.Component {
               </ListItem>
             </Appear>
             <Appear>
+              <ListItem>Webpack 4 comes with good defaults!</ListItem>
+            </Appear>
+            <Appear>
               <ListItem>
                 <b>Exercise:</b> Try out{" "}
                 <Link href="https://sokra.github.io/source-map-visualization/">
@@ -903,8 +906,11 @@ export default class Presentation extends React.Component {
             </Appear>
             <Appear>
               <ListItem>
-                <code>CommonsChunkPlugin</code> can do the job
+                <code>optimization.splitChunks.cacheGroups</code> can do it
               </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>Webpack 4 does some splitting out of the box</ListItem>
             </Appear>
             <Appear>
               <ListItem>
@@ -923,7 +929,7 @@ export default class Presentation extends React.Component {
 
         <Slide transition={slideTransition}>
           <Heading size={2} fit>
-            <code>CommonsChunkPlugin</code>
+            <code>optimization.splitChunks.cacheGroups</code>
           </Heading>
           <CodePane
             lang="javascript"
@@ -1063,33 +1069,6 @@ export default class Presentation extends React.Component {
               Optimizing
             </Link>
           </Heading>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>Performance Budgets</Heading>
-          <CodePane
-            lang="javascript"
-            source={require("raw-loader!../examples/budget-1.js")}
-            margin="20px auto"
-            overflow="overflow"
-          />
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>Budget Warnings/Errors</Heading>
-          <CodePane
-            lang="javascript"
-            source={require("raw-loader!../examples/budget-2.js")}
-            margin="20px auto"
-            overflow="overflow"
-          />
-          <List>
-            <Appear>
-              <ListItem>
-                <b>Exercise:</b> Set up a performance budget
-              </ListItem>
-            </Appear>
-          </List>
         </Slide>
 
         <Slide transition={slideTransition} bgColor="black">
@@ -1338,7 +1317,7 @@ export default class Presentation extends React.Component {
             </Appear>
             <Appear>
               <ListItem>
-                <code>CommonsChunkPlugin</code> can do the job
+                <code>optimization.runtimeChunk.name</code> can do the job
               </ListItem>
             </Appear>
             <Appear>
