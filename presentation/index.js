@@ -247,7 +247,8 @@ export default class Presentation extends React.Component {
               <ListItem>
                 0.{" "}
                 <code>
-                  mkdir demo && cd demo && npm init -y && npm i webpack -D
+                  mkdir demo && cd demo && npm init -y && npm i webpack
+                  webpack-cli -D
                 </code>
               </ListItem>
             </Appear>
@@ -255,26 +256,18 @@ export default class Presentation extends React.Component {
               <ListItem>
                 1. Set up a project{" "}
                 <Link href="https://survivejs.com/webpack/developing/getting-started">
-                  as in the book
+                  as in the book and follow the chapter
                 </Link>
               </ListItem>
             </Appear>
             <Appear>
               <ListItem>
-                2. Set up{" "}
-                <Link href="https://www.npmjs.com/package/html-webpack-plugin">
-                  html-webpack-plugin
-                </Link>. Can you see why it is useful?
+                2. Study webpack output. Can you see what is going on?*
               </ListItem>
             </Appear>
             <Appear>
               <ListItem>
-                3. Study webpack output. Can you see what is going on?*
-              </ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>
-                4. Study{" "}
+                3. Study{" "}
                 <Link href="https://github.com/webpack/webpack.js.org/issues/487">
                   webpack class hierarchy
                 </Link>**
