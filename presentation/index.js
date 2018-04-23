@@ -696,8 +696,8 @@ export default class Presentation extends React.Component {
             </Appear>
             <Appear>
               <ListItem>
-                <Link href="https://www.npmjs.com/package/extract-text-webpack-plugin">
-                  extract-text-webpack-plugin (ETWP)
+                <Link href="https://www.npmjs.com/package/mini-css-extract-plugin">
+                  mini-css-extract-plugin (MCEP)
                 </Link>{" "}
                 and{" "}
                 <Link href="https://www.npmjs.com/package/extract-loader">
