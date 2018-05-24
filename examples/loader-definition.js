@@ -6,7 +6,7 @@ const config = {
         test: /\.js$/, // Match files
 
         // **Restrictions**
-        include: path.join(__dirname, "app"),
+        include: path.resolve(__dirname, "app"),
         exclude: path => path.match(/node_modules/),
 
         // **Actions**

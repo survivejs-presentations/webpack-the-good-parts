@@ -265,14 +265,6 @@ export default class Presentation extends React.Component {
                 2. Study webpack output. Can you see what is going on?*
               </ListItem>
             </Appear>
-            <Appear>
-              <ListItem>
-                3. Study{" "}
-                <Link href="https://github.com/webpack/webpack.js.org/issues/487">
-                  webpack class hierarchy
-                </Link>**
-              </ListItem>
-            </Appear>
           </List>
         </Slide>
 
@@ -487,6 +479,11 @@ export default class Presentation extends React.Component {
                 Common app configuration in a single place
               </ListItem>
             </Appear>
+            <Appear>
+              <ListItem>
+                See also <Link href="https://www.npmjs.com/package/@angular/cli">@angular/cli</Link>, <Link href="https://www.npmjs.com/package/vue-cli">vue-cli</Link>, <Link href="https://www.npmjs.com/package/preact-cli">preact-cli</Link>
+              </ListItem>
+            </Appear>
           </List>
         </Slide>
 
@@ -603,8 +600,8 @@ export default class Presentation extends React.Component {
           <List>
             <Appear>
               <ListItem>
-                <Link href="https://github.com/webpack/webpack/issues/2145#issuecomment-294361203">
-                  GitHub to rescue
+                <Link href="https://webpack.js.org/configuration/devtool/">
+                  Documentation to rescue
                 </Link>
               </ListItem>
             </Appear>
@@ -692,7 +689,7 @@ export default class Presentation extends React.Component {
           </Heading>
           <List>
             <Appear>
-              <ListItem>Flash of Unstyled Content (FOUC)</ListItem>
+              <ListItem>Flash of Unstyled Content (FOUC), important on SSR</ListItem>
             </Appear>
             <Appear>
               <ListItem>
@@ -848,16 +845,6 @@ export default class Presentation extends React.Component {
               overflow="overflow"
             />
           </Appear>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>Enforcing Order</Heading>
-          <CodePane
-            lang="javascript"
-            source={require("raw-loader!../examples/enforce-order.js")}
-            margin="20px auto"
-            overflow="overflow"
-          />
         </Slide>
 
         <Slide transition={slideTransition}>
@@ -1231,11 +1218,7 @@ export default class Presentation extends React.Component {
             </Appear>
             <Appear>
               <ListItem>
-                Common placeholders: <code>[name]</code>, <code>[ext]</code>,{" "}
-                <code>[chunkhash]</code>, <code>[contenthash]</code> (<code>
-                  ExtractTextPlugin
-                </code>{" "}
-                only)
+                Common placeholders: <code>[hash]</code>, <code>[name]</code>, <code>[contenthash]</code>
               </ListItem>
             </Appear>
           </List>
@@ -1253,33 +1236,6 @@ export default class Presentation extends React.Component {
             <Appear>
               <ListItem>
                 <b>Exercise:</b> Add hashing to filenames
-              </ListItem>
-            </Appear>
-          </List>
-        </Slide>
-
-        <Slide transition={slideTransition}>
-          <Heading size={2}>Module Ids</Heading>
-          <List>
-            <Appear>
-              <ListItem>
-                Modules use numbered ids by default (0, 1, 2, ...)
-              </ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>
-                <code>NamedModulesPlugin</code> returns paths to modules
-              </ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>
-                <code>HashedModuleIdsPlugin</code> is the same except it hashes
-              </ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>
-                <b>Exercise:</b> Add <code>NamedModulesPlugin</code> to the
-                setup
               </ListItem>
             </Appear>
           </List>
@@ -1360,6 +1316,36 @@ export default class Presentation extends React.Component {
             <Appear>
               <ListItem>
                 <b>Exercise:</b> Study {"Tim's"} approach and implement it*
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                <b>Exercise:</b> Study{" "}
+                <Link href="https://github.com/webpack/webpack.js.org/issues/487">
+                  webpack class hierarchy
+                </Link>**
+              </ListItem>
+            </Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>Module Ids</Heading>
+          <List>
+            <Appear>
+              <ListItem>
+                Modules use numbered ids by default (0, 1, 2, ...)
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                <code>optimization.namedModules</code>, <code>optimization.namedChunks</code> returns paths to modules
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                <b>Exercise:</b> Add the fields to the
+                setup
               </ListItem>
             </Appear>
           </List>

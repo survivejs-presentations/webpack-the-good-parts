@@ -1,3 +1,3 @@
 const config = {
-  recordsPath: path.join(__dirname, "records.json"),
+  recordsPath: path.resolve(__dirname, "records.json"),
 };

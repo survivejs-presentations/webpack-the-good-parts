@@ -4,11 +4,11 @@ const webpack = require("webpack");
 module.exports = {
   entry: {
     // 1. Where to begin
-    app: path.join(__dirname, "app"),
+    app: "./app",
   },
   output: {
     // 2. Where to write
-    path: path.join(__dirname, "build"),
+    path: path.resolve(__dirname, "build"),
     filename: "[name].js",
   },
   // 3. How to process modules
