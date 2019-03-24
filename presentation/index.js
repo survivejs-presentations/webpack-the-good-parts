@@ -96,6 +96,9 @@ export default class Presentation extends React.Component {
             <Appear>
               <ListItem>Optimizing</ListItem>
             </Appear>
+            <Appear>
+              <ListItem>Webpack 5</ListItem>
+            </Appear>
           </List>
         </Slide>
 
@@ -265,6 +268,15 @@ export default class Presentation extends React.Component {
                 2. Study webpack output. Can you see what is going on?*
               </ListItem>
             </Appear>
+            <Appear>
+              <ListItem>
+                3. Check out{" "}
+                <Link href="https://www.npmjs.com/package/webpack-nano">
+                  webpack-nano
+                </Link>
+                *
+              </ListItem>
+            </Appear>
           </List>
         </Slide>
 
@@ -335,6 +347,15 @@ export default class Presentation extends React.Component {
                 <Link href="https://survivejs.com/webpack/developing/webpack-dev-server">
                   Follow the chapter setup
                 </Link>
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                3. Test
+                <Link href="https://www.npmjs.com/package/webpack-plugin-serve">
+                  webpack-plugin-serve
+                </Link>
+                *
               </ListItem>
             </Appear>
           </List>
@@ -433,7 +454,7 @@ export default class Presentation extends React.Component {
             height="364px"
           />
           <Layout>
-            <Link href="https://npm-stat.com/charts.html?package=webpack-merge&from=2015-06-19&to=2017-03-19">
+            <Link href="https://npm-stat.com/charts.html?package=webpack-merge&from=2015-06-19&to=2018-04-24">
               npm-stat.com
             </Link>
           </Layout>
@@ -481,7 +502,18 @@ export default class Presentation extends React.Component {
             </Appear>
             <Appear>
               <ListItem>
-                See also <Link href="https://www.npmjs.com/package/@angular/cli">@angular/cli</Link>, <Link href="https://www.npmjs.com/package/vue-cli">vue-cli</Link>, <Link href="https://www.npmjs.com/package/preact-cli">preact-cli</Link>
+                See also{" "}
+                <Link href="https://www.npmjs.com/package/@angular/cli">
+                  @angular/cli
+                </Link>
+                ,{" "}
+                <Link href="https://www.npmjs.com/package/vue-cli">
+                  vue-cli
+                </Link>
+                ,{" "}
+                <Link href="https://www.npmjs.com/package/preact-cli">
+                  preact-cli
+                </Link>
               </ListItem>
             </Appear>
           </List>
@@ -689,7 +721,9 @@ export default class Presentation extends React.Component {
           </Heading>
           <List>
             <Appear>
-              <ListItem>Flash of Unstyled Content (FOUC), important on SSR</ListItem>
+              <ListItem>
+                Flash of Unstyled Content (FOUC), important on SSR
+              </ListItem>
             </Appear>
             <Appear>
               <ListItem>
@@ -713,7 +747,8 @@ export default class Presentation extends React.Component {
                 <b>Exercise:</b> Study{" "}
                 <Link href="https://medium.com/webpack/the-new-css-workflow-step-1-79583bd107d7">
                   the proposed CSS workflow
-                </Link>*
+                </Link>
+                *
               </ListItem>
             </Appear>
           </List>
@@ -1074,12 +1109,18 @@ export default class Presentation extends React.Component {
             </Appear>
             <Appear>
               <ListItem>
+                <Link href="https://www.npmjs.com/package/terser-webpack-plugin">
+                  terser-webpack-plugin (webpack default)
+                </Link>
+                ,{" "}
                 <Link href="https://www.npmjs.com/package/uglifyjs-webpack-plugin">
-                  UglifyJs
-                </Link>,{" "}
+                  uglifyjs-webpack-plugin
+                </Link>
+                ,{" "}
                 <Link href="https://www.npmjs.com/package/babel-minify-webpack-plugin">
                   babel-minify-webpack-plugin
-                </Link>,{" "}
+                </Link>
+                ,{" "}
                 <Link href="https://www.npmjs.com/package/webpack-closure-compiler">
                   Closure Compiler
                 </Link>
@@ -1105,8 +1146,8 @@ export default class Presentation extends React.Component {
             <Appear>
               <ListItem>
                 <b>Exercise:</b> Set up{" "}
-                <Link href="https://www.npmjs.com/package/uglifyjs-webpack-plugin">
-                  uglifyjs-webpack-plugin-webpack-plugin
+                <Link href="https://www.npmjs.com/package/terser-webpack-plugin">
+                  terser-webpack-plugin
                 </Link>
               </ListItem>
             </Appear>
@@ -1218,7 +1259,8 @@ export default class Presentation extends React.Component {
             </Appear>
             <Appear>
               <ListItem>
-                Common placeholders: <code>[hash]</code>, <code>[name]</code>, <code>[contenthash]</code>
+                Common placeholders: <code>[hash]</code>, <code>[name]</code>,{" "}
+                <code>[contenthash]</code>
               </ListItem>
             </Appear>
           </List>
@@ -1310,20 +1352,10 @@ export default class Presentation extends React.Component {
             </Appear>
             <Appear>
               <ListItem>
-                <b>Exercise:</b> Set up records
-              </ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>
-                <b>Exercise:</b> Study {"Tim's"} approach and implement it*
-              </ListItem>
-            </Appear>
-            <Appear>
-              <ListItem>
                 <b>Exercise:</b> Study{" "}
                 <Link href="https://github.com/webpack/webpack.js.org/issues/487">
                   webpack class hierarchy
-                </Link>**
+                </Link>
               </ListItem>
             </Appear>
           </List>
@@ -1339,13 +1371,13 @@ export default class Presentation extends React.Component {
             </Appear>
             <Appear>
               <ListItem>
-                <code>optimization.namedModules</code>, <code>optimization.namedChunks</code> returns paths to modules
+                <code>optimization.namedModules</code>,{" "}
+                <code>optimization.namedChunks</code> returns paths to modules
               </ListItem>
             </Appear>
             <Appear>
               <ListItem>
-                <b>Exercise:</b> Add the fields to the
-                setup
+                <b>Exercise:</b> Add the fields to the setup
               </ListItem>
             </Appear>
           </List>
@@ -1402,6 +1434,47 @@ export default class Presentation extends React.Component {
                   happypack
                 </Link>{" "}
                 with Babel*
+              </ListItem>
+            </Appear>
+          </List>
+        </Slide>
+
+        <Slide transition={slideTransition} bgColor="secondary">
+          <Heading size={2} textColor="tertiary">
+            Webpack 5
+          </Heading>
+        </Slide>
+
+        <Slide transition={slideTransition}>
+          <Heading size={2}>Upcoming Changes</Heading>
+          <List>
+            <Appear>
+              <ListItem>
+                Improved build performance due to persistent cache
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                Improved/easier long-term caching (deterministic/size options)
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                <i>minSize</i>/<i>maxSize</i> per type (css/js) for{" "}
+                <b>splitChunks</b>
+              </ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>No more automatic polyfills for Node.js</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>Before trying, solve deprecations!</ListItem>
+            </Appear>
+            <Appear>
+              <ListItem>
+                <Link href="https://github.com/webpack/changelog-v5">
+                  More info at the changelog (wip)
+                </Link>
               </ListItem>
             </Appear>
           </List>
