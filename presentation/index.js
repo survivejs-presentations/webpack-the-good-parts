@@ -351,7 +351,7 @@ export default class Presentation extends React.Component {
             </Appear>
             <Appear>
               <ListItem>
-                3. Test
+                3. Test{" "}
                 <Link href="https://www.npmjs.com/package/webpack-plugin-serve">
                   webpack-plugin-serve
                 </Link>
